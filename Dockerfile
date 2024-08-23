@@ -1,23 +1,19 @@
-# Use an official Node.js image as the base image
-FROM node:18.17.1
+FROM node:18-alpine3.18
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
 
-# Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /opt/
+COPY package.json yarn.lock ./
+RUN yarn global add node-gyp
+RUN yarn config set network-timeout 600000 -g && yarn install
+ENV PATH /opt/node_modules/.bin:$PATH
 
-# Copy package.json and package-lock.json files
-COPY package*.json ./
-
-# Install the required dependencies
-RUN yarn
-
-# Copy the rest of the app files into the container
+WORKDIR /opt/app
 COPY . .
-
-# Build the Strapi admin panel
-RUN yarn build
-
-# Expose the port Strapi will run on
+RUN chown -R node:node /opt/app
+USER node
+RUN ["yarn", "build"]
 EXPOSE 1337
-
-# Define the command to start the application
 CMD ["yarn", "develop"]
