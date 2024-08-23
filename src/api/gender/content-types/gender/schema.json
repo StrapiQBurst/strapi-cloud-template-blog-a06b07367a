@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "genders",
+  "info": {
+    "singularName": "gender",
+    "pluralName": "genders",
+    "displayName": "Gender",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    },
+    "Products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "Genders"
+    }
+  }
+}
