@@ -19,7 +19,6 @@ services:
       DATABASE_NAME: strapi_poc
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: root
-      DATABASE_SSL: false
       JWT_SECRET: vnvHUBMbsFA8NnQ2OJyalQ==
     volumes:
       - ./config:/opt/app/config
