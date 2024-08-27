@@ -1,36 +1,56 @@
-# 🚀 Getting started with Strapi
+# 🚀 Getting started with Strapi and MySQL using Docker
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This project uses Strapi with MySQL for the backend, and Docker for containerization.
 
-### `develop`
+## Prerequisites
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- Docker & Docker Compose
+- Yarn package manager
 
+## 🐳 Start Docker for Strapi and MySQL
+
+To spin up the containers for Strapi and MySQL, run the following command:
+
+```bash
+docker compose up
 ```
-npm run develop
-# or
-yarn develop
+This will start the Strapi and MySQL containers based on the configurations in your docker-compose.yml file.
+
+## 📦 Install Dependencies
+Install all required dependencies using Yarn:
+```bash
+yarn install
 ```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
+## 🔑 Copy .env File
+Make sure to create and copy your `.env` file into the root directory of your project. Use the following values for your `.env` file:
 ```
-npm run start
-# or
-yarn start
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=INXynmK8eMOIZPc4+FvsaQ==,fe7eqzpdg+SN4eiIkO+ZwA==,2ofau2+wQ82D+lAtcMt8JQ==,jswg3FGfs0OnK83XqyqyRA==
+API_TOKEN_SALT=l04vzSIZhPtPcIDg/1ARwg==
+ADMIN_JWT_SECRET=zZRAvzQosxZKFnxYT4YzIA==
+TRANSFER_TOKEN_SALT=ymV8UG8NKfe/yCVvkc8fRQ==
+# Database
+DATABASE_CLIENT=mysql
+DATABASE_HOST=192.168.100.10
+DATABASE_PORT=3306
+DATABASE_NAME=strapi_poc
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=root
+DATABASE_SSL=false
+JWT_SECRET=vnvHUBMbsFA8NnQ2OJyalQ==
 ```
+## 📂 Import Data from catalog.csv
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
+To import product data from the catalog.csv file:
+- Place the catalog.csv file in the root directory of your project.
+- Run the following command to import the data:
+```bash
+node csv-import-script.js
 ```
-npm run build
-# or
-yarn build
-```
+This will populate the database with data from the CSV file.
+
+
 
 ## ⚙️ Deployment
 

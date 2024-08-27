@@ -21,17 +21,17 @@
     "Description": {
       "type": "text"
     },
-    "Products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "inversedBy": "SubCategory"
-    },
     "Category": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "Subcategories"
+    },
+    "Products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "sub_category"
     }
   }
 }

@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "oo_id": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "unique": false,
+      "required": false
     },
     "Title": {
       "type": "string"
@@ -30,11 +32,11 @@
     "Description": {
       "type": "text"
     },
-    "Category": {
+    "category": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::category.category",
-      "mappedBy": "Products"
+      "inversedBy": "Products"
     },
     "Genders": {
       "type": "relation",
@@ -42,17 +44,17 @@
       "target": "api::gender.gender",
       "inversedBy": "Products"
     },
-    "SubCategory": {
+    "sub_category": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::subcategory.subcategory",
-      "mappedBy": "Products"
+      "inversedBy": "Products"
     },
-    "Brands": {
+    "brand": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::brand.brand",
-      "mappedBy": "Products"
+      "inversedBy": "Products"
     }
   }
 }

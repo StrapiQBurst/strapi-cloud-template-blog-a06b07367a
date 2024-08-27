@@ -2,7 +2,7 @@ export default {
   /**
    * An asynchronous register function that runs before
    * your application is initialized.
-   *
+   * 
    * This gives you an opportunity to extend code.
    */
   register(/*{ strapi }*/) {},
@@ -12,7 +12,95 @@ export default {
    * your application gets started.
    *
    * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
+      * run jobs, or perform some special logic.
    */
-  bootstrap(/*{ strapi }*/) {},
+  async bootstrap(/*{ strapi }*/) {
+    const knex = strapi.db.connection; // Get the database connection
+
+    // Check if the 'unique_oo_id' constraint already exists
+    const productConstraintExists = await knex('information_schema.TABLE_CONSTRAINTS')
+      .where({
+        TABLE_NAME: 'products',
+        CONSTRAINT_TYPE: 'UNIQUE',
+        CONSTRAINT_NAME: 'unique_oo_id',
+      })
+      .select('CONSTRAINT_NAME')
+      .first();
+
+    if (!productConstraintExists) {
+      console.log('Adding unique constraint to oo_id in products table');
+      
+      // Add unique constraint to `oo_id` column
+      await knex.raw(`
+        ALTER TABLE products
+        ADD CONSTRAINT unique_oo_id UNIQUE (oo_id);
+      `);
+      console.log('Unique constraint added to oo_id in products table');
+    } else {
+      console.log('Unique constraint "unique_oo_id" already exists on products table');
+    }
+
+    // Check if the 'unique_brand_product' constraint already exists
+    const brandProductConstraintExists = await knex('information_schema.TABLE_CONSTRAINTS')
+      .where({
+        TABLE_NAME: 'products_brand_links',
+        CONSTRAINT_TYPE: 'UNIQUE',
+        CONSTRAINT_NAME: 'unique_brand_product',
+      })
+      .select('CONSTRAINT_NAME')
+      .first();
+
+    if (!brandProductConstraintExists) {
+      console.log('Adding unique constraint to brand-product relation');
+      await knex.raw(`
+        ALTER TABLE products_brand_links
+        ADD CONSTRAINT unique_brand_product UNIQUE (product_id);
+      `);
+      console.log('Unique constraint added to brand-product relation');
+    } else {
+      console.log('Unique constraint "unique_brand_product" already exists on products_brand_links');
+    }
+
+    // Check if the 'unique_category_product' constraint already exists
+    const categoryProductConstraintExists = await knex('information_schema.TABLE_CONSTRAINTS')
+      .where({
+        TABLE_NAME: 'products_category_links',
+        CONSTRAINT_TYPE: 'UNIQUE',
+        CONSTRAINT_NAME: 'unique_category_product',
+      })
+      .select('CONSTRAINT_NAME')
+      .first();
+
+    if (!categoryProductConstraintExists) {
+      console.log('Adding unique constraint to category-product relation');
+      await knex.raw(`
+        ALTER TABLE products_category_links
+        ADD CONSTRAINT unique_category_product UNIQUE (product_id);
+      `);
+      console.log('Unique constraint added to category-product relation');
+    } else {
+      console.log('Unique constraint "unique_category_product" already exists on products_category_links');
+    }
+
+    // Check if the 'unique_subcategory_product' constraint already exists
+    const subcategoryProductConstraintExists = await knex('information_schema.TABLE_CONSTRAINTS')
+      .where({
+        TABLE_NAME: 'products_sub_category_links',
+        CONSTRAINT_TYPE: 'UNIQUE',
+        CONSTRAINT_NAME: 'unique_subcategory_product',
+      })
+      .select('CONSTRAINT_NAME')
+      .first();
+
+    if (!subcategoryProductConstraintExists) {
+      console.log('Adding unique constraint to subcategory-product relation');
+      await knex.raw(`
+        ALTER TABLE products_sub_category_links
+        ADD CONSTRAINT unique_subcategory_product UNIQUE (product_id);
+      `);
+      console.log('Unique constraint added to subcategory-product relation');
+    } else {
+      console.log('Unique constraint "unique_subcategory_product" already exists on products_sub_category_links');
+    }
+  },
 };
