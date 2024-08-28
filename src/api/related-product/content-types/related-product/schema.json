@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "related_products",
+  "info": {
+    "singularName": "related-product",
+    "pluralName": "related-products",
+    "displayName": "Related Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "related_product"
+    }
+  }
+}

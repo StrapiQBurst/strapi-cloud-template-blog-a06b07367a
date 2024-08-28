@@ -788,6 +788,113 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAddToCartAddToCart extends Schema.CollectionType {
+  collectionName: 'add_to_carts';
+  info: {
+    singularName: 'add-to-cart';
+    pluralName: 'add-to-carts';
+    displayName: 'Add to Cart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ButtonText: Attribute.String;
+    ButtonLink: Attribute.String;
+    Type: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::add-to-cart.add-to-cart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::add-to-cart.add-to-cart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBannerBanner extends Schema.CollectionType {
+  collectionName: 'banners';
+  info: {
+    singularName: 'banner';
+    pluralName: 'banners';
+    displayName: 'Banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    SubTitle: Attribute.String;
+    Description: Attribute.Text;
+    PromotionText: Attribute.Text;
+    Button: Attribute.String;
+    ButtonLink: Attribute.String;
+    ButtonType: Attribute.String;
+    best_seller: Attribute.Relation<
+      'api::banner.banner',
+      'manyToOne',
+      'api::best-seller.best-seller'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::banner.banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::banner.banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBestSellerBestSeller extends Schema.CollectionType {
+  collectionName: 'best_sellers';
+  info: {
+    singularName: 'best-seller';
+    pluralName: 'best-sellers';
+    displayName: 'Best Seller';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banners: Attribute.Relation<
+      'api::best-seller.best-seller',
+      'oneToMany',
+      'api::banner.banner'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::best-seller.best-seller',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::best-seller.best-seller',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBrandBrand extends Schema.CollectionType {
   collectionName: 'brands';
   info: {
@@ -868,6 +975,152 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiFeatureFeature extends Schema.CollectionType {
+  collectionName: 'features';
+  info: {
+    singularName: 'feature';
+    pluralName: 'features';
+    displayName: 'Feature';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Icon: Attribute.String;
+    FeatureTitle: Attribute.String;
+    FeatureDescription: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::feature.feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::feature.feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFeaturedProductFeaturedProduct
+  extends Schema.CollectionType {
+  collectionName: 'featured_products';
+  info: {
+    singularName: 'featured-product';
+    pluralName: 'featured-products';
+    displayName: 'Featured Product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    products: Attribute.Relation<
+      'api::featured-product.featured-product',
+      'oneToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::featured-product.featured-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::featured-product.featured-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.CollectionType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    LogoUrl: Attribute.String;
+    footer_links: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::footer-link.footer-link'
+    >;
+    social_buttons: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::social-button.social-button'
+    >;
+    CopyRightText: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterLinkFooterLink extends Schema.CollectionType {
+  collectionName: 'footer_links';
+  info: {
+    singularName: 'footer-link';
+    pluralName: 'footer-links';
+    displayName: 'Footer Link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Links: Attribute.Text;
+    footer: Attribute.Relation<
+      'api::footer-link.footer-link',
+      'manyToOne',
+      'api::footer.footer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer-link.footer-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer-link.footer-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGenderGender extends Schema.CollectionType {
   collectionName: 'genders';
   info: {
@@ -901,6 +1154,96 @@ export interface ApiGenderGender extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHeaderHeader extends Schema.CollectionType {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    LogoURL: Attribute.String;
+    Gender: Attribute.String;
+    CartIconUrl: Attribute.String;
+    CartAmount: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
+  collectionName: 'hero_sections';
+  info: {
+    singularName: 'hero-section';
+    pluralName: 'hero-sections';
+    displayName: 'Hero Section';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.Text;
+    Link: Attribute.String;
+    ButtonType: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hero-section.hero-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hero-section.hero-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLinkLink extends Schema.CollectionType {
+  collectionName: 'links';
+  info: {
+    singularName: 'link';
+    pluralName: 'links';
+    displayName: 'Link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Url: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::link.link', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::link.link', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -954,6 +1297,76 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRelatedProductRelatedProduct extends Schema.CollectionType {
+  collectionName: 'related_products';
+  info: {
+    singularName: 'related-product';
+    pluralName: 'related-products';
+    displayName: 'Related Product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'api::related-product.related-product',
+      'oneToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::related-product.related-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::related-product.related-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSocialButtonSocialButton extends Schema.CollectionType {
+  collectionName: 'social_buttons';
+  info: {
+    singularName: 'social-button';
+    pluralName: 'social-buttons';
+    displayName: 'Social Button';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Link: Attribute.String;
+    ImageUrl: Attribute.String;
+    footer: Attribute.Relation<
+      'api::social-button.social-button',
+      'manyToOne',
+      'api::footer.footer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-button.social-button',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-button.social-button',
       'oneToOne',
       'admin::user'
     > &
@@ -1022,10 +1435,22 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::add-to-cart.add-to-cart': ApiAddToCartAddToCart;
+      'api::banner.banner': ApiBannerBanner;
+      'api::best-seller.best-seller': ApiBestSellerBestSeller;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::feature.feature': ApiFeatureFeature;
+      'api::featured-product.featured-product': ApiFeaturedProductFeaturedProduct;
+      'api::footer.footer': ApiFooterFooter;
+      'api::footer-link.footer-link': ApiFooterLinkFooterLink;
       'api::gender.gender': ApiGenderGender;
+      'api::header.header': ApiHeaderHeader;
+      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::link.link': ApiLinkLink;
       'api::product.product': ApiProductProduct;
+      'api::related-product.related-product': ApiRelatedProductRelatedProduct;
+      'api::social-button.social-button': ApiSocialButtonSocialButton;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
     }
   }

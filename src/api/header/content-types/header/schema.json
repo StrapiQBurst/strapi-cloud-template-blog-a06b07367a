@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "headers",
+  "info": {
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "LogoURL": {
+      "type": "string"
+    },
+    "Gender": {
+      "type": "string"
+    },
+    "CartIconUrl": {
+      "type": "string"
+    },
+    "CartAmount": {
+      "type": "string"
+    }
+  }
+}

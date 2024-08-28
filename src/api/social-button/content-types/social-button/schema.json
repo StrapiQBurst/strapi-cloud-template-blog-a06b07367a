@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_buttons",
+  "info": {
+    "singularName": "social-button",
+    "pluralName": "social-buttons",
+    "displayName": "Social Button"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Link": {
+      "type": "string"
+    },
+    "ImageUrl": {
+      "type": "string"
+    },
+    "footer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::footer.footer",
+      "inversedBy": "social_buttons"
+    }
+  }
+}
