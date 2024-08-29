@@ -16,13 +16,9 @@
       "type": "string"
     },
     "Link": {
-      "type": "string"
-    },
-    "Products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "Genders"
+      "type": "component",
+      "repeatable": true,
+      "component": "link.links"
     }
   }
 }

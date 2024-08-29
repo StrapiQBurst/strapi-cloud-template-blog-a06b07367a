@@ -4,7 +4,8 @@
   "info": {
     "singularName": "header",
     "pluralName": "headers",
-    "displayName": "Header"
+    "displayName": "Header",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,14 +15,16 @@
     "LogoURL": {
       "type": "string"
     },
-    "Gender": {
-      "type": "string"
-    },
     "CartIconUrl": {
       "type": "string"
     },
     "CartAmount": {
       "type": "string"
+    },
+    "gender": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gender.gender"
     }
   }
 }

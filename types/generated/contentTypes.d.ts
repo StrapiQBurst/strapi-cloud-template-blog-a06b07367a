@@ -794,14 +794,13 @@ export interface ApiAddToCartAddToCart extends Schema.CollectionType {
     singularName: 'add-to-cart';
     pluralName: 'add-to-carts';
     displayName: 'Add to Cart';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    ButtonText: Attribute.String;
-    ButtonLink: Attribute.String;
-    Type: Attribute.String;
+    Button: Attribute.Component<'button.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -826,6 +825,7 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     singularName: 'banner';
     pluralName: 'banners';
     displayName: 'Banner';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -835,14 +835,7 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     SubTitle: Attribute.String;
     Description: Attribute.Text;
     PromotionText: Attribute.Text;
-    Button: Attribute.String;
-    ButtonLink: Attribute.String;
-    ButtonType: Attribute.String;
-    best_seller: Attribute.Relation<
-      'api::banner.banner',
-      'manyToOne',
-      'api::best-seller.best-seller'
-    >;
+    Button: Attribute.Component<'button.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -867,15 +860,16 @@ export interface ApiBestSellerBestSeller extends Schema.CollectionType {
     singularName: 'best-seller';
     pluralName: 'best-sellers';
     displayName: 'Best Seller';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    banners: Attribute.Relation<
+    products: Attribute.Relation<
       'api::best-seller.best-seller',
       'oneToMany',
-      'api::banner.banner'
+      'api::product.product'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -945,7 +939,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    Link: Attribute.String;
     Description: Attribute.Text;
     Subcategories: Attribute.Relation<
       'api::category.category',
@@ -957,6 +950,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    Link: Attribute.Component<'link.links', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1056,17 +1050,17 @@ export interface ApiFooterFooter extends Schema.CollectionType {
   };
   attributes: {
     LogoUrl: Attribute.String;
-    footer_links: Attribute.Relation<
-      'api::footer.footer',
-      'oneToMany',
-      'api::footer-link.footer-link'
-    >;
+    CopyRightText: Attribute.String;
     social_buttons: Attribute.Relation<
       'api::footer.footer',
       'oneToMany',
       'api::social-button.social-button'
     >;
-    CopyRightText: Attribute.String;
+    footer_links: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::footer-link.footer-link'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1091,13 +1085,14 @@ export interface ApiFooterLinkFooterLink extends Schema.CollectionType {
     singularName: 'footer-link';
     pluralName: 'footer-links';
     displayName: 'Footer Link';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Title: Attribute.String;
-    Links: Attribute.Text;
+    Links: Attribute.Component<'link.links', true>;
     footer: Attribute.Relation<
       'api::footer-link.footer-link',
       'manyToOne',
@@ -1134,12 +1129,7 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    Link: Attribute.String;
-    Products: Attribute.Relation<
-      'api::gender.gender',
-      'manyToMany',
-      'api::product.product'
-    >;
+    Link: Attribute.Component<'link.links', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1164,15 +1154,20 @@ export interface ApiHeaderHeader extends Schema.CollectionType {
     singularName: 'header';
     pluralName: 'headers';
     displayName: 'Header';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     LogoURL: Attribute.String;
-    Gender: Attribute.String;
     CartIconUrl: Attribute.String;
     CartAmount: Attribute.String;
+    gender: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'api::gender.gender'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1205,8 +1200,7 @@ export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
   attributes: {
     Title: Attribute.String;
     Description: Attribute.Text;
-    Link: Attribute.String;
-    ButtonType: Attribute.String;
+    Button: Attribute.Component<'button.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1221,29 +1215,6 @@ export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLinkLink extends Schema.CollectionType {
-  collectionName: 'links';
-  info: {
-    singularName: 'link';
-    pluralName: 'links';
-    displayName: 'Link';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Url: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::link.link', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::link.link', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1271,11 +1242,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
-    Genders: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::gender.gender'
-    >;
     sub_category: Attribute.Relation<
       'api::product.product',
       'manyToOne',
@@ -1285,6 +1251,16 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'manyToOne',
       'api::brand.brand'
+    >;
+    best_seller: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::best-seller.best-seller'
+    >;
+    gender: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::gender.gender'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1344,13 +1320,14 @@ export interface ApiSocialButtonSocialButton extends Schema.CollectionType {
     singularName: 'social-button';
     pluralName: 'social-buttons';
     displayName: 'Social Button';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Link: Attribute.String;
     ImageUrl: Attribute.String;
+    Links: Attribute.Component<'link.links', true>;
     footer: Attribute.Relation<
       'api::social-button.social-button',
       'manyToOne',
@@ -1387,7 +1364,6 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    Link: Attribute.String;
     Description: Attribute.Text;
     Category: Attribute.Relation<
       'api::subcategory.subcategory',
@@ -1399,6 +1375,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    Link: Attribute.Component<'link.links', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1447,7 +1424,6 @@ declare module '@strapi/types' {
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
-      'api::link.link': ApiLinkLink;
       'api::product.product': ApiProductProduct;
       'api::related-product.related-product': ApiRelatedProductRelatedProduct;
       'api::social-button.social-button': ApiSocialButtonSocialButton;

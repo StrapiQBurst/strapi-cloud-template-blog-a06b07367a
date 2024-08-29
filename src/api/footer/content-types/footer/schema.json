@@ -15,11 +15,8 @@
     "LogoUrl": {
       "type": "string"
     },
-    "footer_links": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::footer-link.footer-link",
-      "mappedBy": "footer"
+    "CopyRightText": {
+      "type": "string"
     },
     "social_buttons": {
       "type": "relation",
@@ -27,8 +24,11 @@
       "target": "api::social-button.social-button",
       "mappedBy": "footer"
     },
-    "CopyRightText": {
-      "type": "string"
+    "footer_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::footer-link.footer-link",
+      "mappedBy": "footer"
     }
   }
 }

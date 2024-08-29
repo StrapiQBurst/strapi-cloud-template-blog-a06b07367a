@@ -38,12 +38,6 @@
       "target": "api::category.category",
       "inversedBy": "Products"
     },
-    "Genders": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::gender.gender",
-      "inversedBy": "Products"
-    },
     "sub_category": {
       "type": "relation",
       "relation": "manyToOne",
@@ -55,6 +49,17 @@
       "relation": "manyToOne",
       "target": "api::brand.brand",
       "inversedBy": "Products"
+    },
+    "best_seller": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::best-seller.best-seller",
+      "inversedBy": "products"
+    },
+    "gender": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gender.gender"
     }
   }
 }

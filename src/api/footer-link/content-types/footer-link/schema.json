@@ -4,7 +4,8 @@
   "info": {
     "singularName": "footer-link",
     "pluralName": "footer-links",
-    "displayName": "Footer Link"
+    "displayName": "Footer Link",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,9 @@
       "type": "string"
     },
     "Links": {
-      "type": "text"
+      "type": "component",
+      "repeatable": true,
+      "component": "link.links"
     },
     "footer": {
       "type": "relation",

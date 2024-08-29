@@ -4,17 +4,18 @@
   "info": {
     "singularName": "best-seller",
     "pluralName": "best-sellers",
-    "displayName": "Best Seller"
+    "displayName": "Best Seller",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "banners": {
+    "products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::banner.banner",
+      "target": "api::product.product",
       "mappedBy": "best_seller"
     }
   }

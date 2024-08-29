@@ -4,7 +4,8 @@
   "info": {
     "singularName": "banner",
     "pluralName": "banners",
-    "displayName": "Banner"
+    "displayName": "Banner",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,19 +25,9 @@
       "type": "text"
     },
     "Button": {
-      "type": "string"
-    },
-    "ButtonLink": {
-      "type": "string"
-    },
-    "ButtonType": {
-      "type": "string"
-    },
-    "best_seller": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::best-seller.best-seller",
-      "inversedBy": "banners"
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
     }
   }
 }

@@ -18,11 +18,10 @@
     "Description": {
       "type": "text"
     },
-    "Link": {
-      "type": "string"
-    },
-    "ButtonType": {
-      "type": "string"
+    "Button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
     }
   }
 }

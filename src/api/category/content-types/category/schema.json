@@ -15,9 +15,6 @@
     "Name": {
       "type": "string"
     },
-    "Link": {
-      "type": "string"
-    },
     "Description": {
       "type": "text"
     },
@@ -32,6 +29,11 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "category"
+    },
+    "Link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "link.links"
     }
   }
 }
