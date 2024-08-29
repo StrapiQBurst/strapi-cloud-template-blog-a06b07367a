@@ -20,9 +20,9 @@
     },
     "Products": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::product.product",
-      "inversedBy": "Brands"
+      "mappedBy": "brand"
     }
   }
 }

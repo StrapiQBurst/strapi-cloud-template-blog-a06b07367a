@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -741,53 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiBrandBrand extends Schema.CollectionType {
   collectionName: 'brands';
   info: {
@@ -804,7 +804,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
     LogoUrl: Attribute.String;
     Products: Attribute.Relation<
       'api::brand.brand',
-      'manyToMany',
+      'oneToMany',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;
@@ -840,15 +840,15 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     Name: Attribute.String;
     Link: Attribute.String;
     Description: Attribute.Text;
-    Products: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::product.product'
-    >;
     Subcategories: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::subcategory.subcategory'
+    >;
+    Products: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::product.product'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -923,9 +923,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
     Price: Attribute.Decimal;
     ImagePath: Attribute.String;
     Description: Attribute.Text;
-    Category: Attribute.Relation<
+    category: Attribute.Relation<
       'api::product.product',
-      'manyToMany',
+      'manyToOne',
       'api::category.category'
     >;
     Genders: Attribute.Relation<
@@ -933,14 +933,14 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::gender.gender'
     >;
-    SubCategory: Attribute.Relation<
+    sub_category: Attribute.Relation<
       'api::product.product',
-      'manyToMany',
+      'manyToOne',
       'api::subcategory.subcategory'
     >;
-    Brands: Attribute.Relation<
+    brand: Attribute.Relation<
       'api::product.product',
-      'manyToMany',
+      'manyToOne',
       'api::brand.brand'
     >;
     createdAt: Attribute.DateTime;
@@ -976,15 +976,15 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
     Name: Attribute.String;
     Link: Attribute.String;
     Description: Attribute.Text;
-    Products: Attribute.Relation<
-      'api::subcategory.subcategory',
-      'manyToMany',
-      'api::product.product'
-    >;
     Category: Attribute.Relation<
       'api::subcategory.subcategory',
       'manyToMany',
       'api::category.category'
+    >;
+    Products: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'oneToMany',
+      'api::product.product'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1018,10 +1018,10 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::gender.gender': ApiGenderGender;
