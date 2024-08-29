@@ -18,17 +18,15 @@
     "CopyRightText": {
       "type": "string"
     },
-    "social_buttons": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::social-button.social-button",
-      "mappedBy": "footer"
+    "footerLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer.footer-link"
     },
-    "footer_links": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::footer-link.footer-link",
-      "mappedBy": "footer"
+    "socialButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-button.social-button"
     }
   }
 }

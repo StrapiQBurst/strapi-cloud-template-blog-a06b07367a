@@ -12,19 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "LogoURL": {
+    "logoURL": {
       "type": "string"
     },
-    "CartIconUrl": {
+    "cartIconUrl": {
       "type": "string"
     },
-    "CartAmount": {
+    "cartAmount": {
       "type": "string"
     },
-    "gender": {
+    "genders": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::gender.gender"
+      "relation": "oneToMany",
+      "target": "api::gender.gender",
+      "mappedBy": "header"
+    },
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "link.links"
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_baner_baner_items",
+  "info": {
+    "displayName": "BanerItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

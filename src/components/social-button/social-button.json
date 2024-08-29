@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_social_button_social_buttons",
+  "info": {
+    "displayName": "SocialButton"
+  },
+  "options": {},
+  "attributes": {
+    "logoUrl": {
+      "type": "string"
+    },
+    "socialLink": {
+      "type": "string"
+    }
+  }
+}

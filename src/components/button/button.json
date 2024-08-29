@@ -1,17 +1,18 @@
 {
   "collectionName": "components_button_buttons",
   "info": {
-    "displayName": "Button"
+    "displayName": "Button",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "ButtonText": {
+    "buttonText": {
       "type": "string"
     },
-    "ButtonLink": {
+    "buttonLink": {
       "type": "string"
     },
-    "Type": {
+    "type": {
       "type": "enumeration",
       "enum": [
         "Primary",
