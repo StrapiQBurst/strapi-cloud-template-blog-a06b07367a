@@ -15,16 +15,14 @@
     "ImageUrl": {
       "type": "string"
     },
-    "Links": {
-      "type": "component",
-      "repeatable": true,
-      "component": "link.links"
-    },
     "footer": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::footer.footer",
       "inversedBy": "social_buttons"
+    },
+    "Link": {
+      "type": "string"
     }
   }
 }

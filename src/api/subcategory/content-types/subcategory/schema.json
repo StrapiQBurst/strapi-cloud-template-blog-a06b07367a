@@ -31,9 +31,7 @@
       "mappedBy": "sub_category"
     },
     "Link": {
-      "type": "component",
-      "repeatable": true,
-      "component": "link.links"
+      "type": "string"
     }
   }
 }

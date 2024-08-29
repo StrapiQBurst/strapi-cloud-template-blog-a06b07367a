@@ -950,7 +950,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
-    Link: Attribute.Component<'link.links', true>;
+    Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1129,7 +1129,7 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    Link: Attribute.Component<'link.links', true>;
+    Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1327,12 +1327,12 @@ export interface ApiSocialButtonSocialButton extends Schema.CollectionType {
   };
   attributes: {
     ImageUrl: Attribute.String;
-    Links: Attribute.Component<'link.links', true>;
     footer: Attribute.Relation<
       'api::social-button.social-button',
       'manyToOne',
       'api::footer.footer'
     >;
+    Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1375,7 +1375,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
-    Link: Attribute.Component<'link.links', true>;
+    Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -16,9 +16,7 @@
       "type": "string"
     },
     "Link": {
-      "type": "component",
-      "repeatable": true,
-      "component": "link.links"
+      "type": "string"
     }
   }
 }
