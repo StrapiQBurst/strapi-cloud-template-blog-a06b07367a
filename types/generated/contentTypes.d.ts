@@ -838,7 +838,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    Link: Attribute.String;
     Description: Attribute.Text;
     Subcategories: Attribute.Relation<
       'api::category.category',
@@ -850,6 +849,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -861,6 +861,40 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    LogoUrl: Attribute.String;
+    CopyRightText: Attribute.String;
+    footerLink: Attribute.Component<'footer.footer-link', true>;
+    socialButtons: Attribute.Component<'social-button.social-button', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
       'oneToOne',
       'admin::user'
     > &
@@ -880,13 +914,8 @@ export interface ApiGenderGender extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Link: Attribute.String;
-    Products: Attribute.Relation<
-      'api::gender.gender',
-      'manyToMany',
-      'api::product.product'
-    >;
+    name: Attribute.String;
+    link: Attribute.Component<'link.links'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -898,6 +927,109 @@ export interface ApiGenderGender extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHeaderHeader extends Schema.SingleType {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logoURL: Attribute.String;
+    cartIconUrl: Attribute.String;
+    cartAmount: Attribute.String;
+    menu: Attribute.Component<'link.links', true>;
+    genders: Attribute.Relation<
+      'api::header.header',
+      'oneToMany',
+      'api::gender.gender'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'HomePage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heroSection: Attribute.Component<'hero-section.hero-section'>;
+    featuredProducts: Attribute.Component<'product-collection.product-collection'>;
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
+    baner: Attribute.Component<'baner.baner'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlpPagePlpPage extends Schema.SingleType {
+  collectionName: 'plp_pages';
+  info: {
+    singularName: 'plp-page';
+    pluralName: 'plp-pages';
+    displayName: 'PLPPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bestSeller: Attribute.Component<'product-collection.product-collection'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::plp-page.plp-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::plp-page.plp-page',
       'oneToOne',
       'admin::user'
     > &
@@ -928,11 +1060,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
-    Genders: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::gender.gender'
-    >;
     sub_category: Attribute.Relation<
       'api::product.product',
       'manyToOne',
@@ -942,6 +1069,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'manyToOne',
       'api::brand.brand'
+    >;
+    gender: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::gender.gender'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -974,7 +1106,6 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    Link: Attribute.String;
     Description: Attribute.Text;
     Category: Attribute.Relation<
       'api::subcategory.subcategory',
@@ -986,6 +1117,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    Link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1024,7 +1156,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::footer.footer': ApiFooterFooter;
       'api::gender.gender': ApiGenderGender;
+      'api::header.header': ApiHeaderHeader;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
     }

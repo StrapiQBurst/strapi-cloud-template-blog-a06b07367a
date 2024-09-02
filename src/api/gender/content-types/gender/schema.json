@@ -12,17 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Link": {
-      "type": "string"
-    },
-    "Products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "Genders"
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "link.links"
     }
   }
 }
