@@ -12,17 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Link": {
-      "type": "string"
-    },
-    "header": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::header.header",
-      "inversedBy": "genders"
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "link.links"
     }
   }
 }

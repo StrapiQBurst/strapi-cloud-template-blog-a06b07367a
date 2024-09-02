@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_baner_baners",
+  "info": {
+    "displayName": "Baner"
+  },
+  "options": {},
+  "attributes": {
+    "offerType": {
+      "type": "string"
+    },
+    "offerTitle": {
+      "type": "string"
+    },
+    "offerDescription": {
+      "type": "text"
+    },
+    "discountDetails": {
+      "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.button"
+    }
+  }
+}

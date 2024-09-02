@@ -1,7 +1,8 @@
 {
   "collectionName": "components_baner_baner_items",
   "info": {
-    "displayName": "BanerItem"
+    "displayName": "FeatureItem",
+    "description": ""
   },
   "options": {},
   "attributes": {

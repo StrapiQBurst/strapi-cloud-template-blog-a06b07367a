@@ -868,7 +868,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiFooterFooter extends Schema.CollectionType {
+export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
     singularName: 'footer';
@@ -914,13 +914,8 @@ export interface ApiGenderGender extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Link: Attribute.String;
-    header: Attribute.Relation<
-      'api::gender.gender',
-      'manyToOne',
-      'api::header.header'
-    >;
+    name: Attribute.String;
+    link: Attribute.Component<'link.links'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -939,7 +934,7 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
 }
 
-export interface ApiHeaderHeader extends Schema.CollectionType {
+export interface ApiHeaderHeader extends Schema.SingleType {
   collectionName: 'headers';
   info: {
     singularName: 'header';
@@ -954,12 +949,12 @@ export interface ApiHeaderHeader extends Schema.CollectionType {
     logoURL: Attribute.String;
     cartIconUrl: Attribute.String;
     cartAmount: Attribute.String;
+    menu: Attribute.Component<'link.links', true>;
     genders: Attribute.Relation<
       'api::header.header',
       'oneToMany',
       'api::gender.gender'
     >;
-    menu: Attribute.Component<'link.links', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -978,24 +973,22 @@ export interface ApiHeaderHeader extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.CollectionType {
+export interface ApiHomePageHomePage extends Schema.SingleType {
   collectionName: 'home_pages';
   info: {
     singularName: 'home-page';
     pluralName: 'home-pages';
-    displayName: 'homePage';
+    displayName: 'HomePage';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    heroSection: Attribute.Component<'hero-section.hero-section', true>;
-    featuredProducts: Attribute.Component<
-      'product-collection.product-collection',
-      true
-    >;
-    baner: Attribute.Component<'baner.baner-item', true>;
+    heroSection: Attribute.Component<'hero-section.hero-section'>;
+    featuredProducts: Attribute.Component<'product-collection.product-collection'>;
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
+    baner: Attribute.Component<'baner.baner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1007,6 +1000,36 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlpPagePlpPage extends Schema.SingleType {
+  collectionName: 'plp_pages';
+  info: {
+    singularName: 'plp-page';
+    pluralName: 'plp-pages';
+    displayName: 'PLPPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bestSeller: Attribute.Component<'product-collection.product-collection'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::plp-page.plp-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::plp-page.plp-page',
       'oneToOne',
       'admin::user'
     > &
@@ -1137,6 +1160,7 @@ declare module '@strapi/types' {
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
     }

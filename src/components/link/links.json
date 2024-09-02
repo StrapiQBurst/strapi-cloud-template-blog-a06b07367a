@@ -6,10 +6,10 @@
   },
   "options": {},
   "attributes": {
-    "name": {
+    "label": {
       "type": "string"
     },
-    "url": {
+    "link": {
       "type": "string"
     }
   }

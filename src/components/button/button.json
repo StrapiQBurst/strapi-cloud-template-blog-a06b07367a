@@ -15,8 +15,9 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "Primary",
-        "Secondary"
+        "button-primary",
+        "button-secondary",
+        "link"
       ]
     }
   }
