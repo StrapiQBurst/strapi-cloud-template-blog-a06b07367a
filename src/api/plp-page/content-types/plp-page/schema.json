@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "plp_pages",
+  "info": {
+    "singularName": "plp-page",
+    "pluralName": "plp-pages",
+    "displayName": "PLPPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bestSeller": {
+      "type": "component",
+      "repeatable": false,
+      "component": "product-collection.product-collection"
+    }
+  }
+}

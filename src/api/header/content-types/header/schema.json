@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "headers",
   "info": {
     "singularName": "header",
@@ -12,18 +12,23 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "LogoURL": {
+    "logoURL": {
       "type": "string"
     },
-    "CartIconUrl": {
+    "cartIconUrl": {
       "type": "string"
     },
-    "CartAmount": {
+    "cartAmount": {
       "type": "string"
     },
-    "gender": {
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "link.links"
+    },
+    "genders": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::gender.gender"
     }
   }

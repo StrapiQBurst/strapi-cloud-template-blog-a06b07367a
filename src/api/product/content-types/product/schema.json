@@ -50,12 +50,6 @@
       "target": "api::brand.brand",
       "inversedBy": "Products"
     },
-    "best_seller": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::best-seller.best-seller",
-      "inversedBy": "products"
-    },
     "gender": {
       "type": "relation",
       "relation": "oneToOne",
