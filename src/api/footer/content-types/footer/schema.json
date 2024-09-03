@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "LogoUrl": {
+    "logoUrl": {
       "type": "string"
     },
-    "CopyRightText": {
+    "copyRightText": {
       "type": "string"
     },
     "footerLink": {

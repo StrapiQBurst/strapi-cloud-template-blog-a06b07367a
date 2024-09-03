@@ -36,6 +36,17 @@ async function getBrandId(brand) {
     }
 }
 
+// Helper function to get or create a gender by name
+async function getGenderId(gender) {
+    const rows = await queryAsync(`SELECT id FROM genders WHERE name = ?`, [gender]);
+    if (rows.length > 0) {
+        return rows[0].id;
+    } else {
+        const result = await queryAsync(`INSERT INTO genders (name, published_at) VALUES (?, ?)`, [gender, new Date()]);
+        return result.insertId;
+    }
+}
+
 // Helper function to get or create a category by name
 async function getCategoryId(categoryName) {
     const rows = await queryAsync(`SELECT id FROM categories WHERE name = ?`, [categoryName]);
@@ -62,9 +73,9 @@ async function getSubcategoryId(subcategoryName, categoryId) {
 
 // Function to insert a relation between subcategory and category
 async function insertSubcategoryCategoryLink(subcategoryId, categoryId) {
-    const linkRows = await queryAsync(`SELECT * FROM subcategories_category_links WHERE subcategory_id = ? AND category_id = ?`, [subcategoryId, categoryId]);
+    const linkRows = await queryAsync(`SELECT * FROM categories_subcategories_links WHERE subcategory_id = ? AND category_id = ?`, [subcategoryId, categoryId]);
     if (linkRows.length === 0) {
-        await queryAsync(`INSERT INTO subcategories_category_links (subcategory_id, category_id) VALUES (?, ?)`, [subcategoryId, categoryId]);
+        await queryAsync(`INSERT INTO categories_subcategories_links (subcategory_id, category_id) VALUES (?, ?)`, [subcategoryId, categoryId]);
         console.log(`Inserted relation between subcategory ${subcategoryId} and category ${categoryId}`);
     }
 }
@@ -74,6 +85,7 @@ async function upsertProduct(productData) {
     const categoryId = await getCategoryId(productData.category);
     const subcategoryId = await getSubcategoryId(productData.subcategory, categoryId);
     const brandId = await getBrandId(productData.brand);
+    const genderId = await getGenderId(productData.gender);
     // Upsert product
     const productResult = await queryAsync(
         `INSERT INTO products (oo_id, title, pid, price, image_path, published_at) 
@@ -101,6 +113,12 @@ async function upsertProduct(productData) {
             VALUES (?, ?)
             ON DUPLICATE KEY UPDATE brand_id = VALUES(brand_id), product_id = VALUES(product_id)`,
             [brandId, productId]
+        ),
+        queryAsync(
+            `INSERT INTO products_gender_links (gender_id, product_id)
+            VALUES (?, ?)
+            ON DUPLICATE KEY UPDATE gender_id = VALUES(gender_id), product_id = VALUES(product_id)`,
+            [genderId, productId]
         ),
         queryAsync(
             `INSERT INTO products_category_links (category_id, product_id)
@@ -143,7 +161,8 @@ async function processRows() {
             image: row.ImagePath,
             brand: row.Brand,
             category: row.Category,
-            subcategory: row.SubCategory
+            subcategory: row.SubCategory,
+            gender: row.Gender,
         };
 
         try {
