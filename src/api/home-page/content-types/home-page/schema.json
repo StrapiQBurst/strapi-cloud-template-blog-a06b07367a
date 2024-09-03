@@ -27,10 +27,10 @@
       "repeatable": true,
       "component": "feature-list.baner-item"
     },
-    "baner": {
+    "banner": {
       "type": "component",
       "repeatable": false,
-      "component": "baner.baner"
+      "component": "banner.baner"
     }
   }
 }
