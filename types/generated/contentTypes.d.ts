@@ -1093,6 +1093,40 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiSortingSorting extends Schema.CollectionType {
+  collectionName: 'sortings';
+  info: {
+    singularName: 'sorting';
+    pluralName: 'sortings';
+    displayName: 'Sorting';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    field: Attribute.String;
+    order: Attribute.Enumeration<['asc', 'desc']>;
+    default: Attribute.Boolean & Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sorting.sorting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sorting.sorting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   collectionName: 'subcategories';
   info: {
@@ -1162,6 +1196,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
+      'api::sorting.sorting': ApiSortingSorting;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
     }
   }
