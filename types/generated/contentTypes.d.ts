@@ -946,7 +946,7 @@ export interface ApiHeaderHeader extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    logoURL: Attribute.String;
+    logoUrl: Attribute.String;
     cartIconUrl: Attribute.String;
     cartAmount: Attribute.String;
     menu: Attribute.Component<'link.links', true>;
@@ -988,7 +988,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     heroSection: Attribute.Component<'hero-section.hero-section'>;
     featuredProducts: Attribute.Component<'product-collection.product-collection'>;
     featureList: Attribute.Component<'feature-list.baner-item', true>;
-    baner: Attribute.Component<'baner.baner'>;
+    banner: Attribute.Component<'banner.baner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

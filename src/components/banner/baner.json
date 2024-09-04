@@ -20,8 +20,11 @@
     },
     "button": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "button.button"
+    },
+    "imageUrl": {
+      "type": "string"
     }
   }
 }
