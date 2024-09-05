@@ -800,9 +800,9 @@ export interface ApiBrandBrand extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    LogoUrl: Attribute.String;
-    Products: Attribute.Relation<
+    name: Attribute.String;
+    logoUrl: Attribute.String;
+    products: Attribute.Relation<
       'api::brand.brand',
       'oneToMany',
       'api::product.product'
@@ -837,19 +837,19 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Description: Attribute.Text;
-    Subcategories: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::subcategory.subcategory'
-    >;
-    Products: Attribute.Relation<
+    name: Attribute.String;
+    description: Attribute.Text;
+    products: Attribute.Relation<
       'api::category.category',
       'oneToMany',
       'api::product.product'
     >;
-    Link: Attribute.String;
+    link: Attribute.String;
+    subcategories: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::subcategory.subcategory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,8 +880,8 @@ export interface ApiFooterFooter extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    LogoUrl: Attribute.String;
-    CopyRightText: Attribute.String;
+    logoUrl: Attribute.String;
+    copyRightText: Attribute.String;
     footerLink: Attribute.Component<'footer.footer-link', true>;
     socialButtons: Attribute.Component<'social-button.social-button', true>;
     createdAt: Attribute.DateTime;
@@ -1049,32 +1049,33 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    oo_id: Attribute.BigInteger;
-    Title: Attribute.String;
-    PID: Attribute.String;
-    Price: Attribute.Decimal;
-    ImagePath: Attribute.String;
-    Description: Attribute.Text;
+    ooId: Attribute.BigInteger;
+    title: Attribute.String;
+    pid: Attribute.String;
+    price: Attribute.Decimal;
+    imagePath: Attribute.String;
+    description: Attribute.Text;
+    gender: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::gender.gender'
+    >;
+    subCategory: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::subcategory.subcategory'
+    >;
     category: Attribute.Relation<
       'api::product.product',
       'manyToOne',
       'api::category.category'
-    >;
-    sub_category: Attribute.Relation<
-      'api::product.product',
-      'manyToOne',
-      'api::subcategory.subcategory'
     >;
     brand: Attribute.Relation<
       'api::product.product',
       'manyToOne',
       'api::brand.brand'
     >;
-    gender: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'api::gender.gender'
-    >;
+    relatedProducts: Attribute.Component<'product-collection.product-collection'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1105,19 +1106,19 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    Description: Attribute.Text;
-    Category: Attribute.Relation<
-      'api::subcategory.subcategory',
-      'manyToMany',
-      'api::category.category'
-    >;
-    Products: Attribute.Relation<
+    name: Attribute.String;
+    description: Attribute.Text;
+    link: Attribute.String;
+    products: Attribute.Relation<
       'api::subcategory.subcategory',
       'oneToMany',
       'api::product.product'
     >;
-    Link: Attribute.String;
+    category: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

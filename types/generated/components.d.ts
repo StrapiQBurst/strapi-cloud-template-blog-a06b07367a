@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SocialButtonSocialButton extends Schema.Component {
+  collectionName: 'components_social_button_social_buttons';
+  info: {
+    displayName: 'SocialButton';
+  };
+  attributes: {
+    logoUrl: Attribute.String;
+    socialLink: Attribute.String;
+  };
+}
+
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -13,17 +24,6 @@ export interface ProductCollectionProductCollection extends Schema.Component {
       'oneToMany',
       'api::product.product'
     >;
-  };
-}
-
-export interface SocialButtonSocialButton extends Schema.Component {
-  collectionName: 'components_social_button_social_buttons';
-  info: {
-    displayName: 'SocialButton';
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    socialLink: Attribute.String;
   };
 }
 
@@ -110,8 +110,8 @@ export interface BannerBaner extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'product-collection.product-collection': ProductCollectionProductCollection;
       'social-button.social-button': SocialButtonSocialButton;
+      'product-collection.product-collection': ProductCollectionProductCollection;
       'link.links': LinkLinks;
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;

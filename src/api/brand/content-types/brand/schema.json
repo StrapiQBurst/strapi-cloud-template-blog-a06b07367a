@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "LogoUrl": {
+    "logoUrl": {
       "type": "string"
     },
-    "Products": {
+    "products": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",

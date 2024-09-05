@@ -12,26 +12,26 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Category": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "Subcategories"
+    "link": {
+      "type": "string"
     },
-    "Products": {
+    "products": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",
-      "mappedBy": "sub_category"
+      "mappedBy": "subCategory"
     },
-    "Link": {
-      "type": "string"
+    "category": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "subcategories"
     }
   }
 }
