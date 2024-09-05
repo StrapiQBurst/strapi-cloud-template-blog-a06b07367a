@@ -91,17 +91,19 @@ export interface ButtonButton extends Schema.Component {
   };
 }
 
-export interface BanerBaner extends Schema.Component {
+export interface BannerBaner extends Schema.Component {
   collectionName: 'components_baner_baners';
   info: {
-    displayName: 'Baner';
+    displayName: 'Banner';
+    description: '';
   };
   attributes: {
     offerType: Attribute.String;
     offerTitle: Attribute.String;
     offerDescription: Attribute.Text;
     discountDetails: Attribute.String;
-    button: Attribute.Component<'button.button'>;
+    button: Attribute.Component<'button.button', true>;
+    imageUrl: Attribute.String;
   };
 }
 
@@ -115,7 +117,7 @@ declare module '@strapi/types' {
       'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
       'button.button': ButtonButton;
-      'baner.baner': BanerBaner;
+      'banner.baner': BannerBaner;
     }
   }
 }
