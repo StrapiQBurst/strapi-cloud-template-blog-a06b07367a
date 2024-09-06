@@ -1076,7 +1076,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::brand.brand'
     >;
     relatedProducts: Attribute.Component<'product-collection.product-collection'>;
-    Rating: Attribute.Integer &
+    rating: Attribute.Integer &
       Attribute.SetMinMax<
         {
           min: 1;

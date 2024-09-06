@@ -27,6 +27,18 @@ export interface ProductCollectionProductCollection extends Schema.Component {
   };
 }
 
+export interface LinkLinks extends Schema.Component {
+  collectionName: 'components_link_links';
+  info: {
+    displayName: 'Links';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface HeroSectionHeroSection extends Schema.Component {
   collectionName: 'components_hero_section_hero_sections';
   info: {
@@ -38,18 +50,6 @@ export interface HeroSectionHeroSection extends Schema.Component {
     description: Attribute.String;
     imageUrl: Attribute.String;
     buttons: Attribute.Component<'button.button', true>;
-  };
-}
-
-export interface LinkLinks extends Schema.Component {
-  collectionName: 'components_link_links';
-  info: {
-    displayName: 'Links';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
   };
 }
 
@@ -78,6 +78,19 @@ export interface FeatureListBanerItem extends Schema.Component {
   };
 }
 
+export interface ButtonButton extends Schema.Component {
+  collectionName: 'components_button_buttons';
+  info: {
+    displayName: 'Button';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    buttonLink: Attribute.String;
+    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
+  };
+}
+
 export interface BannerBaner extends Schema.Component {
   collectionName: 'components_baner_baners';
   info: {
@@ -94,30 +107,17 @@ export interface BannerBaner extends Schema.Component {
   };
 }
 
-export interface ButtonButton extends Schema.Component {
-  collectionName: 'components_button_buttons';
-  info: {
-    displayName: 'Button';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    buttonLink: Attribute.String;
-    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'social-button.social-button': SocialButtonSocialButton;
       'product-collection.product-collection': ProductCollectionProductCollection;
-      'hero-section.hero-section': HeroSectionHeroSection;
       'link.links': LinkLinks;
+      'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
-      'banner.baner': BannerBaner;
       'button.button': ButtonButton;
+      'banner.baner': BannerBaner;
     }
   }
 }

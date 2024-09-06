@@ -60,7 +60,7 @@
       "repeatable": false,
       "component": "product-collection.product-collection"
     },
-    "Rating": {
+    "rating": {
       "type": "integer",
       "max": 5,
       "min": 1,
