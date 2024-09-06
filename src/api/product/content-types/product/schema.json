@@ -59,6 +59,13 @@
       "type": "component",
       "repeatable": false,
       "component": "product-collection.product-collection"
+    },
+    "rating": {
+      "type": "integer",
+      "max": 5,
+      "min": 0,
+      "required": false,
+      "default": 0
     }
   }
 }
