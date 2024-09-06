@@ -1079,12 +1079,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
     rating: Attribute.Integer &
       Attribute.SetMinMax<
         {
-          min: 1;
+          min: 0;
           max: 5;
         },
         number
       > &
-      Attribute.DefaultTo<1>;
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
