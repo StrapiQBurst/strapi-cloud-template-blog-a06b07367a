@@ -1,16 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface SocialButtonSocialButton extends Schema.Component {
-  collectionName: 'components_social_button_social_buttons';
-  info: {
-    displayName: 'SocialButton';
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    socialLink: Attribute.String;
-  };
-}
-
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -27,6 +16,17 @@ export interface ProductCollectionProductCollection extends Schema.Component {
   };
 }
 
+export interface SocialButtonSocialButton extends Schema.Component {
+  collectionName: 'components_social_button_social_buttons';
+  info: {
+    displayName: 'SocialButton';
+  };
+  attributes: {
+    logoUrl: Attribute.String;
+    socialLink: Attribute.String;
+  };
+}
+
 export interface LinkLinks extends Schema.Component {
   collectionName: 'components_link_links';
   info: {
@@ -36,18 +36,6 @@ export interface LinkLinks extends Schema.Component {
   attributes: {
     label: Attribute.String;
     link: Attribute.String;
-  };
-}
-
-export interface FooterFooterLink extends Schema.Component {
-  collectionName: 'components_footer_link_footer_links';
-  info: {
-    displayName: 'FooterLink';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    links: Attribute.Component<'link.links', true>;
   };
 }
 
@@ -78,6 +66,18 @@ export interface FeatureListBanerItem extends Schema.Component {
   };
 }
 
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_link_footer_links';
+  info: {
+    displayName: 'FooterLink';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    links: Attribute.Component<'link.links', true>;
+  };
+}
+
 export interface ButtonButton extends Schema.Component {
   collectionName: 'components_button_buttons';
   info: {
@@ -102,7 +102,7 @@ export interface BannerBaner extends Schema.Component {
     offerTitle: Attribute.String;
     offerDescription: Attribute.Text;
     discountDetails: Attribute.String;
-    button: Attribute.Component<'button.button', true>;
+    buttons: Attribute.Component<'button.button', true>;
     imageUrl: Attribute.String;
   };
 }
@@ -110,12 +110,12 @@ export interface BannerBaner extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'social-button.social-button': SocialButtonSocialButton;
       'product-collection.product-collection': ProductCollectionProductCollection;
+      'social-button.social-button': SocialButtonSocialButton;
       'link.links': LinkLinks;
-      'footer.footer-link': FooterFooterLink;
       'hero-section.hero-section': HeroSectionHeroSection;
       'feature-list.baner-item': FeatureListBanerItem;
+      'footer.footer-link': FooterFooterLink;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
     }
