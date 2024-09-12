@@ -1,16 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface SocialButtonSocialButton extends Schema.Component {
-  collectionName: 'components_social_button_social_buttons';
-  info: {
-    displayName: 'SocialButton';
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    socialLink: Attribute.String;
-  };
-}
-
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -27,45 +16,14 @@ export interface ProductCollectionProductCollection extends Schema.Component {
   };
 }
 
-export interface PopUpMenuPopUpMenu extends Schema.Component {
-  collectionName: 'components_pop_up_menu_pop_up_menus';
+export interface SocialButtonSocialButton extends Schema.Component {
+  collectionName: 'components_social_button_social_buttons';
   info: {
-    displayName: 'popUpMenu';
+    displayName: 'SocialButton';
   };
   attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
-export interface NavItemsNavItems extends Schema.Component {
-  collectionName: 'components_nav_items_nav_items';
-  info: {
-    displayName: 'navItems';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-    defaultIcon: Attribute.String;
-    activeIcon: Attribute.String;
-    variant: Attribute.Enumeration<
-      ['link', 'overlayMenu', 'popUpMenu', 'disabled']
-    >;
-    popUpMenu: Attribute.Component<'pop-up-menu.pop-up-menu'>;
-    overlayMenu: Attribute.Component<'overlay-menu.overlay-menu', true>;
+    logoUrl: Attribute.String;
+    socialLink: Attribute.String;
   };
 }
 
@@ -95,18 +53,6 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
-export interface FooterFooterLink extends Schema.Component {
-  collectionName: 'components_footer_link_footer_links';
-  info: {
-    displayName: 'FooterLink';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    links: Attribute.Component<'link.links', true>;
-  };
-}
-
 export interface FeatureListBanerItem extends Schema.Component {
   collectionName: 'components_baner_baner_items';
   info: {
@@ -117,6 +63,18 @@ export interface FeatureListBanerItem extends Schema.Component {
     title: Attribute.String;
     imageUrl: Attribute.String;
     description: Attribute.Text;
+  };
+}
+
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_link_footer_links';
+  info: {
+    displayName: 'FooterLink';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    links: Attribute.Component<'link.links', true>;
   };
 }
 
@@ -152,15 +110,12 @@ export interface BannerBaner extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'social-button.social-button': SocialButtonSocialButton;
       'product-collection.product-collection': ProductCollectionProductCollection;
-      'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
-      'nav-items.nav-items': NavItemsNavItems;
+      'social-button.social-button': SocialButtonSocialButton;
       'link.links': LinkLinks;
       'hero-section.hero-section': HeroSectionHeroSection;
-      'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
+      'footer.footer-link': FooterFooterLink;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
     }
