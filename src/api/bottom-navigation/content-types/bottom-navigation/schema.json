@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "bottom_navigations",
+  "info": {
+    "singularName": "bottom-navigation",
+    "pluralName": "bottom-navigations",
+    "displayName": "BottomNavigation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "navItems": {
+      "displayName": "navItems",
+      "type": "component",
+      "repeatable": true,
+      "component": "nav-items.nav-items"
+    },
+    "footerLogoUrl": {
+      "type": "string"
+    }
+  }
+}
