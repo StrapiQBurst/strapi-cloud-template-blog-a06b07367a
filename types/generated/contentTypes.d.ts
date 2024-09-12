@@ -788,6 +788,43 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
+  collectionName: 'book_appointments';
+  info: {
+    singularName: 'book-appointment';
+    pluralName: 'book-appointments';
+    displayName: 'Book Appointment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    SubTitle: Attribute.String;
+    AppointmentTitle: Attribute.String;
+    Description: Attribute.Text;
+    TypeOfAppointment: Attribute.Enumeration<
+      ['In-store', 'Virtual Appointment']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::book-appointment.book-appointment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::book-appointment.book-appointment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBrandBrand extends Schema.CollectionType {
   collectionName: 'brands';
   info: {
@@ -1198,6 +1235,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::book-appointment.book-appointment': ApiBookAppointmentBookAppointment;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::footer.footer': ApiFooterFooter;
