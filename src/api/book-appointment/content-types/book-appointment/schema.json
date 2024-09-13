@@ -12,19 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "SubTitle": {
+    "subTitle": {
       "type": "string"
     },
-    "AppointmentTitle": {
+    "appointmentTitle": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "TypeOfAppointment": {
+    "typeOfAppointment": {
       "type": "enumeration",
       "enum": [
         "In-store",

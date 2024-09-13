@@ -800,11 +800,11 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
-    SubTitle: Attribute.String;
-    AppointmentTitle: Attribute.String;
-    Description: Attribute.Text;
-    TypeOfAppointment: Attribute.Enumeration<
+    title: Attribute.String;
+    subTitle: Attribute.String;
+    appointmentTitle: Attribute.String;
+    description: Attribute.Text;
+    typeOfAppointment: Attribute.Enumeration<
       ['In-store', 'Virtual Appointment']
     >;
     createdAt: Attribute.DateTime;
