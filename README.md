@@ -7,20 +7,6 @@ This project uses Strapi with MySQL for the backend, and Docker for containeriza
 - Docker & Docker Compose
 - Yarn package manager
 
-## 🐳 Start Docker for Strapi and MySQL
-
-To spin up the containers for Strapi and MySQL, run the following command:
-
-```bash
-docker compose up
-```
-This will start the Strapi and MySQL containers based on the configurations in your docker-compose.yml file.
-
-## 📦 Install Dependencies
-Install all required dependencies using Yarn:
-```bash
-yarn install
-```
 ## 🔑 Copy .env File
 Make sure to create and copy your `.env` file into the root directory of your project. Use the following values for your `.env` file:
 ```
@@ -39,6 +25,21 @@ DATABASE_USERNAME=root
 DATABASE_PASSWORD=root
 DATABASE_SSL=false
 JWT_SECRET=vnvHUBMbsFA8NnQ2OJyalQ==
+```
+
+## 🐳 Start Docker for Strapi and MySQL
+
+To spin up the containers for Strapi and MySQL, run the following command:
+
+```bash
+docker compose up
+```
+This will start the Strapi and MySQL containers based on the configurations in your docker-compose.yml file.
+
+## 📦 Install Dependencies
+Install all required dependencies using Yarn:
+```bash
+yarn install
 ```
 ## 📂 Import Data from catalog.csv
 
