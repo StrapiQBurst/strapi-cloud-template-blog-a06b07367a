@@ -12,11 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "navItems": {
+    "navigationMenuItems": {
       "displayName": "navItems",
       "type": "component",
       "repeatable": true,
-      "component": "nav-items.nav-items"
+      "component": "navigation-menu-items.nav-items"
     },
     "footerLogoUrl": {
       "type": "string"

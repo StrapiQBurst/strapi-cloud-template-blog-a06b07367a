@@ -800,7 +800,10 @@ export interface ApiBottomNavigationBottomNavigation extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    navItems: Attribute.Component<'nav-items.nav-items', true>;
+    navigationMenuItems: Attribute.Component<
+      'navigation-menu-items.nav-items',
+      true
+    >;
     footerLogoUrl: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
