@@ -50,10 +50,10 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
   };
 }
 
-export interface NavItemsNavItems extends Schema.Component {
+export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
-    displayName: 'navItems';
+    displayName: 'navigationMenuItems';
     description: '';
   };
   attributes: {
@@ -156,7 +156,7 @@ declare module '@strapi/types' {
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
-      'nav-items.nav-items': NavItemsNavItems;
+      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'link.links': LinkLinks;
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
