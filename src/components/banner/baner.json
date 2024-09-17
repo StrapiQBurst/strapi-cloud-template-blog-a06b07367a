@@ -25,6 +25,13 @@
     },
     "imageUrl": {
       "type": "string"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "DNK",
+        "BlackFriday"
+      ]
     }
   }
 }

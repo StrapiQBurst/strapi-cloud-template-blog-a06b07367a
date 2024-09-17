@@ -107,6 +107,19 @@ export interface FooterFooterLink extends Schema.Component {
   };
 }
 
+export interface FeatureSectionFeatureSection extends Schema.Component {
+  collectionName: 'components_feature_section_feature_sections';
+  info: {
+    displayName: 'featureSection';
+    description: '';
+  };
+  attributes: {
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
+    topTitle: Attribute.String;
+    title: Attribute.String;
+  };
+}
+
 export interface FeatureListBanerItem extends Schema.Component {
   collectionName: 'components_baner_baner_items';
   info: {
@@ -146,6 +159,7 @@ export interface BannerBaner extends Schema.Component {
     discountDetails: Attribute.String;
     buttons: Attribute.Component<'button.button', true>;
     imageUrl: Attribute.String;
+    theme: Attribute.Enumeration<['DNK', 'BlackFriday']>;
   };
 }
 
@@ -160,6 +174,7 @@ declare module '@strapi/types' {
       'link.links': LinkLinks;
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
+      'feature-section.feature-section': FeatureSectionFeatureSection;
       'feature-list.baner-item': FeatureListBanerItem;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;

@@ -788,7 +788,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiBottomNavigationBottomNavigation extends Schema.SingleType {
+export interface ApiBottomNavigationBottomNavigation
+  extends Schema.CollectionType {
   collectionName: 'bottom_navigations';
   info: {
     singularName: 'bottom-navigation';
@@ -805,6 +806,7 @@ export interface ApiBottomNavigationBottomNavigation extends Schema.SingleType {
       true
     >;
     footerLogoUrl: Attribute.String;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1008,7 +1010,7 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.SingleType {
+export interface ApiHomePageHomePage extends Schema.CollectionType {
   collectionName: 'home_pages';
   info: {
     singularName: 'home-page';
@@ -1023,7 +1025,13 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     heroSection: Attribute.Component<'hero-section.hero-section'>;
     featuredProducts: Attribute.Component<'product-collection.product-collection'>;
     featureList: Attribute.Component<'feature-list.baner-item', true>;
-    banner: Attribute.Component<'banner.baner'>;
+    banner1: Attribute.Component<'banner.baner'>;
+    banner2: Attribute.Component<'banner.baner'>;
+    featureSection: Attribute.Component<
+      'feature-section.feature-section',
+      true
+    >;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

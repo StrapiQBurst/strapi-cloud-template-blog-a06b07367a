@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_feature_section_feature_sections",
+  "info": {
+    "displayName": "featureSection",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "featureList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "feature-list.baner-item"
+    },
+    "topTitle": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

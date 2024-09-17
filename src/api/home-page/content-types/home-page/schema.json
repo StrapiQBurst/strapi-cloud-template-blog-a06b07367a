@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "home_pages",
   "info": {
     "singularName": "home-page",
@@ -27,10 +27,27 @@
       "repeatable": true,
       "component": "feature-list.baner-item"
     },
-    "banner": {
+    "banner1": {
       "type": "component",
       "repeatable": false,
       "component": "banner.baner"
+    },
+    "banner2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "banner.baner"
+    },
+    "featureSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "feature-section.feature-section"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "dnk",
+        "blackFriday"
+      ]
     }
   }
 }
