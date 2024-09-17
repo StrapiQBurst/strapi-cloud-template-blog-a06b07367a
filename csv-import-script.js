@@ -12,116 +12,6 @@ const requestConfig = {
   }
 };
 
-async function getBrandId(brand) {
-    const url = `${BASE_URL}/brands`;
-    const queryParams = {
-      filters: {
-        name: {
-          $eq: brand
-        }
-      }
-    };
-    const response = await axios.get(url, { 
-      params: queryParams, 
-      ...requestConfig // Include token in the request
-    });
-  
-    if (response.data.data.length > 0) {
-      return response.data.data[0].id;
-    } else {
-      const newBrand = await axios.post(url, {
-        data: {
-          name: brand
-        }
-      }, requestConfig);  // Include token in the request
-      return newBrand.data.data.id;
-    }
-  }
-
-  async function getGenderId(gender) {
-    const url = `${BASE_URL}/genders`;
-    const queryParams = {
-      filters: {
-        name: {
-          $eq: gender
-        }
-      }
-    };
-    const response = await axios.get(url, { 
-      params: queryParams, 
-      ...requestConfig // Include token in the request
-    });
-  
-    if (response.data.data.length > 0) {
-      return response.data.data[0].id;
-    } else {
-      const newGender = await axios.post(url, {
-        data: {
-          name: gender
-        }
-      }, requestConfig);  // Include token in the request
-      return newGender.data.data.id;
-    }
-  }
-
-async function getCategoryId(categoryName) {
-  const url = `${BASE_URL}/categories`;
-  const queryParams = {
-    filters: {
-      name: {
-        $eq: categoryName
-      }
-    }
-  };
-  const response = await axios.get(url, { 
-    params: queryParams, 
-    ...requestConfig // Include token in the request
-  });
-
-  if (response.data.data.length > 0) {
-    return response.data.data[0].id;
-  } else {
-    const newCategory = await axios.post(url, {
-      data: {
-        name: categoryName,
-        link: "",
-        description: ""
-      }
-    }, requestConfig);  // Include token in the request
-    return newCategory.data.data.id;
-  }
-}
-
-async function getSubcategoryId(subcategoryName, categoryId) {
-  const response = await axios.get(`${BASE_URL}/subcategories`, {
-    params: {
-      filters: {
-        name: {
-          $eq: subcategoryName
-        },
-        category: {
-          $eq: categoryId
-        }
-      }
-    },
-    ...requestConfig  // Include token in the request
-  });
-
-  if (response.data.data.length > 0) {
-    return response.data.data[0].id;
-  } else {
-    const newSubcategory = await axios.post(url, {
-      data: {
-        name: subcategoryName,
-        link: "",
-        description: "",
-        category: categoryId
-      }
-    }, requestConfig);  // Include token in the request
-    return newSubcategory.data.data.id;
-  }
-}
-
 async function createProductsBatch(productsBatch) {
   try {
     await axios.post(`${BASE_URL}/bulk-upsert`, {
@@ -136,21 +26,16 @@ async function createProductsBatch(productsBatch) {
 async function processRows(rows) {
   const productsBatch = [];
   for (const row of rows) {
-    const genderId = await getGenderId(row.Gender)
-    const categoryId = await getCategoryId(row.Category);
-    const subcategoryId = await getSubcategoryId(row.SubCategory, categoryId);
-    const brandId = await getBrandId(row.Brand)
-
     const productData = {
       ooId: row.oo_id,
       title: row.Title,
       pid: row.PID,
       price: row.Price,
       imagePath: row.ImagePath,
-      brand: brandId, 
-      category: categoryId,
-      subCategory: subcategoryId,
-      gender: genderId,
+      brand: row.Brand, 
+      category: row.Category,
+      subCategory: row.SubCategory,
+      gender: row.Gender,
       description: row.Description,
       rating: row.Rating
     };
