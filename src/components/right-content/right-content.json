@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_right_content_right_contents",
+  "info": {
+    "displayName": "rightContent"
+  },
+  "options": {},
+  "attributes": {
+    "imgUrl": {
+      "type": "string"
+    }
+  }
+}

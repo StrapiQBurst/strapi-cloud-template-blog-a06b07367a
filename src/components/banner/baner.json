@@ -26,11 +26,27 @@
     "imageUrl": {
       "type": "string"
     },
-    "theme": {
+    "textAlign": {
       "type": "enumeration",
       "enum": [
-        "DNK",
-        "BlackFriday"
+        "left",
+        "right",
+        "center"
+      ]
+    },
+    "justify": {
+      "type": "enumeration",
+      "enum": [
+        "start",
+        "end",
+        "center"
+      ]
+    },
+    "bgAttachment": {
+      "type": "enumeration",
+      "enum": [
+        "scroll",
+        "fixed"
       ]
     }
   }

@@ -971,7 +971,7 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
 }
 
-export interface ApiHeaderHeader extends Schema.SingleType {
+export interface ApiHeaderHeader extends Schema.CollectionType {
   collectionName: 'headers';
   info: {
     singularName: 'header';
@@ -992,6 +992,7 @@ export interface ApiHeaderHeader extends Schema.SingleType {
       'oneToMany',
       'api::gender.gender'
     >;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1032,6 +1033,9 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
       true
     >;
     theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    infoPanel1: Attribute.Component<'info-panel.info-panel'>;
+    infoPanel2: Attribute.Component<'info-panel.info-panel'>;
+    testimonial: Attribute.Component<'testimonial.testimonial'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

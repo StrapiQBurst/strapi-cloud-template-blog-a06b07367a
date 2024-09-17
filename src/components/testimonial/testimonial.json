@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_testimonial_testimonials",
+  "info": {
+    "displayName": "testimonial",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "topTitle": {
+      "type": "string"
+    },
+    "bgImageUrl": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "testimonialContent": {
+      "displayName": "testimonialContent",
+      "type": "component",
+      "repeatable": true,
+      "component": "testimonial-content.testimonial-content"
+    }
+  }
+}

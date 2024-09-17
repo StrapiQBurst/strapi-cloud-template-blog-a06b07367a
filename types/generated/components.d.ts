@@ -1,5 +1,43 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'testimonial';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
+  };
+}
+
+export interface TestimonialContentTestimonialContent extends Schema.Component {
+  collectionName: 'components_testimonial_content_testimonial_contents';
+  info: {
+    displayName: 'testimonialContent';
+    description: '';
+  };
+  attributes: {
+    rating: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 5;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    review: Attribute.Text;
+    userName: Attribute.String;
+  };
+}
+
 export interface SocialButtonSocialButton extends Schema.Component {
   collectionName: 'components_social_button_social_buttons';
   info: {
@@ -8,6 +46,16 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
   };
 }
 
@@ -24,6 +72,7 @@ export interface ProductCollectionProductCollection extends Schema.Component {
       'oneToMany',
       'api::product.product'
     >;
+    topTitle: Attribute.String;
   };
 }
 
@@ -78,6 +127,34 @@ export interface LinkLinks extends Schema.Component {
   attributes: {
     label: Attribute.String;
     link: Attribute.String;
+  };
+}
+
+export interface LeftContentLeftContent extends Schema.Component {
+  collectionName: 'components_left_content_left_contents';
+  info: {
+    displayName: 'leftContent';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.Text;
+    align: Attribute.Enumeration<['start', 'end', 'center']>;
+  };
+}
+
+export interface InfoPanelInfoPanel extends Schema.Component {
+  collectionName: 'components_info_panel_info_panels';
+  info: {
+    displayName: 'infoPanel';
+    description: '';
+  };
+  attributes: {
+    bgImgUrl: Attribute.String;
+    leftContent: Attribute.Component<'left-content.left-content'>;
+    rightContent: Attribute.Component<'right-content.right-content'>;
+    buttonLeft: Attribute.Component<'button.button'>;
   };
 }
 
@@ -159,19 +236,26 @@ export interface BannerBaner extends Schema.Component {
     discountDetails: Attribute.String;
     buttons: Attribute.Component<'button.button', true>;
     imageUrl: Attribute.String;
-    theme: Attribute.Enumeration<['DNK', 'BlackFriday']>;
+    textAlign: Attribute.Enumeration<['left', 'right', 'center']>;
+    justify: Attribute.Enumeration<['start', 'end', 'center']>;
+    bgAttachment: Attribute.Enumeration<['scroll', 'fixed']>;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'testimonial.testimonial': TestimonialTestimonial;
+      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'social-button.social-button': SocialButtonSocialButton;
+      'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'link.links': LinkLinks;
+      'left-content.left-content': LeftContentLeftContent;
+      'info-panel.info-panel': InfoPanelInfoPanel;
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
       'feature-section.feature-section': FeatureSectionFeatureSection;

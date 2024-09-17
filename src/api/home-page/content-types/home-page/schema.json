@@ -48,6 +48,22 @@
         "dnk",
         "blackFriday"
       ]
+    },
+    "infoPanel1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "info-panel.info-panel"
+    },
+    "infoPanel2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "info-panel.info-panel"
+    },
+    "testimonial": {
+      "displayName": "testimonial",
+      "type": "component",
+      "repeatable": false,
+      "component": "testimonial.testimonial"
     }
   }
 }
