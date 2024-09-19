@@ -1,22 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
-  info: {
-    displayName: 'testimonial';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
-  };
-}
-
 export interface TestimonialContentTestimonialContent extends Schema.Component {
   collectionName: 'components_testimonial_content_testimonial_contents';
   info: {
@@ -35,6 +18,23 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
       Attribute.DefaultTo<0>;
     review: Attribute.Text;
     userName: Attribute.String;
+  };
+}
+
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'testimonial';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
   };
 }
 
@@ -118,6 +118,17 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
   };
 }
 
+export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
+  collectionName: 'components_multi_part_heading_multi_part_headings';
+  info: {
+    displayName: 'multiPartHeading';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 export interface LinkLinks extends Schema.Component {
   collectionName: 'components_link_links';
   info: {
@@ -138,7 +149,6 @@ export interface LeftContentLeftContent extends Schema.Component {
   };
   attributes: {
     topTitle: Attribute.String;
-    title: Attribute.String;
     description: Attribute.Text;
     align: Attribute.Enumeration<['start', 'end', 'center']>;
   };
@@ -155,6 +165,10 @@ export interface InfoPanelInfoPanel extends Schema.Component {
     leftContent: Attribute.Component<'left-content.left-content'>;
     rightContent: Attribute.Component<'right-content.right-content'>;
     buttonLeft: Attribute.Component<'button.button'>;
+    multiPartHeading: Attribute.Component<
+      'multi-part-heading.multi-part-heading',
+      true
+    >;
   };
 }
 
@@ -169,6 +183,10 @@ export interface HeroSectionHeroSection extends Schema.Component {
     description: Attribute.String;
     imageUrl: Attribute.String;
     buttons: Attribute.Component<'button.button', true>;
+    multiPartHeading: Attribute.Component<
+      'multi-part-heading.multi-part-heading',
+      true
+    >;
   };
 }
 
@@ -231,7 +249,6 @@ export interface BannerBaner extends Schema.Component {
   };
   attributes: {
     offerType: Attribute.String;
-    offerTitle: Attribute.String;
     offerDescription: Attribute.Text;
     discountDetails: Attribute.String;
     buttons: Attribute.Component<'button.button', true>;
@@ -239,20 +256,25 @@ export interface BannerBaner extends Schema.Component {
     textAlign: Attribute.Enumeration<['left', 'right', 'center']>;
     justify: Attribute.Enumeration<['start', 'end', 'center']>;
     bgAttachment: Attribute.Enumeration<['scroll', 'fixed']>;
+    multiPartHeading: Attribute.Component<
+      'multi-part-heading.multi-part-heading',
+      true
+    >;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'testimonial.testimonial': TestimonialTestimonial;
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
+      'testimonial.testimonial': TestimonialTestimonial;
       'social-button.social-button': SocialButtonSocialButton;
       'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
+      'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;

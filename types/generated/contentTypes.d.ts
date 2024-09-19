@@ -1036,6 +1036,11 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
     infoPanel1: Attribute.Component<'info-panel.info-panel'>;
     infoPanel2: Attribute.Component<'info-panel.info-panel'>;
     testimonial: Attribute.Component<'testimonial.testimonial'>;
+    brand: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

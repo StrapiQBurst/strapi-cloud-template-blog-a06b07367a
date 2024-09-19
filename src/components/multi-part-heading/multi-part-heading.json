@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_multi_part_heading_multi_part_headings",
+  "info": {
+    "displayName": "multiPartHeading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

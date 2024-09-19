@@ -9,9 +9,6 @@
     "offerType": {
       "type": "string"
     },
-    "offerTitle": {
-      "type": "string"
-    },
     "offerDescription": {
       "type": "text"
     },
@@ -48,6 +45,11 @@
         "scroll",
         "fixed"
       ]
+    },
+    "multiPartHeading": {
+      "type": "component",
+      "repeatable": true,
+      "component": "multi-part-heading.multi-part-heading"
     }
   }
 }

@@ -64,6 +64,11 @@
       "type": "component",
       "repeatable": false,
       "component": "testimonial.testimonial"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
     }
   }
 }

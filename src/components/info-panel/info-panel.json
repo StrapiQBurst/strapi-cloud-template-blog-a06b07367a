@@ -25,6 +25,11 @@
       "type": "component",
       "repeatable": false,
       "component": "button.button"
+    },
+    "multiPartHeading": {
+      "type": "component",
+      "repeatable": true,
+      "component": "multi-part-heading.multi-part-heading"
     }
   }
 }
