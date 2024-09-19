@@ -847,6 +847,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::plp-page.plp-page'
     >;
+    headers: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::header.header'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -908,40 +913,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiFooterFooter extends Schema.SingleType {
-  collectionName: 'footers';
-  info: {
-    singularName: 'footer';
-    pluralName: 'footers';
-    displayName: 'Footer';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    copyRightText: Attribute.String;
-    footerLink: Attribute.Component<'footer.footer-link', true>;
-    socialButtons: Attribute.Component<'social-button.social-button', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::footer.footer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::footer.footer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiGenderGender extends Schema.CollectionType {
   collectionName: 'genders';
   info: {
@@ -974,7 +945,7 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
 }
 
-export interface ApiHeaderHeader extends Schema.SingleType {
+export interface ApiHeaderHeader extends Schema.CollectionType {
   collectionName: 'headers';
   info: {
     singularName: 'header';
@@ -994,6 +965,12 @@ export interface ApiHeaderHeader extends Schema.SingleType {
       'api::header.header',
       'oneToMany',
       'api::gender.gender'
+    >;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    brand: Attribute.Relation<
+      'api::header.header',
+      'manyToOne',
+      'api::brand.brand'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1218,7 +1195,6 @@ declare module '@strapi/types' {
       'api::bottom-navigation.bottom-navigation': ApiBottomNavigationBottomNavigation;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
-      'api::footer.footer': ApiFooterFooter;
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
