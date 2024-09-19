@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "headers",
   "info": {
     "singularName": "header",
@@ -30,6 +30,13 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::gender.gender"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "dnk",
+        "blackFriday"
+      ]
     }
   }
 }

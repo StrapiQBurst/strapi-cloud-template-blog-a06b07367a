@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_testimonial_content_testimonial_contents",
+  "info": {
+    "displayName": "testimonialContent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "rating": {
+      "max": 5,
+      "min": 0,
+      "default": 0,
+      "type": "integer"
+    },
+    "review": {
+      "type": "text"
+    },
+    "userName": {
+      "type": "string"
+    }
+  }
+}

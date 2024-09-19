@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_info_panel_info_panels",
+  "info": {
+    "displayName": "infoPanel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "bgImgUrl": {
+      "type": "string"
+    },
+    "leftContent": {
+      "displayName": "leftContent",
+      "type": "component",
+      "repeatable": false,
+      "component": "left-content.left-content"
+    },
+    "rightContent": {
+      "displayName": "rightContent",
+      "type": "component",
+      "repeatable": false,
+      "component": "right-content.right-content"
+    },
+    "buttonLeft": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.button"
+    },
+    "multiPartHeading": {
+      "type": "component",
+      "repeatable": true,
+      "component": "multi-part-heading.multi-part-heading"
+    }
+  }
+}
