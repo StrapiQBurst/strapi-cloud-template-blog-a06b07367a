@@ -38,9 +38,9 @@
       "repeatable": true,
       "component": "overlay-menu.overlay-menu"
     },
-    "brands": {
+    "brand": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::brand.brand"
     }
   }
