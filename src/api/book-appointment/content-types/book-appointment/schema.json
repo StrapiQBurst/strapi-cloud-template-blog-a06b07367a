@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "book_appointments",
+  "info": {
+    "singularName": "book-appointment",
+    "pluralName": "book-appointments",
+    "displayName": "Book Appointment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "appointmentTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "typeOfAppointment": {
+      "type": "enumeration",
+      "enum": [
+        "In-store",
+        "Virtual Appointment"
+      ]
+    }
+  }
+}

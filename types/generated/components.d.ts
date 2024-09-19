@@ -34,17 +34,6 @@ export interface SortingSorting extends Schema.Component {
   };
 }
 
-export interface SocialButtonSocialButton extends Schema.Component {
-  collectionName: 'components_social_button_social_buttons';
-  info: {
-    displayName: 'SocialButton';
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    socialLink: Attribute.String;
-  };
-}
-
 export interface RightContentRightContent extends Schema.Component {
   collectionName: 'components_right_content_right_contents';
   info: {
@@ -69,6 +58,17 @@ export interface TestimonialTestimonial extends Schema.Component {
       'testimonial-content.testimonial-content',
       true
     >;
+  };
+}
+
+export interface SocialButtonSocialButton extends Schema.Component {
+  collectionName: 'components_social_button_social_buttons';
+  info: {
+    displayName: 'SocialButton';
+  };
+  attributes: {
+    logoUrl: Attribute.String;
+    socialLink: Attribute.String;
   };
 }
 
@@ -287,9 +287,9 @@ declare module '@strapi/types' {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'sorting.sorting': SortingSorting;
-      'social-button.social-button': SocialButtonSocialButton;
       'right-content.right-content': RightContentRightContent;
       'testimonial.testimonial': TestimonialTestimonial;
+      'social-button.social-button': SocialButtonSocialButton;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
