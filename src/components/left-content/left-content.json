@@ -19,6 +19,9 @@
         "end",
         "center"
       ]
+    },
+    "title": {
+      "type": "text"
     }
   }
 }

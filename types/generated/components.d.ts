@@ -21,6 +21,23 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
   };
 }
 
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'testimonial';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
+  };
+}
+
 export interface SortingSorting extends Schema.Component {
   collectionName: 'components_sorting_sortings';
   info: {
@@ -42,23 +59,6 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
-  };
-}
-
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
-  info: {
-    displayName: 'testimonial';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
   };
 }
 
@@ -165,6 +165,7 @@ export interface LeftContentLeftContent extends Schema.Component {
     topTitle: Attribute.String;
     description: Attribute.Text;
     align: Attribute.Enumeration<['start', 'end', 'center']>;
+    title: Attribute.Text;
   };
 }
 
@@ -201,6 +202,7 @@ export interface HeroSectionHeroSection extends Schema.Component {
       'multi-part-heading.multi-part-heading',
       true
     >;
+    topTitle: Attribute.String;
   };
 }
 
@@ -281,9 +283,9 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
+      'testimonial.testimonial': TestimonialTestimonial;
       'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
-      'testimonial.testimonial': TestimonialTestimonial;
       'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
