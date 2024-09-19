@@ -67,9 +67,9 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
     >;
     popUpMenu: Attribute.Component<'pop-up-menu.pop-up-menu'>;
     overlayMenu: Attribute.Component<'overlay-menu.overlay-menu', true>;
-    brand: Attribute.Relation<
+    brands: Attribute.Relation<
       'navigation-menu-items.nav-items',
-      'oneToOne',
+      'oneToMany',
       'api::brand.brand'
     >;
   };
@@ -113,19 +113,6 @@ export interface FooterFooterLink extends Schema.Component {
   };
 }
 
-export interface ButtonButton extends Schema.Component {
-  collectionName: 'components_button_buttons';
-  info: {
-    displayName: 'Button';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    buttonLink: Attribute.String;
-    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
-  };
-}
-
 export interface FeatureListBanerItem extends Schema.Component {
   collectionName: 'components_baner_baner_items';
   info: {
@@ -136,6 +123,19 @@ export interface FeatureListBanerItem extends Schema.Component {
     title: Attribute.String;
     imageUrl: Attribute.String;
     description: Attribute.Text;
+  };
+}
+
+export interface ButtonButton extends Schema.Component {
+  collectionName: 'components_button_buttons';
+  info: {
+    displayName: 'Button';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    buttonLink: Attribute.String;
+    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
   };
 }
 
@@ -166,8 +166,8 @@ declare module '@strapi/types' {
       'link.links': LinkLinks;
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
-      'button.button': ButtonButton;
       'feature-list.baner-item': FeatureListBanerItem;
+      'button.button': ButtonButton;
       'banner.baner': BannerBaner;
     }
   }
