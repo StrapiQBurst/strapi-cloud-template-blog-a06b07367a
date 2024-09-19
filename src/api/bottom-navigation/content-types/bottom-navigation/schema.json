@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "bottom_navigations",
   "info": {
     "singularName": "bottom-navigation",
@@ -20,6 +20,13 @@
     },
     "footerLogoUrl": {
       "type": "string"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "dnk",
+        "blackFriday"
+      ]
     }
   }
 }

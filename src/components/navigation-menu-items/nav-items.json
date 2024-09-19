@@ -37,6 +37,11 @@
       "type": "component",
       "repeatable": true,
       "component": "overlay-menu.overlay-menu"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand.brand"
     }
   }
 }
