@@ -842,6 +842,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    plpPages: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::plp-page.plp-page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1060,6 +1065,11 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
     showPriceFilter: Attribute.Boolean;
     sortingOptions: Attribute.Component<'sorting.sorting', true>;
     bgImgUrl: Attribute.String;
+    brand: Attribute.Relation<
+      'api::plp-page.plp-page',
+      'manyToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -5,7 +5,7 @@
 import { factories } from '@strapi/strapi'
 export default factories.createCoreController('api::plp-page.plp-page', ({ strapi }) => ({
   async find(ctx) {
-    const { theme, gender, brand } = ctx.query;
+    const { gender, brand, theme } = ctx.query;
     const categoryFilters = { gender, brand }
     const filteredcategoryFilters = Object.fromEntries(
       Object.entries(categoryFilters).filter(([, value]) => value)
@@ -14,7 +14,8 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
     // Fetch PLP page details with the necessary fields
     const plpPages = await strapi.db.query('api::plp-page.plp-page').findMany({
       where: {
-        theme,
+        brand,
+        theme
       },
       populate: {
         bestSeller: {
