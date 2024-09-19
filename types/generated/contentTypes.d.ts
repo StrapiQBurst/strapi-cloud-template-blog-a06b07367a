@@ -844,6 +844,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    home_pages: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1038,7 +1043,7 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
     testimonial: Attribute.Component<'testimonial.testimonial'>;
     brand: Attribute.Relation<
       'api::home-page.home-page',
-      'oneToOne',
+      'manyToOne',
       'api::brand.brand'
     >;
     createdAt: Attribute.DateTime;

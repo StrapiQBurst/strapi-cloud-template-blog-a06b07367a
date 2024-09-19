@@ -67,8 +67,9 @@
     },
     "brand": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::brand.brand"
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "home_pages"
     }
   }
 }
