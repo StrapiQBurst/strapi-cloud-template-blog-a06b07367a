@@ -96,6 +96,7 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
   attributes: {
     label: Attribute.String;
     link: Attribute.String;
+    imgUrl: Attribute.String;
   };
 }
 
@@ -115,6 +116,11 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
     >;
     popUpMenu: Attribute.Component<'pop-up-menu.pop-up-menu'>;
     overlayMenu: Attribute.Component<'overlay-menu.overlay-menu', true>;
+    brands: Attribute.Relation<
+      'navigation-menu-items.nav-items',
+      'oneToMany',
+      'api::brand.brand'
+    >;
   };
 }
 
