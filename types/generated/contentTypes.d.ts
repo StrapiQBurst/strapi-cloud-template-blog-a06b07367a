@@ -844,6 +844,11 @@ export interface ApiBottomNavigationBottomNavigation
     >;
     footerLogoUrl: Attribute.String;
     theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    brand: Attribute.Relation<
+      'api::bottom-navigation.bottom-navigation',
+      'manyToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -895,6 +900,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'api::brand.brand',
       'oneToMany',
       'api::home-page.home-page'
+    >;
+    bottom_navigations: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::bottom-navigation.bottom-navigation'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
