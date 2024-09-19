@@ -27,22 +27,23 @@ export interface ProductCollectionProductCollection extends Schema.Component {
   };
 }
 
-export interface PopUpMenuPopUpMenu extends Schema.Component {
-  collectionName: 'components_pop_up_menu_pop_up_menus';
-  info: {
-    displayName: 'popUpMenu';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
 export interface OverlayMenuOverlayMenu extends Schema.Component {
   collectionName: 'components_overlay_menu_overlay_menus';
   info: {
     displayName: 'overlayMenu';
     description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    link: Attribute.String;
+    imgUrl: Attribute.String;
+  };
+}
+
+export interface PopUpMenuPopUpMenu extends Schema.Component {
+  collectionName: 'components_pop_up_menu_pop_up_menus';
+  info: {
+    displayName: 'popUpMenu';
   };
   attributes: {
     label: Attribute.String;
@@ -107,19 +108,6 @@ export interface FooterFooterLink extends Schema.Component {
   };
 }
 
-export interface FeatureListBanerItem extends Schema.Component {
-  collectionName: 'components_baner_baner_items';
-  info: {
-    displayName: 'FeatureItem';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    imageUrl: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
 export interface ButtonButton extends Schema.Component {
   collectionName: 'components_button_buttons';
   info: {
@@ -149,20 +137,33 @@ export interface BannerBaner extends Schema.Component {
   };
 }
 
+export interface FeatureListBanerItem extends Schema.Component {
+  collectionName: 'components_baner_baner_items';
+  info: {
+    displayName: 'FeatureItem';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    imageUrl: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'social-button.social-button': SocialButtonSocialButton;
       'product-collection.product-collection': ProductCollectionProductCollection;
-      'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
+      'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'link.links': LinkLinks;
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
-      'feature-list.baner-item': FeatureListBanerItem;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
+      'feature-list.baner-item': FeatureListBanerItem;
     }
   }
 }
