@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sorting_sortings",
+  "info": {
+    "displayName": "sorting"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "field": {
+      "type": "string"
+    },
+    "order": {
+      "type": "enumeration",
+      "enum": [
+        "asc",
+        "desc"
+      ]
+    },
+    "default": {
+      "type": "boolean"
+    }
+  }
+}

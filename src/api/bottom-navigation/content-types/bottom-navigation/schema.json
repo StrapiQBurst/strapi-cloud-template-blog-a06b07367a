@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bottom_navigations",
+  "info": {
+    "singularName": "bottom-navigation",
+    "pluralName": "bottom-navigations",
+    "displayName": "BottomNavigation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "navigationMenuItems": {
+      "displayName": "navItems",
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation-menu-items.nav-items"
+    },
+    "footerLogoUrl": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "dnk",
+        "blackFriday"
+      ]
+    }
+  }
+}
