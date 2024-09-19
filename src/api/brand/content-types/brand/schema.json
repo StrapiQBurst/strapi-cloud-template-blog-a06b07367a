@@ -41,6 +41,12 @@
       "relation": "oneToMany",
       "target": "api::home-page.home-page",
       "mappedBy": "brand"
+    },
+    "bottom_navigations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bottom-navigation.bottom-navigation",
+      "mappedBy": "brand"
     }
   }
 }

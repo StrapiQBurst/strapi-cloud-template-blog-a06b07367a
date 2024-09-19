@@ -27,6 +27,12 @@
         "dnk",
         "blackFriday"
       ]
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "bottom_navigations"
     }
   }
 }
