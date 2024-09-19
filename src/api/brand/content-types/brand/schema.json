@@ -24,6 +24,18 @@
       "target": "api::product.product",
       "mappedBy": "brand"
     },
+    "plpPages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::plp-page.plp-page",
+      "mappedBy": "brand"
+    },
+    "headers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::header.header",
+      "mappedBy": "brand"
+    },
     "home_pages": {
       "type": "relation",
       "relation": "oneToMany",

@@ -844,6 +844,16 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    plpPages: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::plp-page.plp-page'
+    >;
+    headers: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::header.header'
+    >;
     home_pages: Attribute.Relation<
       'api::brand.brand',
       'oneToMany',
@@ -910,40 +920,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiFooterFooter extends Schema.SingleType {
-  collectionName: 'footers';
-  info: {
-    singularName: 'footer';
-    pluralName: 'footers';
-    displayName: 'Footer';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    copyRightText: Attribute.String;
-    footerLink: Attribute.Component<'footer.footer-link', true>;
-    socialButtons: Attribute.Component<'social-button.social-button', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::footer.footer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::footer.footer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiGenderGender extends Schema.CollectionType {
   collectionName: 'genders';
   info: {
@@ -998,6 +974,11 @@ export interface ApiHeaderHeader extends Schema.CollectionType {
       'api::gender.gender'
     >;
     theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    brand: Attribute.Relation<
+      'api::header.header',
+      'manyToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1064,18 +1045,29 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   };
 }
 
-export interface ApiPlpPagePlpPage extends Schema.SingleType {
+export interface ApiPlpPagePlpPage extends Schema.CollectionType {
   collectionName: 'plp_pages';
   info: {
     singularName: 'plp-page';
     pluralName: 'plp-pages';
     displayName: 'PLPPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     bestSeller: Attribute.Component<'product-collection.product-collection'>;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    showCategories: Attribute.Boolean;
+    showPriceFilter: Attribute.Boolean;
+    sortingOptions: Attribute.Component<'sorting.sorting', true>;
+    bgImgUrl: Attribute.String;
+    brand: Attribute.Relation<
+      'api::plp-page.plp-page',
+      'manyToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1160,40 +1152,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
-export interface ApiSortingSorting extends Schema.CollectionType {
-  collectionName: 'sortings';
-  info: {
-    singularName: 'sorting';
-    pluralName: 'sortings';
-    displayName: 'Sorting';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    field: Attribute.String;
-    order: Attribute.Enumeration<['asc', 'desc']>;
-    default: Attribute.Boolean & Attribute.DefaultTo<true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::sorting.sorting',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::sorting.sorting',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   collectionName: 'subcategories';
   info: {
@@ -1258,13 +1216,11 @@ declare module '@strapi/types' {
       'api::bottom-navigation.bottom-navigation': ApiBottomNavigationBottomNavigation;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
-      'api::footer.footer': ApiFooterFooter;
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
-      'api::sorting.sorting': ApiSortingSorting;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
     }
   }

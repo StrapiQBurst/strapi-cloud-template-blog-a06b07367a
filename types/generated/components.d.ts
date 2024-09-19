@@ -21,20 +21,16 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
   };
 }
 
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
+export interface SortingSorting extends Schema.Component {
+  collectionName: 'components_sorting_sortings';
   info: {
-    displayName: 'testimonial';
-    description: '';
+    displayName: 'sorting';
   };
   attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
+    name: Attribute.String;
+    field: Attribute.String;
+    order: Attribute.Enumeration<['asc', 'desc']>;
+    default: Attribute.Boolean;
   };
 }
 
@@ -56,6 +52,23 @@ export interface RightContentRightContent extends Schema.Component {
   };
   attributes: {
     imgUrl: Attribute.String;
+  };
+}
+
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'testimonial';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
   };
 }
 
@@ -273,9 +286,10 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
-      'testimonial.testimonial': TestimonialTestimonial;
+      'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
       'right-content.right-content': RightContentRightContent;
+      'testimonial.testimonial': TestimonialTestimonial;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;

@@ -1,10 +1,11 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "plp_pages",
   "info": {
     "singularName": "plp-page",
     "pluralName": "plp-pages",
-    "displayName": "PLPPage"
+    "displayName": "PLPPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,33 @@
       "type": "component",
       "repeatable": false,
       "component": "product-collection.product-collection"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "dnk",
+        "blackFriday"
+      ]
+    },
+    "showCategories": {
+      "type": "boolean"
+    },
+    "showPriceFilter": {
+      "type": "boolean"
+    },
+    "sortingOptions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sorting.sorting"
+    },
+    "bgImgUrl": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "plpPages"
     }
   }
 }
