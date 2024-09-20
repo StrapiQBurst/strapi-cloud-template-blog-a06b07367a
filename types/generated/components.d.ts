@@ -127,7 +127,7 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
     variant: Attribute.Enumeration<
       ['link', 'overlayMenu', 'popUpMenu', 'disabled']
     >;
-    popUpMenu: Attribute.Component<'pop-up-menu.pop-up-menu'>;
+    popUpMenu: Attribute.Component<'pop-up-menu.pop-up-menu', true>;
     overlayMenu: Attribute.Component<'overlay-menu.overlay-menu', true>;
   };
 }
