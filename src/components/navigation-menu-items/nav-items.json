@@ -30,7 +30,7 @@
     "popUpMenu": {
       "displayName": "popUpMenu",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "pop-up-menu.pop-up-menu"
     },
     "overlayMenu": {
