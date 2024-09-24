@@ -1079,6 +1079,7 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
       'manyToOne',
       'api::brand.brand'
     >;
+    recommendedProductsTitle: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1147,7 +1148,6 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    bestSeller: Attribute.Component<'product-collection.product-collection'>;
     theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
     showCategories: Attribute.Boolean;
     showPriceFilter: Attribute.Boolean;
@@ -1158,6 +1158,7 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
       'manyToOne',
       'api::brand.brand'
     >;
+    recommendedProductsTitle: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
