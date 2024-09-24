@@ -47,12 +47,6 @@
       "relation": "oneToMany",
       "target": "api::bottom-navigation.bottom-navigation",
       "mappedBy": "brand"
-    },
-    "pdp_pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::pdp-page.pdp-page",
-      "mappedBy": "brand"
     }
   }
 }
