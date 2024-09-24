@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "bestSeller": {
-      "type": "component",
-      "repeatable": false,
-      "component": "product-collection.product-collection"
-    },
     "theme": {
       "type": "enumeration",
       "enum": [
@@ -43,6 +38,9 @@
       "relation": "manyToOne",
       "target": "api::brand.brand",
       "inversedBy": "plpPages"
+    },
+    "recommendedProductsTitle": {
+      "type": "string"
     }
   }
 }
