@@ -906,6 +906,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::bottom-navigation.bottom-navigation'
     >;
+    pdp_pages: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::pdp-page.pdp-page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1092,6 +1097,44 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPdpPagePdpPage extends Schema.CollectionType {
+  collectionName: 'pdp_pages';
+  info: {
+    singularName: 'pdp-page';
+    pluralName: 'pdp-pages';
+    displayName: 'PDPPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    relatedProductsTitle: Attribute.String;
+    recommendedProductsTitle: Attribute.String;
+    brand: Attribute.Relation<
+      'api::pdp-page.pdp-page',
+      'manyToOne',
+      'api::brand.brand'
+    >;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pdp-page.pdp-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pdp-page.pdp-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPlpPagePlpPage extends Schema.CollectionType {
   collectionName: 'plp_pages';
   info: {
@@ -1171,7 +1214,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::brand.brand'
     >;
-    relatedProducts: Attribute.Component<'product-collection.product-collection'>;
     rating: Attribute.Integer &
       Attribute.SetMinMax<
         {
@@ -1267,6 +1309,7 @@ declare module '@strapi/types' {
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::pdp-page.pdp-page': ApiPdpPagePdpPage;
       'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
