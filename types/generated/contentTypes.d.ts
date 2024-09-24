@@ -906,11 +906,6 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::bottom-navigation.bottom-navigation'
     >;
-    pdp_pages: Attribute.Relation<
-      'api::brand.brand',
-      'oneToMany',
-      'api::pdp-page.pdp-page'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1097,13 +1092,12 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   };
 }
 
-export interface ApiPdpPagePdpPage extends Schema.CollectionType {
+export interface ApiPdpPagePdpPage extends Schema.SingleType {
   collectionName: 'pdp_pages';
   info: {
     singularName: 'pdp-page';
     pluralName: 'pdp-pages';
     displayName: 'PDPPage';
-    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1111,12 +1105,6 @@ export interface ApiPdpPagePdpPage extends Schema.CollectionType {
   attributes: {
     relatedProductsTitle: Attribute.String;
     recommendedProductsTitle: Attribute.String;
-    brand: Attribute.Relation<
-      'api::pdp-page.pdp-page',
-      'manyToOne',
-      'api::brand.brand'
-    >;
-    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

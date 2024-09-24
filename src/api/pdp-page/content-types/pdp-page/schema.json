@@ -1,11 +1,10 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "pdp_pages",
   "info": {
     "singularName": "pdp-page",
     "pluralName": "pdp-pages",
-    "displayName": "PDPPage",
-    "description": ""
+    "displayName": "PDPPage"
   },
   "options": {
     "draftAndPublish": true
@@ -17,19 +16,6 @@
     },
     "recommendedProductsTitle": {
       "type": "string"
-    },
-    "brand": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::brand.brand",
-      "inversedBy": "pdp_pages"
-    },
-    "theme": {
-      "type": "enumeration",
-      "enum": [
-        "dnk",
-        "blackFriday"
-      ]
     }
   }
 }
