@@ -55,11 +55,6 @@
       "target": "api::brand.brand",
       "inversedBy": "products"
     },
-    "relatedProducts": {
-      "type": "component",
-      "repeatable": false,
-      "component": "product-collection.product-collection"
-    },
     "rating": {
       "type": "integer",
       "max": 5,

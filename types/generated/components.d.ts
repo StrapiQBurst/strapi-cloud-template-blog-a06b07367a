@@ -21,6 +21,19 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
   };
 }
 
+export interface SortingSorting extends Schema.Component {
+  collectionName: 'components_sorting_sortings';
+  info: {
+    displayName: 'sorting';
+  };
+  attributes: {
+    name: Attribute.String;
+    field: Attribute.String;
+    order: Attribute.Enumeration<['asc', 'desc']>;
+    default: Attribute.Boolean;
+  };
+}
+
 export interface TestimonialTestimonial extends Schema.Component {
   collectionName: 'components_testimonial_testimonials';
   info: {
@@ -35,19 +48,6 @@ export interface TestimonialTestimonial extends Schema.Component {
       'testimonial-content.testimonial-content',
       true
     >;
-  };
-}
-
-export interface SortingSorting extends Schema.Component {
-  collectionName: 'components_sorting_sortings';
-  info: {
-    displayName: 'sorting';
-  };
-  attributes: {
-    name: Attribute.String;
-    field: Attribute.String;
-    order: Attribute.Enumeration<['asc', 'desc']>;
-    default: Attribute.Boolean;
   };
 }
 
@@ -283,8 +283,8 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
-      'testimonial.testimonial': TestimonialTestimonial;
       'sorting.sorting': SortingSorting;
+      'testimonial.testimonial': TestimonialTestimonial;
       'social-button.social-button': SocialButtonSocialButton;
       'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
