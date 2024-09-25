@@ -33,6 +33,12 @@
       "relation": "manyToOne",
       "target": "api::brand.brand",
       "inversedBy": "bottom_navigations"
+    },
+    "pageTitle": {
+      "type": "string"
+    },
+    "errorPageWording": {
+      "type": "string"
     }
   }
 }

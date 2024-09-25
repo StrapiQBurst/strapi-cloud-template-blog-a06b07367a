@@ -849,6 +849,8 @@ export interface ApiBottomNavigationBottomNavigation
       'manyToOne',
       'api::brand.brand'
     >;
+    pageTitle: Attribute.String;
+    errorPageWording: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1099,6 +1101,7 @@ export interface ApiPdpPagePdpPage extends Schema.SingleType {
     singularName: 'pdp-page';
     pluralName: 'pdp-pages';
     displayName: 'PDPPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1106,6 +1109,8 @@ export interface ApiPdpPagePdpPage extends Schema.SingleType {
   attributes: {
     relatedProductsTitle: Attribute.String;
     recommendedProductsTitle: Attribute.String;
+    categoriesLabel: Attribute.String;
+    descriptionLabel: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1147,6 +1152,12 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
       'api::brand.brand'
     >;
     recommendedProductsTitle: Attribute.String;
+    noResultsLabel: Attribute.String;
+    filterLabel: Attribute.String;
+    filterButtonLabel: Attribute.String;
+    priceFilterLabel: Attribute.String;
+    categoryFilterLabel: Attribute.String;
+    searchResultsLabel: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
