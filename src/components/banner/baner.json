@@ -50,6 +50,9 @@
       "type": "component",
       "repeatable": true,
       "component": "multi-part-heading.multi-part-heading"
+    },
+    "offerTitle": {
+      "type": "string"
     }
   }
 }
