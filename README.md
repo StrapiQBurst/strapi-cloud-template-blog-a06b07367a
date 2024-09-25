@@ -25,6 +25,9 @@ DATABASE_USERNAME=root
 DATABASE_PASSWORD=root
 DATABASE_SSL=false
 JWT_SECRET=vnvHUBMbsFA8NnQ2OJyalQ==
+# csv importer
+API_TOKEN=<strapi api key>
+BATCH_SIZE=50
 ```
 
 ## 🐳 Start Docker for Strapi and MySQL
