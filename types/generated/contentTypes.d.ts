@@ -1067,7 +1067,7 @@ export interface ApiGenderGender extends Schema.CollectionType {
   info: {
     singularName: 'gender';
     pluralName: 'genders';
-    displayName: 'Gender';
+    displayName: 'MainCategory';
     description: '';
   };
   options: {
@@ -1547,9 +1547,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    gender: Attribute.Relation<
+    mainCategory: Attribute.Relation<
       'api::product.product',
-      'oneToOne',
+      'oneToMany',
       'api::gender.gender'
     >;
     subCategory: Attribute.Relation<
