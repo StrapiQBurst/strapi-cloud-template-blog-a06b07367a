@@ -1091,6 +1091,12 @@ export interface ApiGenderGender extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    imgUrl: Attribute.String;
+    products: Attribute.Relation<
+      'api::gender.gender',
+      'oneToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1547,11 +1553,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    mainCategory: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::gender.gender'
-    >;
     subCategory: Attribute.Relation<
       'api::product.product',
       'manyToOne',
@@ -1581,6 +1582,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
         number
       > &
       Attribute.DefaultTo<0>;
+    mainCategory: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::gender.gender'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -66,12 +66,6 @@
         }
       }
     },
-    "mainCategory": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::gender.gender",
-      "mappedBy": "product"
-    },
     "subCategory": {
       "type": "relation",
       "relation": "manyToOne",
@@ -101,6 +95,12 @@
           "localized": false
         }
       }
+    },
+    "mainCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::gender.gender",
+      "inversedBy": "products"
     }
   }
 }

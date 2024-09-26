@@ -32,15 +32,16 @@
         "i18n": {
           "localized": true
         }
+      }
     },
-    "imageUrl": {
+    "imgUrl": {
       "type": "string"
     },
-    "product": {
+    "products": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::product.product",
-      "inversedBy": "mainCategory"
+      "mappedBy": "mainCategory"
     }
   }
 }

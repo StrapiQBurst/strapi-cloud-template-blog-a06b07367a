@@ -5,8 +5,8 @@
 import { factories } from '@strapi/strapi'
 export default factories.createCoreController('api::plp-page.plp-page', ({ strapi }) => ({
   async find(ctx) {
-    const { gender, brand, theme } = ctx.query;
-    const categoryFilters = { gender, brand }
+    const { mainCategory, brand, theme } = ctx.query;
+    const categoryFilters = { mainCategory, brand }
     const filteredcategoryFilters = Object.fromEntries(
       Object.entries(categoryFilters).filter(([, value]) => value)
     );
@@ -31,10 +31,10 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
     }
     let categoryData;
     let priceFilter;
-    if (plpPages[0].showPriceFilter && gender) {
+    if (plpPages[0].showPriceFilter && mainCategory) {
       const minPriceData = await strapi.db.query('api::product.product').findMany({
         select: ['price'],
-        where: { gender: { id: gender } },
+        where: { mainCategory: { id: mainCategory } },
         orderBy: { price: 'asc' },
         limit: 1,
       });
@@ -42,7 +42,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
       // Get the maximum price
       const maxPriceData = await strapi.db.query('api::product.product').findMany({
         select: ['price'],
-        where: { gender: { id: gender } },
+        where: { mainCategory: { id: mainCategory } },
         orderBy: { price: 'desc' },
         limit: 1,
       });
@@ -64,7 +64,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
       });
 
       categoryData = await Promise.all(categories.map(async (category) => {
-        // Count products for this category filtered by gender and brand
+        // Count products for this category filtered by mainCategory and brand
         const categoryProductCount = await strapi.db.query('api::product.product').count({
           where: {
             category: category.id,
@@ -74,7 +74,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
 
         // Process subcategories and their product counts
         const subcategoryData = await Promise.all(category.subcategories.map(async (subcategory) => {
-          // Count products for this subcategory filtered by gender and brand
+          // Count products for this subcategory filtered by mainCategory and brand
           const subcategoryProductCount = await strapi.db.query('api::product.product').count({
             where: {
               subCategory: subcategory.id,
