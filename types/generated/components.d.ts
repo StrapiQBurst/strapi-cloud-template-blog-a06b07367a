@@ -276,6 +276,7 @@ export interface BannerBaner extends Schema.Component {
       'multi-part-heading.multi-part-heading',
       true
     >;
+    offerTitle: Attribute.String;
   };
 }
 
