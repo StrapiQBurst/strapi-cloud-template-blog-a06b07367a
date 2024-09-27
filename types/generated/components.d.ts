@@ -113,6 +113,17 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
   };
 }
 
+export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
+  collectionName: 'components_multi_part_heading_multi_part_headings';
+  info: {
+    displayName: 'multiPartHeading';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -129,17 +140,6 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
     >;
     popUpMenu: Attribute.Component<'pop-up-menu.pop-up-menu', true>;
     overlayMenu: Attribute.Component<'overlay-menu.overlay-menu', true>;
-  };
-}
-
-export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
-  collectionName: 'components_multi_part_heading_multi_part_headings';
-  info: {
-    displayName: 'multiPartHeading';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
   };
 }
 
@@ -169,21 +169,15 @@ export interface LeftContentLeftContent extends Schema.Component {
   };
 }
 
-export interface InfoPanelInfoPanel extends Schema.Component {
-  collectionName: 'components_info_panel_info_panels';
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_link_footer_links';
   info: {
-    displayName: 'infoPanel';
+    displayName: 'FooterLink';
     description: '';
   };
   attributes: {
-    bgImgUrl: Attribute.String;
-    leftContent: Attribute.Component<'left-content.left-content'>;
-    rightContent: Attribute.Component<'right-content.right-content'>;
-    buttonLeft: Attribute.Component<'button.button'>;
-    multiPartHeading: Attribute.Component<
-      'multi-part-heading.multi-part-heading',
-      true
-    >;
+    title: Attribute.String;
+    links: Attribute.Component<'link.links', true>;
   };
 }
 
@@ -206,15 +200,21 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
-export interface FooterFooterLink extends Schema.Component {
-  collectionName: 'components_footer_link_footer_links';
+export interface InfoPanelInfoPanel extends Schema.Component {
+  collectionName: 'components_info_panel_info_panels';
   info: {
-    displayName: 'FooterLink';
+    displayName: 'infoPanel';
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    links: Attribute.Component<'link.links', true>;
+    bgImgUrl: Attribute.String;
+    leftContent: Attribute.Component<'left-content.left-content'>;
+    rightContent: Attribute.Component<'right-content.right-content'>;
+    buttonLeft: Attribute.Component<'button.button'>;
+    multiPartHeading: Attribute.Component<
+      'multi-part-heading.multi-part-heading',
+      true
+    >;
   };
 }
 
@@ -290,13 +290,13 @@ declare module '@strapi/types' {
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
-      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
+      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
-      'info-panel.info-panel': InfoPanelInfoPanel;
-      'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
+      'hero-section.hero-section': HeroSectionHeroSection;
+      'info-panel.info-panel': InfoPanelInfoPanel;
       'feature-section.feature-section': FeatureSectionFeatureSection;
       'feature-list.baner-item': FeatureListBanerItem;
       'button.button': ButtonButton;

@@ -1526,13 +1526,13 @@ export interface ApiProductProduct extends Schema.CollectionType {
     pid: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     price: Attribute.Decimal &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     imagePath: Attribute.String &
@@ -1570,7 +1570,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     rating: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Attribute.SetMinMax<
