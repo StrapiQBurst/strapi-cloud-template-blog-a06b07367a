@@ -41,6 +41,24 @@
     },
     "recommendedProductsTitle": {
       "type": "string"
+    },
+    "noResultsLabel": {
+      "type": "string"
+    },
+    "filterLabel": {
+      "type": "string"
+    },
+    "filterButtonLabel": {
+      "type": "string"
+    },
+    "priceFilterLabel": {
+      "type": "string"
+    },
+    "categoryFilterLabel": {
+      "type": "string"
+    },
+    "searchResultsLabel": {
+      "type": "string"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pdp-page",
     "pluralName": "pdp-pages",
-    "displayName": "PDPPage"
+    "displayName": "PDPPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,12 @@
       "type": "string"
     },
     "recommendedProductsTitle": {
+      "type": "string"
+    },
+    "categoriesLabel": {
+      "type": "string"
+    },
+    "descriptionLabel": {
       "type": "string"
     }
   }
