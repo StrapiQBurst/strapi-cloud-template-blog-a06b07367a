@@ -10,60 +10,114 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "heroSection": {
       "type": "component",
       "repeatable": false,
-      "component": "hero-section.hero-section"
+      "component": "hero-section.hero-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "featuredProducts": {
       "type": "component",
       "repeatable": false,
-      "component": "product-collection.product-collection"
+      "component": "product-collection.product-collection",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "featureList": {
       "type": "component",
       "repeatable": true,
-      "component": "feature-list.baner-item"
+      "component": "feature-list.baner-item",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "banner1": {
       "type": "component",
       "repeatable": false,
-      "component": "banner.baner"
+      "component": "banner.baner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "banner2": {
       "type": "component",
       "repeatable": false,
-      "component": "banner.baner"
+      "component": "banner.baner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "featureSection": {
       "type": "component",
       "repeatable": true,
-      "component": "feature-section.feature-section"
+      "component": "feature-section.feature-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "theme": {
       "type": "enumeration",
       "enum": [
         "dnk",
         "blackFriday"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "infoPanel1": {
       "type": "component",
       "repeatable": false,
-      "component": "info-panel.info-panel"
+      "component": "info-panel.info-panel",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "infoPanel2": {
       "type": "component",
       "repeatable": false,
-      "component": "info-panel.info-panel"
+      "component": "info-panel.info-panel",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "testimonial": {
       "displayName": "testimonial",
       "type": "component",
       "repeatable": false,
-      "component": "testimonial.testimonial"
+      "component": "testimonial.testimonial",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "brand": {
       "type": "relation",
@@ -72,7 +126,12 @@
       "inversedBy": "home_pages"
     },
     "recommendedProductsTitle": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

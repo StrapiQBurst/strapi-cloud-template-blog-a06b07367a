@@ -10,23 +10,42 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "navigationMenuItems": {
       "displayName": "navItems",
       "type": "component",
       "repeatable": true,
-      "component": "navigation-menu-items.nav-items"
+      "component": "navigation-menu-items.nav-items",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "footerLogoUrl": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "theme": {
       "type": "enumeration",
       "enum": [
         "dnk",
         "blackFriday"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "brand": {
       "type": "relation",
@@ -35,10 +54,20 @@
       "inversedBy": "bottom_navigations"
     },
     "pageTitle": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "errorPageWording": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
