@@ -35,7 +35,7 @@ async function processRows(rows) {
       brand: row.Brand, 
       category: row.Category,
       subCategory: row.SubCategory,
-      gender: row.Gender,
+      mainCategory: row.MainCategory,
       description: row.Description,
       rating: row.Rating
     };
