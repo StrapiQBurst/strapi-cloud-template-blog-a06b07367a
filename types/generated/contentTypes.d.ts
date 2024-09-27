@@ -799,14 +799,44 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
-    subTitle: Attribute.String;
-    appointmentTitle: Attribute.String;
-    description: Attribute.Text;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    appointmentTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     typeOfAppointment: Attribute.Enumeration<
       ['In-store', 'Virtual Appointment']
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -822,6 +852,12 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::book-appointment.book-appointment',
+      'oneToMany',
+      'api::book-appointment.book-appointment'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -837,20 +873,50 @@ export interface ApiBottomNavigationBottomNavigation
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     navigationMenuItems: Attribute.Component<
       'navigation-menu-items.nav-items',
       true
-    >;
-    footerLogoUrl: Attribute.String;
-    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footerLogoUrl: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     brand: Attribute.Relation<
       'api::bottom-navigation.bottom-navigation',
       'manyToOne',
       'api::brand.brand'
     >;
-    pageTitle: Attribute.String;
-    errorPageWording: Attribute.String;
+    pageTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    errorPageWording: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -866,6 +932,12 @@ export interface ApiBottomNavigationBottomNavigation
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::bottom-navigation.bottom-navigation',
+      'oneToMany',
+      'api::bottom-navigation.bottom-navigation'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -880,9 +952,24 @@ export interface ApiBrandBrand extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
-    logoUrl: Attribute.String;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logoUrl: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Attribute.Relation<
       'api::brand.brand',
       'oneToMany',
@@ -923,6 +1010,12 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::brand.brand'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -980,9 +1073,24 @@ export interface ApiGenderGender extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
-    link: Attribute.Component<'link.links'>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.Component<'link.links'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -998,6 +1106,12 @@ export interface ApiGenderGender extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::gender.gender',
+      'oneToMany',
+      'api::gender.gender'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1012,17 +1126,47 @@ export interface ApiHeaderHeader extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    logoUrl: Attribute.String;
-    cartIconUrl: Attribute.String;
-    cartAmount: Attribute.String;
-    menu: Attribute.Component<'link.links', true>;
+    logoUrl: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cartIconUrl: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cartAmount: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    menu: Attribute.Component<'link.links', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     genders: Attribute.Relation<
       'api::header.header',
       'oneToMany',
       'api::gender.gender'
     >;
-    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     brand: Attribute.Relation<
       'api::header.header',
       'manyToOne',
@@ -1043,6 +1187,12 @@ export interface ApiHeaderHeader extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::header.header',
+      'oneToMany',
+      'api::header.header'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1057,26 +1207,86 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    heroSection: Attribute.Component<'hero-section.hero-section'>;
-    featuredProducts: Attribute.Component<'product-collection.product-collection'>;
-    featureList: Attribute.Component<'feature-list.baner-item', true>;
-    banner1: Attribute.Component<'banner.baner'>;
-    banner2: Attribute.Component<'banner.baner'>;
+    heroSection: Attribute.Component<'hero-section.hero-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    featuredProducts: Attribute.Component<'product-collection.product-collection'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    featureList: Attribute.Component<'feature-list.baner-item', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner1: Attribute.Component<'banner.baner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner2: Attribute.Component<'banner.baner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     featureSection: Attribute.Component<
       'feature-section.feature-section',
       true
-    >;
-    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
-    infoPanel1: Attribute.Component<'info-panel.info-panel'>;
-    infoPanel2: Attribute.Component<'info-panel.info-panel'>;
-    testimonial: Attribute.Component<'testimonial.testimonial'>;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    infoPanel1: Attribute.Component<'info-panel.info-panel'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    infoPanel2: Attribute.Component<'info-panel.info-panel'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    testimonial: Attribute.Component<'testimonial.testimonial'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     brand: Attribute.Relation<
       'api::home-page.home-page',
       'manyToOne',
       'api::brand.brand'
     >;
-    recommendedProductsTitle: Attribute.String;
+    recommendedProductsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1092,6 +1302,12 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1106,11 +1322,36 @@ export interface ApiPdpPagePdpPage extends Schema.SingleType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    relatedProductsTitle: Attribute.String;
-    recommendedProductsTitle: Attribute.String;
-    categoriesLabel: Attribute.String;
-    descriptionLabel: Attribute.String;
+    relatedProductsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    recommendedProductsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categoriesLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descriptionLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1126,6 +1367,12 @@ export interface ApiPdpPagePdpPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::pdp-page.pdp-page',
+      'oneToMany',
+      'api::pdp-page.pdp-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1140,24 +1387,89 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    theme: Attribute.Enumeration<['dnk', 'blackFriday']>;
-    showCategories: Attribute.Boolean;
-    showPriceFilter: Attribute.Boolean;
-    sortingOptions: Attribute.Component<'sorting.sorting', true>;
-    bgImgUrl: Attribute.String;
+    theme: Attribute.Enumeration<['dnk', 'blackFriday']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    showCategories: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    showPriceFilter: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sortingOptions: Attribute.Component<'sorting.sorting', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bgImgUrl: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     brand: Attribute.Relation<
       'api::plp-page.plp-page',
       'manyToOne',
       'api::brand.brand'
     >;
-    recommendedProductsTitle: Attribute.String;
-    noResultsLabel: Attribute.String;
-    filterLabel: Attribute.String;
-    filterButtonLabel: Attribute.String;
-    priceFilterLabel: Attribute.String;
-    categoryFilterLabel: Attribute.String;
-    searchResultsLabel: Attribute.String;
+    recommendedProductsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    noResultsLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    filterLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    filterButtonLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    priceFilterLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categoryFilterLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    searchResultsLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1173,6 +1485,12 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::plp-page.plp-page',
+      'oneToMany',
+      'api::plp-page.plp-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1187,13 +1505,48 @@ export interface ApiProductProduct extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    ooId: Attribute.BigInteger;
-    title: Attribute.String;
-    pid: Attribute.String;
-    price: Attribute.Decimal;
-    imagePath: Attribute.String;
-    description: Attribute.Text;
+    ooId: Attribute.BigInteger &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    pid: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    imagePath: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     gender: Attribute.Relation<
       'api::product.product',
       'oneToOne',
@@ -1215,6 +1568,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::brand.brand'
     >;
     rating: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.SetMinMax<
         {
           min: 0;
@@ -1238,6 +1596,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product.product'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1252,10 +1616,30 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
-    description: Attribute.Text;
-    link: Attribute.String;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Attribute.Relation<
       'api::subcategory.subcategory',
       'oneToMany',
@@ -1281,6 +1665,12 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::subcategory.subcategory',
+      'oneToMany',
+      'api::subcategory.subcategory'
+    >;
+    locale: Attribute.String;
   };
 }
 
