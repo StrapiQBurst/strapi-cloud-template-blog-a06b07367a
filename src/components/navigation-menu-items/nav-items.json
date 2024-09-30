@@ -34,9 +34,9 @@
       "component": "pop-up-menu.pop-up-menu"
     },
     "overlayMenu": {
-      "type": "component",
-      "repeatable": true,
-      "component": "overlay-menu.overlay-menu"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::gender.gender"
     }
   }
 }

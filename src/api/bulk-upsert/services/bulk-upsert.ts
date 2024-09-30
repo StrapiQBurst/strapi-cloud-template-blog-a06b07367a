@@ -68,10 +68,10 @@ export default () => ({
                 return existingMap;
             }
 
-            const { brandsSet, gendersSet, categoriesSet, subCategoriesSet } = products.reduce(
+            const { brandsSet, mainCategoriesSet, categoriesSet, subCategoriesSet } = products.reduce(
                 (acc, product) => {
                     acc.brandsSet.add(product.brand);
-                    acc.gendersSet.add(product.gender);
+                    acc.mainCategoriesSet.add(product.mainCategory);
                     acc.categoriesSet.add(product.category);
                     const subCategoryKey = `${product.subCategory}_${product.category}`;
                     if (!acc.subCategoriesSet[subCategoryKey]) {
@@ -82,17 +82,17 @@ export default () => ({
                     }
                     return acc;
                 },
-                { brandsSet: new Set(), gendersSet: new Set(), categoriesSet: new Set(), subCategoriesSet: {} }
+                { brandsSet: new Set(), mainCategoriesSet: new Set(), categoriesSet: new Set(), subCategoriesSet: {} }
             );
             const brands = [...brandsSet];
-            const genders = [...gendersSet];
+            const mainCategories = [...mainCategoriesSet];
             const categories = [...categoriesSet];
             const subcategories = Object.values(subCategoriesSet);
 
             // Fetch or create all relational data in parallel
-            const [brandMap, genderMap, categoryMap] = await Promise.all([
+            const [brandMap, mainCategoryMap, categoryMap] = await Promise.all([
                 fetchOrCreate('brand', brands),
-                fetchOrCreate('gender', genders),
+                fetchOrCreate('gender', mainCategories),
                 fetchOrCreate('category', categories),
             ]);
 
@@ -120,7 +120,7 @@ export default () => ({
                     brand: brandMap[product.brand],
                     category: categoryMap[product.category],
                     subCategory: subcategoryMap[`${product.subCategory}_${product.category}`],
-                    gender: genderMap[product.gender]
+                    mainCategory: mainCategoryMap[product.mainCategory]
                 };
 
                 if (existingProductMap[product.pid]) {

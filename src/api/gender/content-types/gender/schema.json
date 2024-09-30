@@ -4,7 +4,7 @@
   "info": {
     "singularName": "gender",
     "pluralName": "genders",
-    "displayName": "Gender",
+    "displayName": "MainCategory",
     "description": ""
   },
   "options": {
@@ -33,6 +33,15 @@
           "localized": true
         }
       }
+    },
+    "imgUrl": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "mainCategory"
     }
   }
 }
