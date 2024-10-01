@@ -805,19 +805,19 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
     };
   };
   attributes: {
+    pageTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    subTitle: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    appointmentTitle: Attribute.String &
+    questionLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -829,9 +829,57 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
           localized: true;
         };
       }>;
-    typeOfAppointment: Attribute.Enumeration<
+    appointmentMethods: Attribute.Enumeration<
       ['In-store', 'Virtual Appointment']
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    backBtnLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    nextBtnText: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    findBrandStoreText: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    findBrandStoreDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    storeLocatorLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    searchPlaceholder: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    searchButtonText: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    useCurrentLocationBtnLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
