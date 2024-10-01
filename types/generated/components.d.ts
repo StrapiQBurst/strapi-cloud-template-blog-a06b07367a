@@ -1,5 +1,22 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'testimonial';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
+  };
+}
+
 export interface TestimonialContentTestimonialContent extends Schema.Component {
   collectionName: 'components_testimonial_content_testimonial_contents';
   info: {
@@ -21,6 +38,16 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
   };
 }
 
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
+  };
+}
+
 export interface SortingSorting extends Schema.Component {
   collectionName: 'components_sorting_sortings';
   info: {
@@ -34,23 +61,6 @@ export interface SortingSorting extends Schema.Component {
   };
 }
 
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
-  info: {
-    displayName: 'testimonial';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
-  };
-}
-
 export interface SocialButtonSocialButton extends Schema.Component {
   collectionName: 'components_social_button_social_buttons';
   info: {
@@ -59,16 +69,6 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
-  };
-}
-
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
-  info: {
-    displayName: 'rightContent';
-  };
-  attributes: {
-    imgUrl: Attribute.String;
   };
 }
 
@@ -106,11 +106,7 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
     displayName: 'overlayMenu';
     description: '';
   };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-    imgUrl: Attribute.String;
-  };
+  attributes: {};
 }
 
 export interface NavigationMenuItemsNavItems extends Schema.Component {
@@ -133,26 +129,6 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
       'oneToMany',
       'api::gender.gender'
     >;
-  };
-}
-
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {};
-}
-
-export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
-  collectionName: 'components_multi_part_heading_multi_part_headings';
-  info: {
-    displayName: 'multiPartHeading';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
   };
 }
 
@@ -208,19 +184,6 @@ export interface InfoPanelInfoPanel extends Schema.Component {
       'multi-part-heading.multi-part-heading',
       true
     >;
-  };
-}
-
-export interface FeatureSectionFeatureSection extends Schema.Component {
-  collectionName: 'components_feature_section_feature_sections';
-  info: {
-    displayName: 'featureSection';
-    description: '';
-  };
-  attributes: {
-    featureList: Attribute.Component<'feature-list.baner-item', true>;
-    topTitle: Attribute.String;
-    title: Attribute.String;
   };
 }
 
@@ -333,15 +296,13 @@ export interface BannerBaner extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
-      'sorting.sorting': SortingSorting;
       'testimonial.testimonial': TestimonialTestimonial;
-      'social-button.social-button': SocialButtonSocialButton;
-      'sorting.sorting': SortingSorting;
+      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'right-content.right-content': RightContentRightContent;
+      'sorting.sorting': SortingSorting;
+      'social-button.social-button': SocialButtonSocialButton;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
@@ -351,7 +312,6 @@ declare module '@strapi/types' {
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
       'feature-section.feature-section': FeatureSectionFeatureSection;
-      'hero-section.hero-section': HeroSectionHeroSection;
       'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
