@@ -48,18 +48,6 @@
         }
       }
     },
-    "appointmentMethods": {
-      "type": "enumeration",
-      "enum": [
-        "In-store",
-        "Virtual Appointment"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "backBtnLabel": {
       "pluginOptions": {
         "i18n": {
@@ -123,6 +111,17 @@
         }
       },
       "type": "string"
+    },
+    "appointmentMethods": {
+      "displayName": "appointmentMethods",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "appointment-methods.appointment-methods"
     }
   }
 }

@@ -829,14 +829,6 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
           localized: true;
         };
       }>;
-    appointmentMethods: Attribute.Enumeration<
-      ['In-store', 'Virtual Appointment']
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     backBtnLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -880,6 +872,15 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
         };
       }>;
     useCurrentLocationBtnLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    appointmentMethods: Attribute.Component<
+      'appointment-methods.appointment-methods',
+      true
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
