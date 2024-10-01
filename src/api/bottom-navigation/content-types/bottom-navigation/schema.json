@@ -61,13 +61,16 @@
         }
       }
     },
-    "errorPageWording": {
-      "type": "string",
+    "ErrorPage": {
+      "displayName": "ErrorPage",
+      "type": "component",
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "component": "error-page.error-page"
     }
   }
 }

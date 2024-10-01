@@ -47,6 +47,14 @@
           "localized": true
         }
       }
+    },
+    "addToCartLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

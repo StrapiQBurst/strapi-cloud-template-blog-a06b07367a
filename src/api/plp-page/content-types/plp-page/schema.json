@@ -123,6 +123,22 @@
           "localized": true
         }
       }
+    },
+    "searchPlaceholder": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "searchResultsTotalLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_error_page_error_pages",
+  "info": {
+    "displayName": "ErrorPage"
+  },
+  "options": {},
+  "attributes": {
+    "pageTitle": {
+      "type": "string"
+    },
+    "errorTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "returnHomeLabel": {
+      "type": "string"
+    }
+  }
+}
