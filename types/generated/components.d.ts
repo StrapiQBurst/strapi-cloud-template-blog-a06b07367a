@@ -100,15 +100,6 @@ export interface PopUpMenuPopUpMenu extends Schema.Component {
   };
 }
 
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {};
-}
-
 export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -141,6 +132,15 @@ export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
   attributes: {
     title: Attribute.String;
   };
+}
+
+export interface OverlayMenuOverlayMenu extends Schema.Component {
+  collectionName: 'components_overlay_menu_overlay_menus';
+  info: {
+    displayName: 'overlayMenu';
+    description: '';
+  };
+  attributes: {};
 }
 
 export interface LinkLinks extends Schema.Component {
@@ -303,9 +303,9 @@ declare module '@strapi/types' {
       'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
+      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
