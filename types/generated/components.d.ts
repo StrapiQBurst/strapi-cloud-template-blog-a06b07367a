@@ -51,16 +51,6 @@ export interface SortingSorting extends Schema.Component {
   };
 }
 
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
-  info: {
-    displayName: 'rightContent';
-  };
-  attributes: {
-    imgUrl: Attribute.String;
-  };
-}
-
 export interface SocialButtonSocialButton extends Schema.Component {
   collectionName: 'components_social_button_social_buttons';
   info: {
@@ -69,6 +59,16 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
   };
 }
 
@@ -231,19 +231,6 @@ export interface FeatureSectionFeatureSection extends Schema.Component {
   };
 }
 
-export interface FeatureListBanerItem extends Schema.Component {
-  collectionName: 'components_baner_baner_items';
-  info: {
-    displayName: 'FeatureItem';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    imageUrl: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
 export interface ErrorPageErrorPage extends Schema.Component {
   collectionName: 'components_error_page_error_pages';
   info: {
@@ -254,6 +241,19 @@ export interface ErrorPageErrorPage extends Schema.Component {
     errorTitle: Attribute.String;
     description: Attribute.String;
     returnHomeLabel: Attribute.String;
+  };
+}
+
+export interface FeatureListBanerItem extends Schema.Component {
+  collectionName: 'components_baner_baner_items';
+  info: {
+    displayName: 'FeatureItem';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    imageUrl: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -299,8 +299,8 @@ declare module '@strapi/types' {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'testimonial.testimonial': TestimonialTestimonial;
       'sorting.sorting': SortingSorting;
-      'right-content.right-content': RightContentRightContent;
       'social-button.social-button': SocialButtonSocialButton;
+      'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
@@ -312,8 +312,8 @@ declare module '@strapi/types' {
       'hero-section.hero-section': HeroSectionHeroSection;
       'footer.footer-link': FooterFooterLink;
       'feature-section.feature-section': FeatureSectionFeatureSection;
-      'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
+      'feature-list.baner-item': FeatureListBanerItem;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
     }
