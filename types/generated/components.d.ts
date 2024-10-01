@@ -1,22 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
-  info: {
-    displayName: 'testimonial';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
-  };
-}
-
 export interface TestimonialContentTestimonialContent extends Schema.Component {
   collectionName: 'components_testimonial_content_testimonial_contents';
   info: {
@@ -38,13 +21,20 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
   };
 }
 
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
   info: {
-    displayName: 'rightContent';
+    displayName: 'testimonial';
+    description: '';
   };
   attributes: {
-    imgUrl: Attribute.String;
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
   };
 }
 
@@ -69,6 +59,16 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
   };
 }
 
@@ -98,15 +98,6 @@ export interface PopUpMenuPopUpMenu extends Schema.Component {
     label: Attribute.String;
     link: Attribute.String;
   };
-}
-
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {};
 }
 
 export interface NavigationMenuItemsNavItems extends Schema.Component {
@@ -141,6 +132,15 @@ export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
   attributes: {
     title: Attribute.String;
   };
+}
+
+export interface OverlayMenuOverlayMenu extends Schema.Component {
+  collectionName: 'components_overlay_menu_overlay_menus';
+  info: {
+    displayName: 'overlayMenu';
+    description: '';
+  };
+  attributes: {};
 }
 
 export interface LinkLinks extends Schema.Component {
@@ -296,16 +296,16 @@ export interface BannerBaner extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'testimonial.testimonial': TestimonialTestimonial;
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
-      'right-content.right-content': RightContentRightContent;
+      'testimonial.testimonial': TestimonialTestimonial;
       'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
+      'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
+      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
