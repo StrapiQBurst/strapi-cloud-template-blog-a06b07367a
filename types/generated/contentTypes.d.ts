@@ -911,7 +911,7 @@ export interface ApiBottomNavigationBottomNavigation
           localized: true;
         };
       }>;
-    errorPageWording: Attribute.String &
+    ErrorPage: Attribute.Component<'error-page.error-page'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1358,6 +1358,12 @@ export interface ApiPdpPagePdpPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    addToCartLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1471,6 +1477,18 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
         };
       }>;
     searchResultsLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    searchPlaceholder: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    searchResultsTotalLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
