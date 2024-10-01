@@ -965,6 +965,12 @@ export interface ApiBottomNavigationBottomNavigation
           localized: true;
         };
       }>;
+    appTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1563,6 +1569,12 @@ export interface ApiPlpPagePlpPage extends Schema.CollectionType {
         };
       }>;
     searchResultsTotalLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categoryName: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

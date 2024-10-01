@@ -71,6 +71,14 @@
         }
       },
       "component": "error-page.error-page"
+    },
+    "appTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
