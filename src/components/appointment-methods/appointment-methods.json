@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_appointment_methods_appointment_methods",
+  "info": {
+    "displayName": "appointmentMethods"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  }
+}
