@@ -38,19 +38,6 @@ export interface TestimonialTestimonial extends Schema.Component {
   };
 }
 
-export interface SortingSorting extends Schema.Component {
-  collectionName: 'components_sorting_sortings';
-  info: {
-    displayName: 'sorting';
-  };
-  attributes: {
-    name: Attribute.String;
-    field: Attribute.String;
-    order: Attribute.Enumeration<['asc', 'desc']>;
-    default: Attribute.Boolean;
-  };
-}
-
 export interface SocialButtonSocialButton extends Schema.Component {
   collectionName: 'components_social_button_social_buttons';
   info: {
@@ -62,13 +49,16 @@ export interface SocialButtonSocialButton extends Schema.Component {
   };
 }
 
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
+export interface SortingSorting extends Schema.Component {
+  collectionName: 'components_sorting_sortings';
   info: {
-    displayName: 'rightContent';
+    displayName: 'sorting';
   };
   attributes: {
-    imgUrl: Attribute.String;
+    name: Attribute.String;
+    field: Attribute.String;
+    order: Attribute.Enumeration<['asc', 'desc']>;
+    default: Attribute.Boolean;
   };
 }
 
@@ -86,6 +76,16 @@ export interface ProductCollectionProductCollection extends Schema.Component {
       'api::product.product'
     >;
     topTitle: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
   };
 }
 
@@ -308,10 +308,10 @@ declare module '@strapi/types' {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'testimonial.testimonial': TestimonialTestimonial;
-      'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
-      'right-content.right-content': RightContentRightContent;
+      'sorting.sorting': SortingSorting;
       'product-collection.product-collection': ProductCollectionProductCollection;
+      'right-content.right-content': RightContentRightContent;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
