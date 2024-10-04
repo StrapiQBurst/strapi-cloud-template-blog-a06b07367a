@@ -101,6 +101,35 @@
       "relation": "manyToOne",
       "target": "api::gender.gender",
       "inversedBy": "products"
+    },
+    "color": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "red ",
+        "blue",
+        "beige",
+        "black",
+        "green",
+        "yellow",
+        "purple",
+        "brown",
+        "multiColor",
+        "silver",
+        "gold"
+      ]
+    },
+    "size": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }

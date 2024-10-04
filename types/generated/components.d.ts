@@ -21,6 +21,40 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
   };
 }
 
+export interface SortingSorting extends Schema.Component {
+  collectionName: 'components_sorting_sortings';
+  info: {
+    displayName: 'sorting';
+  };
+  attributes: {
+    name: Attribute.String;
+    field: Attribute.String;
+    order: Attribute.Enumeration<['asc', 'desc']>;
+    default: Attribute.Boolean;
+  };
+}
+
+export interface SocialButtonSocialButton extends Schema.Component {
+  collectionName: 'components_social_button_social_buttons';
+  info: {
+    displayName: 'SocialButton';
+  };
+  attributes: {
+    logoUrl: Attribute.String;
+    socialLink: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
+  };
+}
+
 export interface TestimonialTestimonial extends Schema.Component {
   collectionName: 'components_testimonial_testimonials';
   info: {
@@ -38,30 +72,6 @@ export interface TestimonialTestimonial extends Schema.Component {
   };
 }
 
-export interface SocialButtonSocialButton extends Schema.Component {
-  collectionName: 'components_social_button_social_buttons';
-  info: {
-    displayName: 'SocialButton';
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    socialLink: Attribute.String;
-  };
-}
-
-export interface SortingSorting extends Schema.Component {
-  collectionName: 'components_sorting_sortings';
-  info: {
-    displayName: 'sorting';
-  };
-  attributes: {
-    name: Attribute.String;
-    field: Attribute.String;
-    order: Attribute.Enumeration<['asc', 'desc']>;
-    default: Attribute.Boolean;
-  };
-}
-
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -76,16 +86,6 @@ export interface ProductCollectionProductCollection extends Schema.Component {
       'api::product.product'
     >;
     topTitle: Attribute.String;
-  };
-}
-
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
-  info: {
-    displayName: 'rightContent';
-  };
-  attributes: {
-    imgUrl: Attribute.String;
   };
 }
 
@@ -109,6 +109,17 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
   attributes: {};
 }
 
+export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
+  collectionName: 'components_multi_part_heading_multi_part_headings';
+  info: {
+    displayName: 'multiPartHeading';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -129,17 +140,6 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
       'oneToMany',
       'api::gender.gender'
     >;
-  };
-}
-
-export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
-  collectionName: 'components_multi_part_heading_multi_part_headings';
-  info: {
-    displayName: 'multiPartHeading';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
   };
 }
 
@@ -307,15 +307,15 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
-      'testimonial.testimonial': TestimonialTestimonial;
-      'social-button.social-button': SocialButtonSocialButton;
       'sorting.sorting': SortingSorting;
-      'product-collection.product-collection': ProductCollectionProductCollection;
+      'social-button.social-button': SocialButtonSocialButton;
       'right-content.right-content': RightContentRightContent;
+      'testimonial.testimonial': TestimonialTestimonial;
+      'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
-      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
+      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;

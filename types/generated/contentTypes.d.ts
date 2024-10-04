@@ -1704,6 +1704,32 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::gender.gender'
     >;
+    color: Attribute.Enumeration<
+      [
+        'red ',
+        'blue',
+        'beige',
+        'black',
+        'green',
+        'yellow',
+        'purple',
+        'brown',
+        'multiColor',
+        'silver',
+        'gold'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    size: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
