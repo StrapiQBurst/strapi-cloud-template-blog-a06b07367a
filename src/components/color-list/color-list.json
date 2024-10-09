@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_color_list_color_lists",
+  "info": {
+    "displayName": "ColorList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "color": {
+      "type": "string"
+    }
+  }
+}

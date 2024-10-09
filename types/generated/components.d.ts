@@ -38,30 +38,6 @@ export interface TestimonialTestimonial extends Schema.Component {
   };
 }
 
-export interface SocialButtonSocialButton extends Schema.Component {
-  collectionName: 'components_social_button_social_buttons';
-  info: {
-    displayName: 'SocialButton';
-  };
-  attributes: {
-    logoUrl: Attribute.String;
-    socialLink: Attribute.String;
-  };
-}
-
-export interface SortingSorting extends Schema.Component {
-  collectionName: 'components_sorting_sortings';
-  info: {
-    displayName: 'sorting';
-  };
-  attributes: {
-    name: Attribute.String;
-    field: Attribute.String;
-    order: Attribute.Enumeration<['asc', 'desc']>;
-    default: Attribute.Boolean;
-  };
-}
-
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -76,16 +52,6 @@ export interface ProductCollectionProductCollection extends Schema.Component {
       'api::product.product'
     >;
     topTitle: Attribute.String;
-  };
-}
-
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
-  info: {
-    displayName: 'rightContent';
-  };
-  attributes: {
-    imgUrl: Attribute.String;
   };
 }
 
@@ -257,16 +223,27 @@ export interface ErrorPageErrorPage extends Schema.Component {
   };
 }
 
-export interface ButtonButton extends Schema.Component {
-  collectionName: 'components_button_buttons';
+export interface SortingSorting extends Schema.Component {
+  collectionName: 'components_sorting_sortings';
   info: {
-    displayName: 'Button';
+    displayName: 'sorting';
+  };
+  attributes: {
+    name: Attribute.String;
+    field: Attribute.String;
+    order: Attribute.Enumeration<['asc', 'desc']>;
+    default: Attribute.Boolean;
+  };
+}
+
+export interface ColorListColorList extends Schema.Component {
+  collectionName: 'components_color_list_color_lists';
+  info: {
+    displayName: 'ColorList';
     description: '';
   };
   attributes: {
-    buttonText: Attribute.String;
-    buttonLink: Attribute.String;
-    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
+    color: Attribute.String;
   };
 }
 
@@ -293,6 +270,19 @@ export interface BannerBaner extends Schema.Component {
   };
 }
 
+export interface ButtonButton extends Schema.Component {
+  collectionName: 'components_button_buttons';
+  info: {
+    displayName: 'Button';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    buttonLink: Attribute.String;
+    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
+  };
+}
+
 export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
   collectionName: 'components_appointment_methods_appointment_methods';
   info: {
@@ -303,15 +293,33 @@ export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
   };
 }
 
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
+  };
+}
+
+export interface SocialButtonSocialButton extends Schema.Component {
+  collectionName: 'components_social_button_social_buttons';
+  info: {
+    displayName: 'SocialButton';
+  };
+  attributes: {
+    logoUrl: Attribute.String;
+    socialLink: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'testimonial.testimonial': TestimonialTestimonial;
-      'social-button.social-button': SocialButtonSocialButton;
-      'sorting.sorting': SortingSorting;
       'product-collection.product-collection': ProductCollectionProductCollection;
-      'right-content.right-content': RightContentRightContent;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
@@ -324,9 +332,13 @@ declare module '@strapi/types' {
       'feature-section.feature-section': FeatureSectionFeatureSection;
       'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
-      'button.button': ButtonButton;
+      'sorting.sorting': SortingSorting;
+      'color-list.color-list': ColorListColorList;
       'banner.baner': BannerBaner;
+      'button.button': ButtonButton;
       'appointment-methods.appointment-methods': AppointmentMethodsAppointmentMethods;
+      'right-content.right-content': RightContentRightContent;
+      'social-button.social-button': SocialButtonSocialButton;
     }
   }
 }
