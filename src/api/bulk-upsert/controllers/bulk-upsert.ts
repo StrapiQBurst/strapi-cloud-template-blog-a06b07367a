@@ -13,7 +13,7 @@ export default {
       // Send back the result
       ctx.send(result);
     } catch (error) {
-      ctx.throw(400, error.message);  // Handle any errors that occur during the update
+      ctx.throw(400, error);  // Handle any errors that occur during the update
     }
   }
 };
