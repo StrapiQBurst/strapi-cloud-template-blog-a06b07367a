@@ -50,14 +50,6 @@
         }
       }
     },
-    "imagePath": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "description": {
       "type": "text",
       "pluginOptions": {
@@ -102,31 +94,55 @@
       "target": "api::gender.gender",
       "inversedBy": "products"
     },
-    "size": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "integer"
-    },
-    "color": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "color-list.color-list"
-    },
     "material": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
+      "type": "json"
+    },
+    "images": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "json"
+    },
+    "defaultImage": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "type": "string"
+    },
+    "size": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
+    },
+    "color": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
+    },
+    "similarLooks": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "product-collection.product-collection"
     }
   }
 }

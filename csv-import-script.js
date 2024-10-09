@@ -24,14 +24,23 @@ async function createProductsBatch(productsBatch) {
 }
 
 async function processRows(rows) {
+  function splitInput(input, delimiter = ',') {
+    return input ? input.split(delimiter).map(item => item.trim()) : [];
+  }
+
   const productsBatch = [];
   for (const row of rows) {
+    const images = splitInput(row.ImagePath);
     const productData = {
       ooId: row.oo_id,
       title: row.Title,
       pid: row.PID,
       price: row.Price,
-      imagePath: row.ImagePath,
+      color: splitInput(row.Color),
+      size: splitInput(row.Size),
+      material: splitInput(row.Materials),
+      images,
+      defaultImage: images[0],
       brand: row.Brand, 
       category: row.Category,
       subCategory: row.SubCategory,
@@ -78,7 +87,7 @@ async function readCSV(filePath) {
 
 async function run() {
   try {
-    await readCSV('./catalog.csv');
+    await readCSV('./test2.csv');
     await processRows(rows);
     console.log('All rows have been processed successfully.');
   } catch (error) {
