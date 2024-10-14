@@ -1445,6 +1445,24 @@ export interface ApiPdpPagePdpPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    colorLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    materialLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sizeLabel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1658,12 +1676,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    imagePath: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1704,19 +1716,37 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::gender.gender'
     >;
-    size: Attribute.Integer &
+    material: Attribute.JSON &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    color: Attribute.Component<'color-list.color-list', true> &
+    images: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    defaultImage: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    material: Attribute.String &
+    size: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    color: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    similarLooks: Attribute.Component<'product-collection.product-collection'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
