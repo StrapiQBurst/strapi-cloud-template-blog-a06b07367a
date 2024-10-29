@@ -1398,6 +1398,37 @@ export interface ApiHomePageHomePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiLineUserLineUser extends Schema.CollectionType {
+  collectionName: 'line_users';
+  info: {
+    singularName: 'line-user';
+    pluralName: 'line-users';
+    displayName: 'lineUsers';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userId: Attribute.String;
+    phone: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::line-user.line-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::line-user.line-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPdpPagePdpPage extends Schema.SingleType {
   collectionName: 'pdp_pages';
   info: {
@@ -1870,6 +1901,7 @@ declare module '@strapi/types' {
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::line-user.line-user': ApiLineUserLineUser;
       'api::pdp-page.pdp-page': ApiPdpPagePdpPage;
       'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
