@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "line_users",
+  "info": {
+    "singularName": "line-user",
+    "pluralName": "line-users",
+    "displayName": "lineUsers"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "decimal"
+    }
+  }
+}
