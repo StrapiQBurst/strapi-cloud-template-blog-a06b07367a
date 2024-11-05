@@ -109,17 +109,6 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
   attributes: {};
 }
 
-export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
-  collectionName: 'components_multi_part_heading_multi_part_headings';
-  info: {
-    displayName: 'multiPartHeading';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
 export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -143,15 +132,14 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
   };
 }
 
-export interface LinkLinks extends Schema.Component {
-  collectionName: 'components_link_links';
+export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
+  collectionName: 'components_multi_part_heading_multi_part_headings';
   info: {
-    displayName: 'Links';
+    displayName: 'multiPartHeading';
     description: '';
   };
   attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
+    title: Attribute.String;
   };
 }
 
@@ -166,6 +154,18 @@ export interface LeftContentLeftContent extends Schema.Component {
     description: Attribute.Text;
     align: Attribute.Enumeration<['start', 'end', 'center']>;
     title: Attribute.Text;
+  };
+}
+
+export interface LinkLinks extends Schema.Component {
+  collectionName: 'components_link_links';
+  info: {
+    displayName: 'Links';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    link: Attribute.String;
   };
 }
 
@@ -184,31 +184,6 @@ export interface InfoPanelInfoPanel extends Schema.Component {
       'multi-part-heading.multi-part-heading',
       true
     >;
-  };
-}
-
-export interface FooterFooterLink extends Schema.Component {
-  collectionName: 'components_footer_link_footer_links';
-  info: {
-    displayName: 'FooterLink';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    links: Attribute.Component<'link.links', true>;
-  };
-}
-
-export interface FeatureSectionFeatureSection extends Schema.Component {
-  collectionName: 'components_feature_section_feature_sections';
-  info: {
-    displayName: 'featureSection';
-    description: '';
-  };
-  attributes: {
-    featureList: Attribute.Component<'feature-list.baner-item', true>;
-    topTitle: Attribute.String;
-    title: Attribute.String;
   };
 }
 
@@ -231,6 +206,31 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
+export interface ErrorPageErrorPage extends Schema.Component {
+  collectionName: 'components_error_page_error_pages';
+  info: {
+    displayName: 'ErrorPage';
+  };
+  attributes: {
+    pageTitle: Attribute.String;
+    errorTitle: Attribute.String;
+    description: Attribute.String;
+    returnHomeLabel: Attribute.String;
+  };
+}
+
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_link_footer_links';
+  info: {
+    displayName: 'FooterLink';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    links: Attribute.Component<'link.links', true>;
+  };
+}
+
 export interface FeatureListBanerItem extends Schema.Component {
   collectionName: 'components_baner_baner_items';
   info: {
@@ -244,16 +244,16 @@ export interface FeatureListBanerItem extends Schema.Component {
   };
 }
 
-export interface ErrorPageErrorPage extends Schema.Component {
-  collectionName: 'components_error_page_error_pages';
+export interface FeatureSectionFeatureSection extends Schema.Component {
+  collectionName: 'components_feature_section_feature_sections';
   info: {
-    displayName: 'ErrorPage';
+    displayName: 'featureSection';
+    description: '';
   };
   attributes: {
-    pageTitle: Attribute.String;
-    errorTitle: Attribute.String;
-    description: Attribute.String;
-    returnHomeLabel: Attribute.String;
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
+    topTitle: Attribute.String;
+    title: Attribute.String;
   };
 }
 
@@ -314,16 +314,16 @@ declare module '@strapi/types' {
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
-      'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
-      'link.links': LinkLinks;
+      'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'left-content.left-content': LeftContentLeftContent;
+      'link.links': LinkLinks;
       'info-panel.info-panel': InfoPanelInfoPanel;
-      'footer.footer-link': FooterFooterLink;
-      'feature-section.feature-section': FeatureSectionFeatureSection;
       'hero-section.hero-section': HeroSectionHeroSection;
-      'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
+      'footer.footer-link': FooterFooterLink;
+      'feature-list.baner-item': FeatureListBanerItem;
+      'feature-section.feature-section': FeatureSectionFeatureSection;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
       'appointment-methods.appointment-methods': AppointmentMethodsAppointmentMethods;

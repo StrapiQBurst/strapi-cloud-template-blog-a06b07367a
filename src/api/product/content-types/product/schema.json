@@ -143,6 +143,12 @@
         }
       },
       "component": "product-collection.product-collection"
+    },
+    "wishlist": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wishlist.wishlist",
+      "inversedBy": "products"
     }
   }
 }
