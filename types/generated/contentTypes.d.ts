@@ -1783,9 +1783,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    wishlist: Attribute.Relation<
+    wishlists: Attribute.Relation<
       'api::product.product',
-      'manyToOne',
+      'manyToMany',
       'api::wishlist.wishlist'
     >;
     createdAt: Attribute.DateTime;
@@ -1887,6 +1887,7 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     singularName: 'wishlist';
     pluralName: 'wishlists';
     displayName: 'Wishlist';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1899,7 +1900,7 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     >;
     products: Attribute.Relation<
       'api::wishlist.wishlist',
-      'oneToMany',
+      'manyToMany',
       'api::product.product'
     >;
     brand: Attribute.Relation<
