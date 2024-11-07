@@ -144,9 +144,9 @@
       },
       "component": "product-collection.product-collection"
     },
-    "wishlist": {
+    "wishlists": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::wishlist.wishlist",
       "inversedBy": "products"
     }
