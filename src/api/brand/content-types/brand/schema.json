@@ -66,6 +66,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::suggestion.suggestion",
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
       "mappedBy": "brand"
     }
   }

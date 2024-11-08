@@ -1055,6 +1055,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::suggestion.suggestion'
     >;
+    events: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::event.event'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1180,6 +1185,11 @@ export interface ApiEventEvent extends Schema.CollectionType {
     advisorPrefixText: Attribute.String;
     buttons: Attribute.Component<'button.button', true>;
     endTime: Attribute.Time;
+    brand: Attribute.Relation<
+      'api::event.event',
+      'manyToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1470,6 +1480,11 @@ export interface ApiLineUserLineUser extends Schema.CollectionType {
       'api::line-user.line-user',
       'manyToMany',
       'api::suggestion.suggestion'
+    >;
+    event: Attribute.Relation<
+      'api::line-user.line-user',
+      'manyToOne',
+      'api::event.event'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
