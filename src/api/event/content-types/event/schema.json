@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Events",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "styleAdvisor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::style-advisor.style-advisor",
+      "inversedBy": "events"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::line-user.line-user",
+      "mappedBy": "event"
+    },
+    "dateTime": {
+      "type": "datetime"
+    },
+    "place": {
+      "type": "string"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "advisorPrefixText": {
+      "type": "string"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    },
+    "endTime": {
+      "type": "time"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "events"
+    }
+  }
+}

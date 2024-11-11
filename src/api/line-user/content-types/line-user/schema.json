@@ -22,6 +22,12 @@
       "relation": "manyToMany",
       "target": "api::suggestion.suggestion",
       "mappedBy": "user"
+    },
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "user"
     }
   }
 }

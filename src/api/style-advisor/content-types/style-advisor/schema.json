@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "style_advisors",
+  "info": {
+    "singularName": "style-advisor",
+    "pluralName": "style-advisors",
+    "displayName": "StyleAdvisor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "styleAdvisor"
+    }
+  }
+}
