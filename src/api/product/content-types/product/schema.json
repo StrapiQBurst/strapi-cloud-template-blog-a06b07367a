@@ -149,6 +149,12 @@
       "relation": "manyToMany",
       "target": "api::wishlist.wishlist",
       "inversedBy": "products"
+    },
+    "suggestions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::suggestion.suggestion",
+      "mappedBy": "products"
     }
   }
 }

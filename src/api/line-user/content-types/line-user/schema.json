@@ -16,6 +16,12 @@
     },
     "phone": {
       "type": "decimal"
+    },
+    "suggestions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::suggestion.suggestion",
+      "mappedBy": "user"
     }
   }
 }

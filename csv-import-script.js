@@ -87,7 +87,7 @@ async function readCSV(filePath) {
 
 async function run() {
   try {
-    await readCSV('./test2.csv');
+    await readCSV('./catalog.csv');
     await processRows(rows);
     console.log('All rows have been processed successfully.');
   } catch (error) {
