@@ -61,6 +61,12 @@
       "relation": "oneToMany",
       "target": "api::bottom-navigation.bottom-navigation",
       "mappedBy": "brand"
+    },
+    "suggestions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::suggestion.suggestion",
+      "mappedBy": "brand"
     }
   }
 }
