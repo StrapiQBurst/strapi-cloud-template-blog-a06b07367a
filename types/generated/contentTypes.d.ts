@@ -1909,6 +1909,11 @@ export interface ApiStyleAdvisorStyleAdvisor extends Schema.CollectionType {
       'oneToMany',
       'api::event.event'
     >;
+    suggestions: Attribute.Relation<
+      'api::style-advisor.style-advisor',
+      'manyToMany',
+      'api::suggestion.suggestion'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2026,6 +2031,11 @@ export interface ApiSuggestionSuggestion extends Schema.CollectionType {
       'api::suggestion.suggestion',
       'manyToOne',
       'api::brand.brand'
+    >;
+    styleAdvisor: Attribute.Relation<
+      'api::suggestion.suggestion',
+      'manyToMany',
+      'api::style-advisor.style-advisor'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

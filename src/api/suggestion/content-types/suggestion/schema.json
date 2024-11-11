@@ -43,6 +43,12 @@
       "relation": "manyToOne",
       "target": "api::brand.brand",
       "inversedBy": "suggestions"
+    },
+    "styleAdvisor": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::style-advisor.style-advisor",
+      "inversedBy": "suggestions"
     }
   }
 }
