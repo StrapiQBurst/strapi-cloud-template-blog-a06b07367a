@@ -1,19 +1,23 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
+export interface TestimonialContentTestimonialContent extends Schema.Component {
+  collectionName: 'components_testimonial_content_testimonial_contents';
   info: {
-    displayName: 'testimonial';
+    displayName: 'testimonialContent';
     description: '';
   };
   attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
+    rating: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 5;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    review: Attribute.Text;
+    userName: Attribute.String;
   };
 }
 
@@ -41,24 +45,20 @@ export interface SocialButtonSocialButton extends Schema.Component {
   };
 }
 
-export interface TestimonialContentTestimonialContent extends Schema.Component {
-  collectionName: 'components_testimonial_content_testimonial_contents';
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
   info: {
-    displayName: 'testimonialContent';
+    displayName: 'testimonial';
     description: '';
   };
   attributes: {
-    rating: Attribute.Integer &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-          max: 5;
-        },
-        number
-      > &
-      Attribute.DefaultTo<0>;
-    review: Attribute.Text;
-    userName: Attribute.String;
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
   };
 }
 
@@ -100,6 +100,15 @@ export interface PopUpMenuPopUpMenu extends Schema.Component {
   };
 }
 
+export interface OverlayMenuOverlayMenu extends Schema.Component {
+  collectionName: 'components_overlay_menu_overlay_menus';
+  info: {
+    displayName: 'overlayMenu';
+    description: '';
+  };
+  attributes: {};
+}
+
 export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -121,15 +130,6 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
       'api::gender.gender'
     >;
   };
-}
-
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {};
 }
 
 export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
@@ -206,19 +206,6 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
-export interface FeatureSectionFeatureSection extends Schema.Component {
-  collectionName: 'components_feature_section_feature_sections';
-  info: {
-    displayName: 'featureSection';
-    description: '';
-  };
-  attributes: {
-    featureList: Attribute.Component<'feature-list.baner-item', true>;
-    topTitle: Attribute.String;
-    title: Attribute.String;
-  };
-}
-
 export interface FooterFooterLink extends Schema.Component {
   collectionName: 'components_footer_link_footer_links';
   info: {
@@ -241,6 +228,19 @@ export interface FeatureListBanerItem extends Schema.Component {
     title: Attribute.String;
     imageUrl: Attribute.String;
     description: Attribute.Text;
+  };
+}
+
+export interface FeatureSectionFeatureSection extends Schema.Component {
+  collectionName: 'components_feature_section_feature_sections';
+  info: {
+    displayName: 'featureSection';
+    description: '';
+  };
+  attributes: {
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
+    topTitle: Attribute.String;
+    title: Attribute.String;
   };
 }
 
@@ -306,23 +306,23 @@ export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'testimonial.testimonial': TestimonialTestimonial;
+      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
-      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
+      'testimonial.testimonial': TestimonialTestimonial;
       'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
+      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
       'hero-section.hero-section': HeroSectionHeroSection;
-      'feature-section.feature-section': FeatureSectionFeatureSection;
       'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
+      'feature-section.feature-section': FeatureSectionFeatureSection;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;

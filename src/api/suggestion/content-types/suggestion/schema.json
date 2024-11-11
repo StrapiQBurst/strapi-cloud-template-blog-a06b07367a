@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "imageUrl": {
-      "type": "text"
-    },
     "title": {
       "type": "text"
     },
@@ -49,6 +46,13 @@
       "relation": "manyToMany",
       "target": "api::style-advisor.style-advisor",
       "inversedBy": "suggestions"
+    },
+    "imageUrl": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

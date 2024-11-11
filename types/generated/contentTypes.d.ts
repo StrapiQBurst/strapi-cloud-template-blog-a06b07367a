@@ -1177,8 +1177,8 @@ export interface ApiEventEvent extends Schema.CollectionType {
     >;
     dateTime: Attribute.DateTime;
     place: Attribute.String;
-    backgroundImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    bannerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    backgroundImage: Attribute.Media<'images'>;
+    bannerImage: Attribute.Media<'images'>;
     heading: Attribute.String;
     title: Attribute.String;
     subTitle: Attribute.String;
@@ -2013,7 +2013,6 @@ export interface ApiSuggestionSuggestion extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    imageUrl: Attribute.Text;
     title: Attribute.Text;
     user: Attribute.Relation<
       'api::suggestion.suggestion',
@@ -2037,6 +2036,7 @@ export interface ApiSuggestionSuggestion extends Schema.CollectionType {
       'manyToMany',
       'api::style-advisor.style-advisor'
     >;
+    imageUrl: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
