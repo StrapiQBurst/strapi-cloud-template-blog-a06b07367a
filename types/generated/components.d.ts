@@ -17,27 +17,6 @@ export interface TestimonialTestimonial extends Schema.Component {
   };
 }
 
-export interface TestimonialContentTestimonialContent extends Schema.Component {
-  collectionName: 'components_testimonial_content_testimonial_contents';
-  info: {
-    displayName: 'testimonialContent';
-    description: '';
-  };
-  attributes: {
-    rating: Attribute.Integer &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-          max: 5;
-        },
-        number
-      > &
-      Attribute.DefaultTo<0>;
-    review: Attribute.Text;
-    userName: Attribute.String;
-  };
-}
-
 export interface SortingSorting extends Schema.Component {
   collectionName: 'components_sorting_sortings';
   info: {
@@ -59,6 +38,27 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
+  };
+}
+
+export interface TestimonialContentTestimonialContent extends Schema.Component {
+  collectionName: 'components_testimonial_content_testimonial_contents';
+  info: {
+    displayName: 'testimonialContent';
+    description: '';
+  };
+  attributes: {
+    rating: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 5;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    review: Attribute.Text;
+    userName: Attribute.String;
   };
 }
 
@@ -100,15 +100,6 @@ export interface PopUpMenuPopUpMenu extends Schema.Component {
   };
 }
 
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {};
-}
-
 export interface NavigationMenuItemsNavItems extends Schema.Component {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -130,6 +121,15 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
       'api::gender.gender'
     >;
   };
+}
+
+export interface OverlayMenuOverlayMenu extends Schema.Component {
+  collectionName: 'components_overlay_menu_overlay_menus';
+  info: {
+    displayName: 'overlayMenu';
+    description: '';
+  };
+  attributes: {};
 }
 
 export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
@@ -206,18 +206,6 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
-export interface FooterFooterLink extends Schema.Component {
-  collectionName: 'components_footer_link_footer_links';
-  info: {
-    displayName: 'FooterLink';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    links: Attribute.Component<'link.links', true>;
-  };
-}
-
 export interface FeatureSectionFeatureSection extends Schema.Component {
   collectionName: 'components_feature_section_feature_sections';
   info: {
@@ -228,6 +216,18 @@ export interface FeatureSectionFeatureSection extends Schema.Component {
     featureList: Attribute.Component<'feature-list.baner-item', true>;
     topTitle: Attribute.String;
     title: Attribute.String;
+  };
+}
+
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_link_footer_links';
+  info: {
+    displayName: 'FooterLink';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    links: Attribute.Component<'link.links', true>;
   };
 }
 
@@ -307,21 +307,21 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial.testimonial': TestimonialTestimonial;
-      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
+      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
+      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
       'hero-section.hero-section': HeroSectionHeroSection;
-      'footer.footer-link': FooterFooterLink;
       'feature-section.feature-section': FeatureSectionFeatureSection;
+      'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
