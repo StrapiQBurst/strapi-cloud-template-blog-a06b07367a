@@ -18,11 +18,11 @@
       "target": "api::style-advisor.style-advisor",
       "inversedBy": "events"
     },
-    "user": {
+    "users": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::line-user.line-user",
-      "mappedBy": "event"
+      "inversedBy": "events"
     },
     "dateTime": {
       "type": "datetime"
