@@ -1170,9 +1170,9 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'manyToOne',
       'api::style-advisor.style-advisor'
     >;
-    user: Attribute.Relation<
+    users: Attribute.Relation<
       'api::event.event',
-      'oneToMany',
+      'manyToMany',
       'api::line-user.line-user'
     >;
     dateTime: Attribute.DateTime;
@@ -1481,9 +1481,9 @@ export interface ApiLineUserLineUser extends Schema.CollectionType {
       'manyToMany',
       'api::suggestion.suggestion'
     >;
-    event: Attribute.Relation<
+    events: Attribute.Relation<
       'api::line-user.line-user',
-      'manyToOne',
+      'manyToMany',
       'api::event.event'
     >;
     createdAt: Attribute.DateTime;
