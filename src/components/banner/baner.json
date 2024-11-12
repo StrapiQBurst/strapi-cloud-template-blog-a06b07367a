@@ -53,6 +53,12 @@
     },
     "offerTitle": {
       "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

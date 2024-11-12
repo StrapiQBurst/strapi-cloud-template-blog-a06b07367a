@@ -1504,6 +1504,45 @@ export interface ApiLineUserLineUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiMyAccountMyAccount extends Schema.SingleType {
+  collectionName: 'my_accounts';
+  info: {
+    singularName: 'my-account';
+    pluralName: 'my-accounts';
+    displayName: 'MyAccount';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageHeader: Attribute.String;
+    title: Attribute.String;
+    suggestionTitle: Attribute.String;
+    suggestionDescription: Attribute.String;
+    wishlistTitle: Attribute.String;
+    allLabel: Attribute.String;
+    eventsTitle: Attribute.String;
+    banner1: Attribute.Component<'banner.baner'>;
+    gifts: Attribute.Component<'banner.baner'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::my-account.my-account',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::my-account.my-account',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPdpPagePdpPage extends Schema.SingleType {
   collectionName: 'pdp_pages';
   info: {
@@ -2127,6 +2166,7 @@ declare module '@strapi/types' {
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::line-user.line-user': ApiLineUserLineUser;
+      'api::my-account.my-account': ApiMyAccountMyAccount;
       'api::pdp-page.pdp-page': ApiPdpPagePdpPage;
       'api::plp-page.plp-page': ApiPlpPagePlpPage;
       'api::product.product': ApiProductProduct;
