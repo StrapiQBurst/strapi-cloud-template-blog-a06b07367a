@@ -27,9 +27,6 @@
     "wishlistTitle": {
       "type": "string"
     },
-    "allLabel": {
-      "type": "string"
-    },
     "eventsTitle": {
       "type": "string"
     },
@@ -42,6 +39,16 @@
       "type": "component",
       "repeatable": false,
       "component": "banner.baner"
+    },
+    "wishlistButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    },
+    "eventButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
     }
   }
 }

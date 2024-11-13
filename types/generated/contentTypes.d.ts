@@ -1521,10 +1521,11 @@ export interface ApiMyAccountMyAccount extends Schema.SingleType {
     suggestionTitle: Attribute.String;
     suggestionDescription: Attribute.String;
     wishlistTitle: Attribute.String;
-    allLabel: Attribute.String;
     eventsTitle: Attribute.String;
     banner1: Attribute.Component<'banner.baner'>;
     gifts: Attribute.Component<'banner.baner'>;
+    wishlistButtons: Attribute.Component<'button.button', true>;
+    eventButtons: Attribute.Component<'button.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2105,6 +2106,11 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     users: Attribute.Relation<
       'api::wishlist.wishlist',
@@ -2136,6 +2142,12 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToMany',
+      'api::wishlist.wishlist'
+    >;
+    locale: Attribute.String;
   };
 }
 
