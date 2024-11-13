@@ -1153,6 +1153,63 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiConstantConstant extends Schema.CollectionType {
+  collectionName: 'constants';
+  info: {
+    singularName: 'constant';
+    pluralName: 'constants';
+    displayName: 'constant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    brand: Attribute.Relation<
+      'api::constant.constant',
+      'oneToOne',
+      'api::brand.brand'
+    >;
+    wishlistPageTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    wishlistHeading: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::constant.constant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::constant.constant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::constant.constant',
+      'oneToMany',
+      'api::constant.constant'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiEventEvent extends Schema.CollectionType {
   collectionName: 'events';
   info: {
@@ -2173,6 +2230,7 @@ declare module '@strapi/types' {
       'api::bottom-navigation.bottom-navigation': ApiBottomNavigationBottomNavigation;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::constant.constant': ApiConstantConstant;
       'api::event.event': ApiEventEvent;
       'api::gender.gender': ApiGenderGender;
       'api::header.header': ApiHeaderHeader;
