@@ -51,16 +51,6 @@ export interface SortingSorting extends Schema.Component {
   };
 }
 
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
-  info: {
-    displayName: 'rightContent';
-  };
-  attributes: {
-    imgUrl: Attribute.String;
-  };
-}
-
 export interface SocialButtonSocialButton extends Schema.Component {
   collectionName: 'components_social_button_social_buttons';
   info: {
@@ -69,6 +59,16 @@ export interface SocialButtonSocialButton extends Schema.Component {
   attributes: {
     logoUrl: Attribute.String;
     socialLink: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
   };
 }
 
@@ -98,15 +98,6 @@ export interface PopUpMenuPopUpMenu extends Schema.Component {
     label: Attribute.String;
     link: Attribute.String;
   };
-}
-
-export interface OverlayMenuOverlayMenu extends Schema.Component {
-  collectionName: 'components_overlay_menu_overlay_menus';
-  info: {
-    displayName: 'overlayMenu';
-    description: '';
-  };
-  attributes: {};
 }
 
 export interface NavigationMenuItemsNavItems extends Schema.Component {
@@ -153,6 +144,15 @@ export interface LinkLinks extends Schema.Component {
     label: Attribute.String;
     link: Attribute.String;
   };
+}
+
+export interface OverlayMenuOverlayMenu extends Schema.Component {
+  collectionName: 'components_overlay_menu_overlay_menus';
+  info: {
+    displayName: 'overlayMenu';
+    description: '';
+  };
+  attributes: {};
 }
 
 export interface LeftContentLeftContent extends Schema.Component {
@@ -270,6 +270,16 @@ export interface ButtonButton extends Schema.Component {
   };
 }
 
+export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
+  collectionName: 'components_appointment_methods_appointment_methods';
+  info: {
+    displayName: 'appointmentMethods';
+  };
+  attributes: {
+    label: Attribute.String;
+  };
+}
+
 export interface BannerBaner extends Schema.Component {
   collectionName: 'components_baner_baners';
   info: {
@@ -295,30 +305,20 @@ export interface BannerBaner extends Schema.Component {
   };
 }
 
-export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
-  collectionName: 'components_appointment_methods_appointment_methods';
-  info: {
-    displayName: 'appointmentMethods';
-  };
-  attributes: {
-    label: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'testimonial.testimonial': TestimonialTestimonial;
       'sorting.sorting': SortingSorting;
-      'right-content.right-content': RightContentRightContent;
       'social-button.social-button': SocialButtonSocialButton;
+      'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
-      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'link.links': LinkLinks;
+      'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
       'hero-section.hero-section': HeroSectionHeroSection;
@@ -327,8 +327,8 @@ declare module '@strapi/types' {
       'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
-      'banner.baner': BannerBaner;
       'appointment-methods.appointment-methods': AppointmentMethodsAppointmentMethods;
+      'banner.baner': BannerBaner;
     }
   }
 }
