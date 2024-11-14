@@ -1187,6 +1187,12 @@ export interface ApiConstantConstant extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    eventListTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1248,6 +1254,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'manyToOne',
       'api::brand.brand'
     >;
+    eventDetailsTItle: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

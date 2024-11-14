@@ -132,6 +132,17 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
   };
 }
 
+export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
+  collectionName: 'components_multi_part_heading_multi_part_headings';
+  info: {
+    displayName: 'multiPartHeading';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 export interface LinkLinks extends Schema.Component {
   collectionName: 'components_link_links';
   info: {
@@ -141,6 +152,20 @@ export interface LinkLinks extends Schema.Component {
   attributes: {
     label: Attribute.String;
     link: Attribute.String;
+  };
+}
+
+export interface LeftContentLeftContent extends Schema.Component {
+  collectionName: 'components_left_content_left_contents';
+  info: {
+    displayName: 'leftContent';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    description: Attribute.Text;
+    align: Attribute.Enumeration<['start', 'end', 'center']>;
+    title: Attribute.Text;
   };
 }
 
@@ -159,43 +184,6 @@ export interface InfoPanelInfoPanel extends Schema.Component {
       'multi-part-heading.multi-part-heading',
       true
     >;
-  };
-}
-
-export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
-  collectionName: 'components_multi_part_heading_multi_part_headings';
-  info: {
-    displayName: 'multiPartHeading';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface LeftContentLeftContent extends Schema.Component {
-  collectionName: 'components_left_content_left_contents';
-  info: {
-    displayName: 'leftContent';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    description: Attribute.Text;
-    align: Attribute.Enumeration<['start', 'end', 'center']>;
-    title: Attribute.Text;
-  };
-}
-
-export interface FooterFooterLink extends Schema.Component {
-  collectionName: 'components_footer_link_footer_links';
-  info: {
-    displayName: 'FooterLink';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    links: Attribute.Component<'link.links', true>;
   };
 }
 
@@ -218,16 +206,15 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
-export interface FeatureSectionFeatureSection extends Schema.Component {
-  collectionName: 'components_feature_section_feature_sections';
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_link_footer_links';
   info: {
-    displayName: 'featureSection';
+    displayName: 'FooterLink';
     description: '';
   };
   attributes: {
-    featureList: Attribute.Component<'feature-list.baner-item', true>;
-    topTitle: Attribute.String;
     title: Attribute.String;
+    links: Attribute.Component<'link.links', true>;
   };
 }
 
@@ -241,6 +228,19 @@ export interface FeatureListBanerItem extends Schema.Component {
     title: Attribute.String;
     imageUrl: Attribute.String;
     description: Attribute.Text;
+  };
+}
+
+export interface FeatureSectionFeatureSection extends Schema.Component {
+  collectionName: 'components_feature_section_feature_sections';
+  info: {
+    displayName: 'featureSection';
+    description: '';
+  };
+  attributes: {
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
+    topTitle: Attribute.String;
+    title: Attribute.String;
   };
 }
 
@@ -317,14 +317,14 @@ declare module '@strapi/types' {
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
-      'link.links': LinkLinks;
-      'info-panel.info-panel': InfoPanelInfoPanel;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
+      'link.links': LinkLinks;
       'left-content.left-content': LeftContentLeftContent;
-      'footer.footer-link': FooterFooterLink;
+      'info-panel.info-panel': InfoPanelInfoPanel;
       'hero-section.hero-section': HeroSectionHeroSection;
-      'feature-section.feature-section': FeatureSectionFeatureSection;
+      'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
+      'feature-section.feature-section': FeatureSectionFeatureSection;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
