@@ -4,7 +4,8 @@
   "info": {
     "singularName": "line-user",
     "pluralName": "line-users",
-    "displayName": "lineUsers"
+    "displayName": "lineUsers",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,9 +14,6 @@
   "attributes": {
     "userId": {
       "type": "string"
-    },
-    "phone": {
-      "type": "decimal"
     },
     "suggestions": {
       "type": "relation",
@@ -28,6 +26,15 @@
       "relation": "manyToMany",
       "target": "api::event.event",
       "mappedBy": "users"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }
