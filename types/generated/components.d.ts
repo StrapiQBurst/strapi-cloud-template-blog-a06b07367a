@@ -1,5 +1,22 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface TestimonialTestimonial extends Schema.Component {
+  collectionName: 'components_testimonial_testimonials';
+  info: {
+    displayName: 'testimonial';
+    description: '';
+  };
+  attributes: {
+    topTitle: Attribute.String;
+    bgImageUrl: Attribute.String;
+    title: Attribute.String;
+    testimonialContent: Attribute.Component<
+      'testimonial-content.testimonial-content',
+      true
+    >;
+  };
+}
+
 export interface TestimonialContentTestimonialContent extends Schema.Component {
   collectionName: 'components_testimonial_content_testimonial_contents';
   info: {
@@ -18,23 +35,6 @@ export interface TestimonialContentTestimonialContent extends Schema.Component {
       Attribute.DefaultTo<0>;
     review: Attribute.Text;
     userName: Attribute.String;
-  };
-}
-
-export interface TestimonialTestimonial extends Schema.Component {
-  collectionName: 'components_testimonial_testimonials';
-  info: {
-    displayName: 'testimonial';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    bgImageUrl: Attribute.String;
-    title: Attribute.String;
-    testimonialContent: Attribute.Component<
-      'testimonial-content.testimonial-content',
-      true
-    >;
   };
 }
 
@@ -62,16 +62,6 @@ export interface SocialButtonSocialButton extends Schema.Component {
   };
 }
 
-export interface RightContentRightContent extends Schema.Component {
-  collectionName: 'components_right_content_right_contents';
-  info: {
-    displayName: 'rightContent';
-  };
-  attributes: {
-    imgUrl: Attribute.String;
-  };
-}
-
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -86,6 +76,16 @@ export interface ProductCollectionProductCollection extends Schema.Component {
       'api::product.product'
     >;
     topTitle: Attribute.String;
+  };
+}
+
+export interface RightContentRightContent extends Schema.Component {
+  collectionName: 'components_right_content_right_contents';
+  info: {
+    displayName: 'rightContent';
+  };
+  attributes: {
+    imgUrl: Attribute.String;
   };
 }
 
@@ -155,6 +155,25 @@ export interface LinkLinks extends Schema.Component {
   };
 }
 
+export interface HeroSectionHeroSection extends Schema.Component {
+  collectionName: 'components_hero_section_hero_sections';
+  info: {
+    displayName: 'HeroSection';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.String;
+    imageUrl: Attribute.String;
+    buttons: Attribute.Component<'button.button', true>;
+    multiPartHeading: Attribute.Component<
+      'multi-part-heading.multi-part-heading',
+      true
+    >;
+    topTitle: Attribute.String;
+  };
+}
+
 export interface LeftContentLeftContent extends Schema.Component {
   collectionName: 'components_left_content_left_contents';
   info: {
@@ -187,22 +206,16 @@ export interface InfoPanelInfoPanel extends Schema.Component {
   };
 }
 
-export interface HeroSectionHeroSection extends Schema.Component {
-  collectionName: 'components_hero_section_hero_sections';
+export interface FeatureSectionFeatureSection extends Schema.Component {
+  collectionName: 'components_feature_section_feature_sections';
   info: {
-    displayName: 'HeroSection';
+    displayName: 'featureSection';
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.String;
-    imageUrl: Attribute.String;
-    buttons: Attribute.Component<'button.button', true>;
-    multiPartHeading: Attribute.Component<
-      'multi-part-heading.multi-part-heading',
-      true
-    >;
+    featureList: Attribute.Component<'feature-list.baner-item', true>;
     topTitle: Attribute.String;
+    title: Attribute.String;
   };
 }
 
@@ -228,19 +241,6 @@ export interface FeatureListBanerItem extends Schema.Component {
     title: Attribute.String;
     imageUrl: Attribute.String;
     description: Attribute.Text;
-  };
-}
-
-export interface FeatureSectionFeatureSection extends Schema.Component {
-  collectionName: 'components_feature_section_feature_sections';
-  info: {
-    displayName: 'featureSection';
-    description: '';
-  };
-  attributes: {
-    featureList: Attribute.Component<'feature-list.baner-item', true>;
-    topTitle: Attribute.String;
-    title: Attribute.String;
   };
 }
 
@@ -308,23 +308,23 @@ export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'testimonial.testimonial': TestimonialTestimonial;
+      'testimonial-content.testimonial-content': TestimonialContentTestimonialContent;
       'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
-      'right-content.right-content': RightContentRightContent;
       'product-collection.product-collection': ProductCollectionProductCollection;
+      'right-content.right-content': RightContentRightContent;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
       'link.links': LinkLinks;
+      'hero-section.hero-section': HeroSectionHeroSection;
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
-      'hero-section.hero-section': HeroSectionHeroSection;
+      'feature-section.feature-section': FeatureSectionFeatureSection;
       'footer.footer-link': FooterFooterLink;
       'feature-list.baner-item': FeatureListBanerItem;
-      'feature-section.feature-section': FeatureSectionFeatureSection;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;
