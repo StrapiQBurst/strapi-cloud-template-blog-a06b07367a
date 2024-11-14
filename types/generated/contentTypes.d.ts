@@ -1527,13 +1527,13 @@ export interface ApiLineUserLineUser extends Schema.CollectionType {
     singularName: 'line-user';
     pluralName: 'line-users';
     displayName: 'lineUsers';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     userId: Attribute.String;
-    phone: Attribute.Decimal;
     suggestions: Attribute.Relation<
       'api::line-user.line-user',
       'manyToMany',
@@ -1544,6 +1544,9 @@ export interface ApiLineUserLineUser extends Schema.CollectionType {
       'manyToMany',
       'api::event.event'
     >;
+    phone: Attribute.String;
+    email: Attribute.String;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
