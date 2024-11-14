@@ -10,16 +10,25 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "brands": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::brand.brand",
-      "inversedBy": "place_lists"
+      "inversedBy": "placeLists"
     },
-    "Values": {
-      "type": "string"
+    "values": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

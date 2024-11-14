@@ -79,7 +79,7 @@
       "relation": "manyToMany",
       "target": "api::time-slot.time-slot"
     },
-    "place_lists": {
+    "placeLists": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::place-list.place-list",

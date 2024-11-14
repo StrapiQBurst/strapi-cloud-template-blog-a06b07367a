@@ -632,7 +632,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    place_lists: Attribute.Relation<
+    placeLists: Attribute.Relation<
       'api::brand.brand',
       'manyToMany',
       'api::place-list.place-list'
@@ -1296,6 +1296,11 @@ export interface ApiPlaceListPlaceList extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     brands: Attribute.Relation<
       'api::place-list.place-list',
@@ -1309,6 +1314,12 @@ export interface ApiPlaceListPlaceList extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    locale: Attribute.String;
+    localizations: Attribute.Relation<
+      'api::place-list.place-list',
+      'oneToMany',
+      'api::place-list.place-list'
+    >;
     publishedAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
@@ -1317,7 +1328,12 @@ export interface ApiPlaceListPlaceList extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    Values: Attribute.String;
+    values: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
