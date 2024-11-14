@@ -206,6 +206,19 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
 }
 
+export interface FeatureListBanerItem extends Schema.Component {
+  collectionName: 'components_baner_baner_items';
+  info: {
+    displayName: 'FeatureItem';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    imageUrl: Attribute.String;
+    description: Attribute.Text;
+  };
+}
+
 export interface FooterFooterLink extends Schema.Component {
   collectionName: 'components_footer_link_footer_links';
   info: {
@@ -228,19 +241,6 @@ export interface FeatureSectionFeatureSection extends Schema.Component {
     featureList: Attribute.Component<'feature-list.baner-item', true>;
     topTitle: Attribute.String;
     title: Attribute.String;
-  };
-}
-
-export interface FeatureListBanerItem extends Schema.Component {
-  collectionName: 'components_baner_baner_items';
-  info: {
-    displayName: 'FeatureItem';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    imageUrl: Attribute.String;
-    description: Attribute.Text;
   };
 }
 
@@ -322,9 +322,9 @@ declare module '@strapi/types' {
       'left-content.left-content': LeftContentLeftContent;
       'info-panel.info-panel': InfoPanelInfoPanel;
       'hero-section.hero-section': HeroSectionHeroSection;
+      'feature-list.baner-item': FeatureListBanerItem;
       'footer.footer-link': FooterFooterLink;
       'feature-section.feature-section': FeatureSectionFeatureSection;
-      'feature-list.baner-item': FeatureListBanerItem;
       'error-page.error-page': ErrorPageErrorPage;
       'button.button': ButtonButton;
       'banner.baner': BannerBaner;

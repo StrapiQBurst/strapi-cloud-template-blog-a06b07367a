@@ -1159,6 +1159,7 @@ export interface ApiConstantConstant extends Schema.CollectionType {
     singularName: 'constant';
     pluralName: 'constants';
     displayName: 'constant';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1174,7 +1175,7 @@ export interface ApiConstantConstant extends Schema.CollectionType {
       'oneToOne',
       'api::brand.brand'
     >;
-    wishlistPageTitle: Attribute.String &
+    commonPageTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
