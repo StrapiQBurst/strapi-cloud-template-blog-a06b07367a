@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "place_lists",
+  "info": {
+    "singularName": "place-list",
+    "pluralName": "place-lists",
+    "displayName": "PlaceList",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "brands": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::brand.brand",
+      "inversedBy": "placeLists"
+    },
+    "values": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
