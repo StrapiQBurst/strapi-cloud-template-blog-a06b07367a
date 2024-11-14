@@ -73,6 +73,12 @@
       "relation": "oneToMany",
       "target": "api::event.event",
       "mappedBy": "brand"
+    },
+    "time_slots": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::time-slot.time-slot",
+      "mappedBy": "brands"
     }
   }
 }

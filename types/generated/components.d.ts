@@ -72,6 +72,17 @@ export interface RightContentRightContent extends Schema.Component {
   };
 }
 
+export interface PopUpMenuPopUpMenu extends Schema.Component {
+  collectionName: 'components_pop_up_menu_pop_up_menus';
+  info: {
+    displayName: 'popUpMenu';
+  };
+  attributes: {
+    label: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface ProductCollectionProductCollection extends Schema.Component {
   collectionName: 'components_p_s_p_ss';
   info: {
@@ -89,17 +100,6 @@ export interface ProductCollectionProductCollection extends Schema.Component {
   };
 }
 
-export interface PopUpMenuPopUpMenu extends Schema.Component {
-  collectionName: 'components_pop_up_menu_pop_up_menus';
-  info: {
-    displayName: 'popUpMenu';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
 export interface OverlayMenuOverlayMenu extends Schema.Component {
   collectionName: 'components_overlay_menu_overlay_menus';
   info: {
@@ -107,6 +107,17 @@ export interface OverlayMenuOverlayMenu extends Schema.Component {
     description: '';
   };
   attributes: {};
+}
+
+export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
+  collectionName: 'components_multi_part_heading_multi_part_headings';
+  info: {
+    displayName: 'multiPartHeading';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
 }
 
 export interface NavigationMenuItemsNavItems extends Schema.Component {
@@ -132,14 +143,22 @@ export interface NavigationMenuItemsNavItems extends Schema.Component {
   };
 }
 
-export interface MultiPartHeadingMultiPartHeading extends Schema.Component {
-  collectionName: 'components_multi_part_heading_multi_part_headings';
+export interface HeroSectionHeroSection extends Schema.Component {
+  collectionName: 'components_hero_section_hero_sections';
   info: {
-    displayName: 'multiPartHeading';
+    displayName: 'HeroSection';
     description: '';
   };
   attributes: {
     title: Attribute.String;
+    description: Attribute.String;
+    imageUrl: Attribute.String;
+    buttons: Attribute.Component<'button.button', true>;
+    multiPartHeading: Attribute.Component<
+      'multi-part-heading.multi-part-heading',
+      true
+    >;
+    topTitle: Attribute.String;
   };
 }
 
@@ -152,20 +171,6 @@ export interface LinkLinks extends Schema.Component {
   attributes: {
     label: Attribute.String;
     link: Attribute.String;
-  };
-}
-
-export interface LeftContentLeftContent extends Schema.Component {
-  collectionName: 'components_left_content_left_contents';
-  info: {
-    displayName: 'leftContent';
-    description: '';
-  };
-  attributes: {
-    topTitle: Attribute.String;
-    description: Attribute.Text;
-    align: Attribute.Enumeration<['start', 'end', 'center']>;
-    title: Attribute.Text;
   };
 }
 
@@ -187,22 +192,17 @@ export interface InfoPanelInfoPanel extends Schema.Component {
   };
 }
 
-export interface HeroSectionHeroSection extends Schema.Component {
-  collectionName: 'components_hero_section_hero_sections';
+export interface LeftContentLeftContent extends Schema.Component {
+  collectionName: 'components_left_content_left_contents';
   info: {
-    displayName: 'HeroSection';
+    displayName: 'leftContent';
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.String;
-    imageUrl: Attribute.String;
-    buttons: Attribute.Component<'button.button', true>;
-    multiPartHeading: Attribute.Component<
-      'multi-part-heading.multi-part-heading',
-      true
-    >;
     topTitle: Attribute.String;
+    description: Attribute.Text;
+    align: Attribute.Enumeration<['start', 'end', 'center']>;
+    title: Attribute.Text;
   };
 }
 
@@ -215,6 +215,19 @@ export interface FooterFooterLink extends Schema.Component {
   attributes: {
     title: Attribute.String;
     links: Attribute.Component<'link.links', true>;
+  };
+}
+
+export interface ErrorPageErrorPage extends Schema.Component {
+  collectionName: 'components_error_page_error_pages';
+  info: {
+    displayName: 'ErrorPage';
+  };
+  attributes: {
+    pageTitle: Attribute.String;
+    errorTitle: Attribute.String;
+    description: Attribute.String;
+    returnHomeLabel: Attribute.String;
   };
 }
 
@@ -241,32 +254,6 @@ export interface FeatureSectionFeatureSection extends Schema.Component {
     featureList: Attribute.Component<'feature-list.baner-item', true>;
     topTitle: Attribute.String;
     title: Attribute.String;
-  };
-}
-
-export interface ErrorPageErrorPage extends Schema.Component {
-  collectionName: 'components_error_page_error_pages';
-  info: {
-    displayName: 'ErrorPage';
-  };
-  attributes: {
-    pageTitle: Attribute.String;
-    errorTitle: Attribute.String;
-    description: Attribute.String;
-    returnHomeLabel: Attribute.String;
-  };
-}
-
-export interface ButtonButton extends Schema.Component {
-  collectionName: 'components_button_buttons';
-  info: {
-    displayName: 'Button';
-    description: '';
-  };
-  attributes: {
-    buttonText: Attribute.String;
-    buttonLink: Attribute.String;
-    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
   };
 }
 
@@ -305,6 +292,19 @@ export interface AppointmentMethodsAppointmentMethods extends Schema.Component {
   };
 }
 
+export interface ButtonButton extends Schema.Component {
+  collectionName: 'components_button_buttons';
+  info: {
+    displayName: 'Button';
+    description: '';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    buttonLink: Attribute.String;
+    type: Attribute.Enumeration<['button-primary', 'button-secondary', 'link']>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -313,22 +313,22 @@ declare module '@strapi/types' {
       'sorting.sorting': SortingSorting;
       'social-button.social-button': SocialButtonSocialButton;
       'right-content.right-content': RightContentRightContent;
-      'product-collection.product-collection': ProductCollectionProductCollection;
       'pop-up-menu.pop-up-menu': PopUpMenuPopUpMenu;
+      'product-collection.product-collection': ProductCollectionProductCollection;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
-      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
-      'link.links': LinkLinks;
-      'left-content.left-content': LeftContentLeftContent;
-      'info-panel.info-panel': InfoPanelInfoPanel;
+      'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'hero-section.hero-section': HeroSectionHeroSection;
+      'link.links': LinkLinks;
+      'info-panel.info-panel': InfoPanelInfoPanel;
+      'left-content.left-content': LeftContentLeftContent;
       'footer.footer-link': FooterFooterLink;
+      'error-page.error-page': ErrorPageErrorPage;
       'feature-list.baner-item': FeatureListBanerItem;
       'feature-section.feature-section': FeatureSectionFeatureSection;
-      'error-page.error-page': ErrorPageErrorPage;
-      'button.button': ButtonButton;
       'banner.baner': BannerBaner;
       'appointment-methods.appointment-methods': AppointmentMethodsAppointmentMethods;
+      'button.button': ButtonButton;
     }
   }
 }

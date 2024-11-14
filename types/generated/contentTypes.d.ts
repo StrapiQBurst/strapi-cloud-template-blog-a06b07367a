@@ -1060,6 +1060,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::event.event'
     >;
+    time_slots: Attribute.Relation<
+      'api::brand.brand',
+      'manyToMany',
+      'api::time-slot.time-slot'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2163,6 +2168,58 @@ export interface ApiSuggestionSuggestion extends Schema.CollectionType {
   };
 }
 
+export interface ApiTimeSlotTimeSlot extends Schema.CollectionType {
+  collectionName: 'time_slots';
+  info: {
+    singularName: 'time-slot';
+    pluralName: 'time-slots';
+    displayName: 'TimeSlot';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    brands: Attribute.Relation<
+      'api::time-slot.time-slot',
+      'manyToMany',
+      'api::brand.brand'
+    >;
+    Value: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::time-slot.time-slot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::time-slot.time-slot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::time-slot.time-slot',
+      'oneToMany',
+      'api::time-slot.time-slot'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiWishlistWishlist extends Schema.CollectionType {
   collectionName: 'wishlists';
   info: {
@@ -2254,6 +2311,7 @@ declare module '@strapi/types' {
       'api::style-advisor.style-advisor': ApiStyleAdvisorStyleAdvisor;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::suggestion.suggestion': ApiSuggestionSuggestion;
+      'api::time-slot.time-slot': ApiTimeSlotTimeSlot;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }
