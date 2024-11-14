@@ -20,9 +20,9 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::brand.brand",
-      "inversedBy": "time_slots"
+      "inversedBy": "timeSlots"
     },
-    "Value": {
+    "value": {
       "type": "string",
       "pluginOptions": {
         "i18n": {

@@ -1060,7 +1060,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'oneToMany',
       'api::event.event'
     >;
-    time_slots: Attribute.Relation<
+    timeSlots: Attribute.Relation<
       'api::brand.brand',
       'manyToMany',
       'api::time-slot.time-slot'
@@ -2190,7 +2190,7 @@ export interface ApiTimeSlotTimeSlot extends Schema.CollectionType {
       'manyToMany',
       'api::brand.brand'
     >;
-    Value: Attribute.String &
+    value: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
