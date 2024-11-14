@@ -36,6 +36,14 @@
           "localized": true
         }
       }
+    },
+    "eventListTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
