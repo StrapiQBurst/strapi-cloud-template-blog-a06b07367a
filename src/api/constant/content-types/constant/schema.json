@@ -4,7 +4,8 @@
   "info": {
     "singularName": "constant",
     "pluralName": "constants",
-    "displayName": "constant"
+    "displayName": "constant",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,7 +21,7 @@
       "relation": "oneToOne",
       "target": "api::brand.brand"
     },
-    "wishlistPageTitle": {
+    "commonPageTitle": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
