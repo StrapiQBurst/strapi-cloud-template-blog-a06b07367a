@@ -362,6 +362,92 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAppointmentAppointment extends Schema.CollectionType {
+  collectionName: 'appointments';
+  info: {
+    description: '';
+    displayName: 'Appointment';
+    pluralName: 'appointments';
+    singularName: 'appointment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    category: Attribute.Relation<
+      'api::appointment.appointment',
+      'manyToOne',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::appointment.appointment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    emailId: Attribute.Email &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    firstName: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    lastName: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Attribute.String;
+    localizations: Attribute.Relation<
+      'api::appointment.appointment',
+      'oneToMany',
+      'api::appointment.appointment'
+    >;
+    message: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    phoneNumber: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    placeList: Attribute.Relation<
+      'api::appointment.appointment',
+      'manyToOne',
+      'api::place-list.place-list'
+    >;
+    publishedAt: Attribute.DateTime;
+    timeSlot: Attribute.Relation<
+      'api::appointment.appointment',
+      'manyToOne',
+      'api::time-slot.time-slot'
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::appointment.appointment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
   collectionName: 'book_appointments';
   info: {
@@ -685,6 +771,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     };
   };
   attributes: {
+    appointments: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::appointment.appointment'
+    >;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::category.category',
@@ -1302,6 +1393,11 @@ export interface ApiPlaceListPlaceList extends Schema.CollectionType {
     };
   };
   attributes: {
+    appointments: Attribute.Relation<
+      'api::place-list.place-list',
+      'oneToMany',
+      'api::appointment.appointment'
+    >;
     brands: Attribute.Relation<
       'api::place-list.place-list',
       'manyToMany',
@@ -1816,6 +1912,11 @@ export interface ApiTimeSlotTimeSlot extends Schema.CollectionType {
     };
   };
   attributes: {
+    appointments: Attribute.Relation<
+      'api::time-slot.time-slot',
+      'oneToMany',
+      'api::appointment.appointment'
+    >;
     brands: Attribute.Relation<
       'api::time-slot.time-slot',
       'manyToMany',
@@ -2343,6 +2444,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::appointment.appointment': ApiAppointmentAppointment;
       'api::book-appointment.book-appointment': ApiBookAppointmentBookAppointment;
       'api::bottom-navigation.bottom-navigation': ApiBottomNavigationBottomNavigation;
       'api::brand.brand': ApiBrandBrand;

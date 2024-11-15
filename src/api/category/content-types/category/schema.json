@@ -51,6 +51,12 @@
       "relation": "manyToMany",
       "target": "api::subcategory.subcategory",
       "inversedBy": "category"
+    },
+    "appointments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::appointment.appointment",
+      "mappedBy": "category"
     }
   }
 }
