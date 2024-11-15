@@ -874,7 +874,8 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
   };
 }
 
-export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
+export interface ApiBookAppointmentBookAppointment
+  extends Schema.CollectionType {
   collectionName: 'book_appointments';
   info: {
     singularName: 'book-appointment';
@@ -891,87 +892,71 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
     };
   };
   attributes: {
-    pageTitle: Attribute.String &
+    pageTitleLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    title: Attribute.String &
+    firstNameLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    questionLabel: Attribute.String &
+    lastNameLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    storeLocationLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    backBtnLabel: Attribute.String &
+    chooseCategoryLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    nextBtnText: Attribute.String &
+    messageLabel: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    findBrandStoreText: Attribute.String &
+    emailLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    findBrandStoreDescription: Attribute.Text &
+    telephoneNumberLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    storeLocatorLabel: Attribute.String &
+    timeOfAvailabilityLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    searchPlaceholder: Attribute.String &
+    submitButton: Attribute.Component<'button.button'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    searchButtonText: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    useCurrentLocationBtnLabel: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    appointmentMethods: Attribute.Component<
-      'appointment-methods.appointment-methods',
-      true
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    brand: Attribute.Relation<
+      'api::book-appointment.book-appointment',
+      'oneToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

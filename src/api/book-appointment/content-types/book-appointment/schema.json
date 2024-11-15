@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "book_appointments",
   "info": {
     "singularName": "book-appointment",
@@ -16,39 +16,7 @@
     }
   },
   "attributes": {
-    "pageTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "questionLabel": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "description": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "backBtnLabel": {
+    "pageTitleLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -56,7 +24,7 @@
       },
       "type": "string"
     },
-    "nextBtnText": {
+    "firstNameLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -64,7 +32,7 @@
       },
       "type": "string"
     },
-    "findBrandStoreText": {
+    "lastNameLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -72,7 +40,23 @@
       },
       "type": "string"
     },
-    "findBrandStoreDescription": {
+    "storeLocationLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "chooseCategoryLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "messageLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -80,7 +64,7 @@
       },
       "type": "text"
     },
-    "storeLocatorLabel": {
+    "emailLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -88,7 +72,7 @@
       },
       "type": "string"
     },
-    "searchPlaceholder": {
+    "telephoneNumberLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -96,7 +80,7 @@
       },
       "type": "string"
     },
-    "searchButtonText": {
+    "timeOfAvailabilityLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -104,24 +88,20 @@
       },
       "type": "string"
     },
-    "useCurrentLocationBtnLabel": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "appointmentMethods": {
-      "displayName": "appointmentMethods",
+    "submitButton": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "appointment-methods.appointment-methods"
+      "component": "button.button"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
     }
   }
 }
