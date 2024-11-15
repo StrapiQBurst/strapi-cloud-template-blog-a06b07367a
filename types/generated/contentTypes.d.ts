@@ -1265,6 +1265,9 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'api::brand.brand'
     >;
     eventDetailsTItle: Attribute.String;
+    timeIcon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    placeIcon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    dateIcon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
