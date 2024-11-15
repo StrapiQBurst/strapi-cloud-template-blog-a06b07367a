@@ -874,7 +874,8 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
   };
 }
 
-export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
+export interface ApiBookAppointmentBookAppointment
+  extends Schema.CollectionType {
   collectionName: 'book_appointments';
   info: {
     singularName: 'book-appointment';
@@ -897,7 +898,7 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
           localized: true;
         };
       }>;
-    firtNameLabel: Attribute.String &
+    firstNameLabel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -921,7 +922,7 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
           localized: true;
         };
       }>;
-    descriptionLabel: Attribute.Text &
+    messageLabel: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -951,6 +952,11 @@ export interface ApiBookAppointmentBookAppointment extends Schema.SingleType {
           localized: true;
         };
       }>;
+    brand: Attribute.Relation<
+      'api::book-appointment.book-appointment',
+      'oneToOne',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

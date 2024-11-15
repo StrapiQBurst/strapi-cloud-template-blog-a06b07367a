@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "book_appointments",
   "info": {
     "singularName": "book-appointment",
@@ -24,7 +24,7 @@
       },
       "type": "string"
     },
-    "firtNameLabel": {
+    "firstNameLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -56,7 +56,7 @@
       },
       "type": "string"
     },
-    "descriptionLabel": {
+    "messageLabel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -97,6 +97,11 @@
         }
       },
       "component": "button.button"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
     }
   }
 }
