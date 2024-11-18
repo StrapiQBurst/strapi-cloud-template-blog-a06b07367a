@@ -57,6 +57,12 @@
       "relation": "oneToMany",
       "target": "api::appointment.appointment",
       "mappedBy": "category"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::brand.brand",
+      "inversedBy": "categories"
     }
   }
 }

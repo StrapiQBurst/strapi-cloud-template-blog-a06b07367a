@@ -22,19 +22,27 @@
       "target": "api::brand.brand",
       "inversedBy": "timeSlots"
     },
-    "value": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "appointments": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::appointment.appointment",
       "mappedBy": "timeSlot"
+    },
+    "startTime": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "time"
+    },
+    "endTime": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "time"
     }
   }
 }
