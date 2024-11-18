@@ -77,12 +77,31 @@
     "timeSlots": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::time-slot.time-slot"
+      "target": "api::time-slot.time-slot",
+      "mappedBy": "brands"
     },
     "placeLists": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::place-list.place-list",
+      "mappedBy": "brands"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "brands"
+    },
+    "mainCategories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::gender.gender",
+      "mappedBy": "brands"
+    },
+    "subcategories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subcategory.subcategory",
       "mappedBy": "brands"
     }
   }

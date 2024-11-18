@@ -51,6 +51,12 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "subcategories"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::brand.brand",
+      "inversedBy": "subcategories"
     }
   }
 }
