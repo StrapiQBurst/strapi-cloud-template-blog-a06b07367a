@@ -103,6 +103,16 @@
       "relation": "manyToMany",
       "target": "api::subcategory.subcategory",
       "mappedBy": "brands"
+    },
+    "brandId": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": false
     }
   }
 }
