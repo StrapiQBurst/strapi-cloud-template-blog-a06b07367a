@@ -19,11 +19,8 @@ export const enrichWithWishlist = async(products, userId, brandId) => {
   
       // Add the `isWishlisted` field to each product
       products = products.map(product => ({
-        ...product,
+        attributes: product,
         isWishlisted: wishlistedProductIds.includes(product.attributes?.pid || product.pid),
       }));
       return products;
   };
-
-  
-  
