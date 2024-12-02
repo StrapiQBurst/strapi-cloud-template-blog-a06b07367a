@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "userId": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
     "suggestions": {
       "type": "relation",
