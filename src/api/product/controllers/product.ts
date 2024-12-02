@@ -34,7 +34,7 @@ export default factories.createCoreController('api::product.product', ({ strapi 
     const enrichedProduct = await enrichWithWishlist([product], userId, brandId);
 
     return {
-      ...enrichedProduct[0],
+      ...enrichedProduct[0].attributes,
       ...pdpPage
     };
   },
