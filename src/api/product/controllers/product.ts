@@ -12,7 +12,8 @@ export default factories.createCoreController('api::product.product', ({ strapi 
 
     const userId = ctx.state.userId;
     const brandId = ctx.request.header['brand-id'];
-    products.data = await enrichWithWishlist(products.data, userId, brandId);
+    const productData = products.data.map(product => product.attributes);
+    products.data = await enrichWithWishlist(productData, userId, brandId);
     return products;
   },
 
