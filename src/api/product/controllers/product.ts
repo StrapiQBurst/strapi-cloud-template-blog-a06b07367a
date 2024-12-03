@@ -35,6 +35,7 @@ export default factories.createCoreController('api::product.product', ({ strapi 
 
     return {
       ...enrichedProduct[0].attributes,
+      isWishlisted: enrichedProduct[0].isWishlisted,
       ...pdpPage
     };
   },
