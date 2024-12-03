@@ -11,7 +11,7 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
 
     try {
       let wishlist = await strapi.db.query('api::wishlist.wishlist').findOne({
-        where: { users: { userId: users }, brand: { id: brand } },
+        where: { users: { userId: users }, brand: { brandId: brand } },
         populate: ['products', 'brand'],
       });
 
@@ -32,11 +32,15 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
           return ctx.badRequest('Some products not found');
         }
 
+        const selectedBrand = await strapi.db.query('api::brand.brand').findOne({
+          where: { brandId: brand },
+        });
+
         wishlist = await strapi.db.query('api::wishlist.wishlist').create({
           data: {
             users: userRecord.id,
             products: productRecord.id,
-            brand: { id: brand },
+            brand: selectedBrand.id,
             publishedAt: new Date(),
           },
         });
@@ -78,7 +82,7 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
 
     try {
       const wishlist = await strapi.db.query('api::wishlist.wishlist').findOne({
-        where: { users: { userId: users }, brand: { id: brand } },
+        where: { users: { userId: users }, brand: { brandId: brand } },
         populate: ['products'],
       });
 
@@ -108,7 +112,7 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
 
       const userId = ctx.state.userId;
       const brandId = ctx.request.header['brand-id'];
-      const { locale, users } = ctx.request.query;
+      const { locale } = ctx.request.query;
       const wishlistedProductIds = wishlist.data.flatMap(item => item.attributes.products.data.map(product => product.attributes.pid));
       const localizedProducts = await strapi.db.query('api::product.product').findMany({
         where: { pid: { $in: wishlistedProductIds }, locale },
