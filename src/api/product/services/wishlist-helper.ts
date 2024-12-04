@@ -2,6 +2,7 @@ export const enrichWithWishlist = async(products, userId, brandId) => {
       if (!userId) {
         return products.map(product => ({
           attributes: product,
+          isWishlisted: false
         }));
       }
   
