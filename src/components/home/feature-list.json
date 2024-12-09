@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_home_feature_lists",
+  "info": {
+    "displayName": "FeatureList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home.feature"
+    }
+  }
+}
