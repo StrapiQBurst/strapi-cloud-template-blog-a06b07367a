@@ -37,6 +37,12 @@
     },
     "name": {
       "type": "string"
+    },
+    "styleAdvisors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::style-advisor.style-advisor",
+      "mappedBy": "lineUsers"
     }
   }
 }

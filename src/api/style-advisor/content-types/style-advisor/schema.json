@@ -4,7 +4,8 @@
   "info": {
     "singularName": "style-advisor",
     "pluralName": "style-advisors",
-    "displayName": "StyleAdvisor"
+    "displayName": "StyleAdvisor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,18 @@
       "relation": "manyToMany",
       "target": "api::suggestion.suggestion",
       "mappedBy": "styleAdvisor"
+    },
+    "lineUsers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::line-user.line-user",
+      "inversedBy": "styleAdvisors"
+    },
+    "boutiqueName": {
+      "type": "string"
+    },
+    "boutiqueAddress": {
+      "type": "string"
     }
   }
 }
