@@ -1,4 +1,5 @@
 import { factories } from '@strapi/strapi';
+import { enrichWithWishlist } from '../../product/services/wishlist-helper';
 
 export default factories.createCoreController('api::wishlist.wishlist', ({ strapi }) => ({
   async upsert(ctx) {
@@ -10,7 +11,7 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
 
     try {
       let wishlist = await strapi.db.query('api::wishlist.wishlist').findOne({
-        where: { users: { userId: users }, brand: { id: brand } },
+        where: { users: { userId: users }, brand: { brandId: brand } },
         populate: ['products', 'brand'],
       });
 
@@ -31,11 +32,15 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
           return ctx.badRequest('Some products not found');
         }
 
+        const selectedBrand = await strapi.db.query('api::brand.brand').findOne({
+          where: { brandId: brand },
+        });
+
         wishlist = await strapi.db.query('api::wishlist.wishlist').create({
           data: {
             users: userRecord.id,
             products: productRecord.id,
-            brand: { id: brand },
+            brand: selectedBrand.id,
             publishedAt: new Date(),
           },
         });
@@ -77,7 +82,7 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
 
     try {
       const wishlist = await strapi.db.query('api::wishlist.wishlist').findOne({
-        where: { users: { userId: users }, brand: { id: brand } },
+        where: { users: { userId: users }, brand: { brandId: brand } },
         populate: ['products'],
       });
 
@@ -98,6 +103,31 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
     } catch (error) {
       strapi.log.error('Error in wishlist remove:', error);
       ctx.throw(500, 'Something went wrong', { error });
+    }
+  },
+  async find(ctx) {
+    try {
+
+      let wishlist = await super.find(ctx);
+
+      const userId = ctx.state.userId;
+      const brandId = ctx.request.header['brand-id'];
+      const { locale } = ctx.request.query;
+      const wishlistedProductIds = wishlist.data.flatMap(item => item.attributes.products.data.map(product => product.attributes.pid));
+      const localizedProducts = await strapi.db.query('api::product.product').findMany({
+        where: { pid: { $in: wishlistedProductIds }, locale },
+        populate: {
+          mainCategory: true,
+          category: true,
+          subCategory: true,
+          brand: true,
+        },
+      });
+
+      wishlist.data[0].attributes.products.data = await enrichWithWishlist(localizedProducts, userId, brandId);
+      return wishlist;
+    } catch (e) {
+      return { data: [] }
     }
   },
 }));

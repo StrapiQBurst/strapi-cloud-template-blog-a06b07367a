@@ -1,4 +1,5 @@
 export default [
+  'global::user-context',
   'strapi::logger',
   'strapi::errors',
   'strapi::security',

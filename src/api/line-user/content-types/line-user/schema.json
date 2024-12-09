@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "userId": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
     "suggestions": {
       "type": "relation",
@@ -35,6 +37,12 @@
     },
     "name": {
       "type": "string"
+    },
+    "styleAdvisors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::style-advisor.style-advisor",
+      "mappedBy": "lineUsers"
     }
   }
 }

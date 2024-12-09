@@ -6,7 +6,7 @@ import { factories } from '@strapi/strapi'
 export default factories.createCoreController('api::plp-page.plp-page', ({ strapi }) => ({
   async find(ctx) {
     const { mainCategory, brand, theme, locale } = ctx.query;
-    const categoryFilters = { mainCategory, brand, locale }
+    const categoryFilters = { mainCategory, brand: { brandId: brand}, locale }
     const filteredcategoryFilters = Object.fromEntries(
       Object.entries(categoryFilters).filter(([, value]) => value)
     );
@@ -14,7 +14,9 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
     // Fetch PLP page details with the necessary fields
     const plpPages = await strapi.db.query('api::plp-page.plp-page').findMany({
       where: {
-        brand,
+        brand: {
+          brandId: brand
+        },
         theme,
         locale
       },
@@ -27,6 +29,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
         sortingOptions: true,
       },
     });
+    console.log("plpPages", plpPages)
     if (!plpPages.length) {
       return ctx.notFound('No PLP page found');
     }
