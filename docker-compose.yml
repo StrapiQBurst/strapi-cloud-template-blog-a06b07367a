@@ -14,7 +14,7 @@ services:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_HOST: strapiDB
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
@@ -33,24 +33,21 @@ services:
       - strapi
     depends_on:
       - strapiDB
-
   strapiDB:
-    container_name: strapiDB
-    platform: linux/amd64 #for platform error on Apple M1 chips
+    image: postgres:12.0-alpine
     restart: unless-stopped
-    image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
+    env_file: .env
     environment:
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
-      MYSQL_DATABASE: ${DATABASE_NAME}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
-      - strapi-data:/var/lib/mysql
-      #- ./data:/var/lib/mysql # if you want to use a bind folder
+      - strapi-data:/var/lib/postgresql/data/
     ports:
-      - "3307:3306"
+      - "5532:5432"
     networks:
       strapi:
-        ipv4_address: 192.168.100.10 
+        ipv4_address: 192.168.100.10
 
 volumes:
   strapi-data:
