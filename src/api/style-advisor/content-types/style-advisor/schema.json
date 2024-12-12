@@ -38,6 +38,12 @@
     },
     "boutiqueAddress": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "userId": {
+      "type": "string"
     }
   }
 }
