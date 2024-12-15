@@ -63,6 +63,24 @@
       "relation": "manyToMany",
       "target": "api::brand.brand",
       "inversedBy": "categories"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "main_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::gender.gender",
+      "inversedBy": "categories"
     }
   }
 }

@@ -155,6 +155,12 @@
       "relation": "manyToMany",
       "target": "api::suggestion.suggestion",
       "mappedBy": "products"
+    },
+    "product_collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-collection.product-collection",
+      "mappedBy": "products"
     }
   }
 }
