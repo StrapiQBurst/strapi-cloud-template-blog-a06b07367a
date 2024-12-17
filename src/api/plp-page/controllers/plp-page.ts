@@ -33,6 +33,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
       return ctx.notFound('No PLP page found');
     }
     let categoryData;
+    let category;
     let priceFilter;
     if (plpPages[0].showPriceFilter && categoryId) {
       const minPriceData = await strapi.db.query('api::product.product').findMany({
@@ -59,7 +60,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
 
     // Handle Categories and Subcategories
     if (categoryId) {
-      const category = await strapi.db.query('api::category.category').findOne({
+      category = await strapi.db.query('api::category.category').findOne({
         where: { documentId: categoryId, locale: locale || 'en' },
         populate: {
           subcategories: {
@@ -67,6 +68,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
               image: true,
             },
           },
+          main_category: true
         },
       });
 
@@ -82,6 +84,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
 
             return {
               id: subcategory.id,
+              documentId: subcategory.documentId,
               name: subcategory.name,
               image: subcategory.image,
               productCount: subcategoryProductCount,
@@ -100,6 +103,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
     // Return the PLP page details with the category and subcategories
     return this.transformResponse({
       ...plpPages[0],
+      mainCategory: category.main_category,
       category: categoryData,
       priceFilter,
     });

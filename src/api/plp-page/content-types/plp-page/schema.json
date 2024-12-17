@@ -163,6 +163,14 @@
         }
       },
       "type": "string"
+    },
+    "sortLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
