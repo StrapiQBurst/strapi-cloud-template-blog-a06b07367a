@@ -161,6 +161,15 @@
       "relation": "manyToMany",
       "target": "api::product-collection.product-collection",
       "mappedBy": "products"
+    },
+    "isNew": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": true
     }
   }
 }
