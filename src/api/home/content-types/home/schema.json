@@ -17,7 +17,9 @@
       "components": [
         "home.banner",
         "product-collection.product-collection",
-        "home.feature-list"
+        "home.feature-list",
+        "home.collection",
+        "home.category"
       ]
     }
   }

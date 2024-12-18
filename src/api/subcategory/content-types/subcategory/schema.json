@@ -57,6 +57,19 @@
       "relation": "manyToMany",
       "target": "api::brand.brand",
       "inversedBy": "subcategories"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
