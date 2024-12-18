@@ -1,6 +1,9 @@
-export const enrichWithWishlist = async(products, userId, brandId) => {
+export const enrichWithWishlist = async(products, userId, brandId, isV5=false) => {
       if (!userId) {
-        return products.map(product => ({
+        return products.map(product => (isV5 ? {
+          ...product,
+          isWishlisted:false,
+        } :{
           attributes: product,
           isWishlisted: false
         }));
@@ -21,7 +24,11 @@ export const enrichWithWishlist = async(products, userId, brandId) => {
       );
   
       // Add the `isWishlisted` field to each product
-      products = products.map(product => ({
+      products = products.map(product => (isV5 ? {
+        ...product,
+        isWishlisted: wishlistedProductIds.includes(product.pid),
+      } :
+        {
         attributes: product,
         isWishlisted: wishlistedProductIds.includes(product.attributes?.pid || product.pid),
       }));
