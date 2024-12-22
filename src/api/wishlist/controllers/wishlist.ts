@@ -10,42 +10,45 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
     }
 
     try {
-      let wishlist = await strapi.db.query('api::wishlist.wishlist').findOne({
-        where: { users: { userId: users }, brand: { brandId: brand } },
-        populate: ['products', 'brand'],
+      let wishlist = await strapi.documents('api::wishlist.wishlist').findFirst({
+        filters: {
+          users: { userId: users },
+          brand: { brandId: brand }
+        },
+        populate: ['products', 'brand']
       });
 
       if (!wishlist) {
-        const userRecord = await strapi.db.query('api::line-user.line-user').findOne({
-          where: { userId: users },
+        const userRecord = await strapi.documents('api::line-user.line-user').findFirst({
+          filters: { userId: users }
         });
 
         if (!userRecord) {
           return ctx.badRequest(`User with userId ${users} not found`);
         }
 
-        const productRecord = await strapi.db.query('api::product.product').findOne({
-          where: { pid: products },
+        const productRecord = await strapi.documents('api::product.product').findFirst({
+          filters: { pid: products },
         });
 
         if (!productRecord) {
           return ctx.badRequest('Some products not found');
         }
 
-        const selectedBrand = await strapi.db.query('api::brand.brand').findOne({
-          where: { brandId: brand },
+        const selectedBrand = await strapi.documents('api::brand.brand').findFirst({
+          filters: { brandId: brand },
         });
 
-        wishlist = await strapi.db.query('api::wishlist.wishlist').create({
+        wishlist = await strapi.documents('api::wishlist.wishlist').create({
           data: {
-            users: userRecord.id,
-            products: productRecord.id,
-            brand: selectedBrand.id,
-            publishedAt: new Date(),
+            users:userRecord.documentId,
+            brand: selectedBrand.documentId,
+            products: {connect: [{documentId: productRecord.documentId}] },
           },
         });
+        await strapi.documents('api::wishlist.wishlist').publish({
+          documentId: wishlist.documentId});
       } else {
-        const existingProductIds = wishlist.products.map(product => product.id);
         const productRecord = await strapi.db.query('api::product.product').findOne({
           where: { pid: products },
         });
@@ -54,15 +57,15 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
           return ctx.badRequest('Some products not found');
         }
 
-        if (!existingProductIds.includes(productRecord.id)) {
-          existingProductIds.push(productRecord.id);
-        }
-
-        wishlist = await strapi.db.query('api::wishlist.wishlist').update({
-          where: { id: wishlist.id },
+        wishlist = await strapi.documents('api::wishlist.wishlist').update({
+          documentId: wishlist.documentId,
           data: {
-            products: existingProductIds,
+            products: { connect: [{documentId: productRecord.documentId}] },
           },
+        });
+
+        await strapi.documents('api::wishlist.wishlist').publish({
+          documentId: wishlist.documentId,
         });
       }
 
@@ -81,25 +84,35 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
     }
 
     try {
-      const wishlist = await strapi.db.query('api::wishlist.wishlist').findOne({
-        where: { users: { userId: users }, brand: { brandId: brand } },
-        populate: ['products'],
+      let wishlist = await strapi.documents('api::wishlist.wishlist').findFirst({
+        filters: {
+          users: { userId: users },
+          brand: { brandId: brand }
+        },
+        populate: ['products']
       });
 
       if (!wishlist) {
         return ctx.notFound('Wishlist not found for the given user and brand');
       }
 
-      const remainingProducts = wishlist.products.filter(product => product.pid !== products);
+      const productToDelete = wishlist.products.find(product => product.pid === products);
+      if (!productToDelete) {
+        return ctx.notFound(`Wishlist does not contain the product ${products}`);
+      }
 
-      const updatedWishlist = await strapi.db.query('api::wishlist.wishlist').update({
-        where: { id: wishlist.id },
+      wishlist = await strapi.documents('api::wishlist.wishlist').update({
+        documentId: wishlist.documentId,
         data: {
-          products: remainingProducts.map(product => product.id),
+          products: { disconnect: [{documentId: productToDelete?.documentId}] },
         },
       });
 
-      ctx.body = updatedWishlist;
+      await strapi.documents('api::wishlist.wishlist').publish({
+        documentId: wishlist.documentId,
+      });
+
+      ctx.body = wishlist;
     } catch (error) {
       strapi.log.error('Error in wishlist remove:', error);
       ctx.throw(500, 'Something went wrong', { error });
@@ -114,17 +127,18 @@ export default factories.createCoreController('api::wishlist.wishlist', ({ strap
       const brandId = ctx.request.header['brand-id'];
       const { locale } = ctx.request.query;
       const wishlistedProductIds = wishlist.data.flatMap(item => item.attributes.products.data.map(product => product.attributes.pid));
-      const localizedProducts = await strapi.db.query('api::product.product').findMany({
-        where: { pid: { $in: wishlistedProductIds }, locale },
-        populate: {
-          mainCategory: true,
-          category: true,
-          subCategory: true,
-          brand: true,
+
+      const localizedProducts = await strapi.documents('api::product.product').findMany({
+        filters: {
+          pid: { $in: wishlistedProductIds },
+          locale: locale
         },
+        populate: ['mainCategory', 'category', 'subCategory', 'brand']
       });
 
-      wishlist.data[0].attributes.products.data = await enrichWithWishlist(localizedProducts, userId, brandId);
+      const temp =await enrichWithWishlist(localizedProducts, userId, brandId);
+
+      wishlist.data[0].attributes.products.data = temp;
       return wishlist;
     } catch (e) {
       return { data: [] }
