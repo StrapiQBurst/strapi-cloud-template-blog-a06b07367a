@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_pdp_details_sections",
+  "info": {
+    "displayName": "DetailsSection",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "learnMoreButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.button"
+    }
+  }
+}

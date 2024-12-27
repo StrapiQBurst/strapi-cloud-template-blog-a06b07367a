@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_pdp_accordians",
+  "info": {
+    "displayName": "Accordian"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
