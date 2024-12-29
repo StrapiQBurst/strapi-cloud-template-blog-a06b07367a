@@ -170,6 +170,14 @@
       },
       "type": "boolean",
       "default": true
+    },
+    "descriptionPointers": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
     }
   }
 }
