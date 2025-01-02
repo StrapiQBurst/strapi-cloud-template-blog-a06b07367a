@@ -144,12 +144,6 @@
       },
       "component": "product-collection.product-collection"
     },
-    "wishlists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wishlist.wishlist",
-      "inversedBy": "products"
-    },
     "suggestions": {
       "type": "relation",
       "relation": "manyToMany",
@@ -178,6 +172,12 @@
         }
       },
       "type": "json"
+    },
+    "wishlists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wishlist.wishlist",
+      "mappedBy": "products"
     }
   }
 }
