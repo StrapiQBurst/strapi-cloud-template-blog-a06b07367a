@@ -1529,6 +1529,12 @@ export interface ApiPdpPagePdpPage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    taxNote: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     tiffanyExperience: Schema.Attribute.Component<
       'pdp.tiffany-experience',
       false
