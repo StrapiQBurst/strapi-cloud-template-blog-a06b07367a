@@ -179,7 +179,7 @@
       "target": "api::wishlist.wishlist",
       "mappedBy": "products"
     },
-    "productTitle": {
+    "designersAndCollections": {
       "pluginOptions": {
         "i18n": {
           "localized": true

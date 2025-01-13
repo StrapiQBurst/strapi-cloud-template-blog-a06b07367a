@@ -102,7 +102,7 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
 
     // Fetch all materials from products
 const prodcts = await strapi.documents('api::product.product').findMany({
-  fields: ['material', 'productTitle', 'gemstones'],
+  fields: ['material', 'designersAndCollections', 'gemstones'],
 });
 
 // Aggregate, deduplicate, and filter out null values for materials
@@ -117,7 +117,7 @@ const gemstones = [
 
 // Aggregate, deduplicate, and filter out null values for designersAndCollections
 const designersAndCollections = [
-  ...new Set(prodcts.map((product) => product.productTitle).filter((title) => title !== null && title !== undefined)),
+  ...new Set(prodcts.map((product) => product.designersAndCollections).filter((title) => title !== null && title !== undefined)),
 ];
 
 
