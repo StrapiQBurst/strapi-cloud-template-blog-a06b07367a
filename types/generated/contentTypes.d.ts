@@ -1811,6 +1811,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    gemstones: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     images: Schema.Attribute.JSON &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

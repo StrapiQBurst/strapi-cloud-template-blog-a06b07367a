@@ -52,8 +52,8 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
 
       if (minPriceData.length && maxPriceData.length) {
         priceFilter = {
-          minPrice: minPriceData[0].price,
-          maxPrice: maxPriceData[0].price,
+          priceLowLimit: minPriceData[0].price,
+          priceMaxLimit: maxPriceData[0].price,
         };
       }
     }
@@ -100,12 +100,40 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
       }
     }
 
+    // Fetch all materials from products
+const prodcts = await strapi.documents('api::product.product').findMany({
+  fields: ['material', 'productTitle', 'gemstones'],
+});
+
+// Aggregate, deduplicate, and filter out null values for materials
+const materialList = [
+  ...new Set(prodcts.flatMap((product) => product.material || []).filter((material) => material !== null)),
+];
+
+// Aggregate, deduplicate, and filter out null values for gemstones
+const gemstones = [
+  ...new Set(prodcts.flatMap((product) => product.gemstones || []).filter((gemstones) => gemstones !== null)),
+];
+
+// Aggregate, deduplicate, and filter out null values for designersAndCollections
+const designersAndCollections = [
+  ...new Set(prodcts.map((product) => product.productTitle).filter((title) => title !== null && title !== undefined)),
+];
+
+
+    
+console.log("materialList===", materialList);
     // Return the PLP page details with the category and subcategories
     return this.transformResponse({
       ...plpPages[0],
-      mainCategory: category.main_category,
+      // mainCategory: category.main_category,
       category: categoryData,
-      priceFilter,
+      filterOptions: {
+        designersAndCollections,
+        gemstones,
+        materialList,
+        price: priceFilter
+      }
     });
   },
 }));

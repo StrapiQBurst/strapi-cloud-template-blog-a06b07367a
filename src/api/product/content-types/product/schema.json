@@ -186,6 +186,14 @@
         }
       },
       "type": "string"
+    },
+    "gemstones": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
     }
   }
 }
