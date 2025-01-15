@@ -1629,9 +1629,21 @@ export interface ApiPlpPagePlpPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    clearFilterLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    designersAndCollectionsLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     filterButtonLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1644,11 +1656,23 @@ export interface ApiPlpPagePlpPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    gemstonesLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::plp-page.plp-page'
     >;
+    materialLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     modalApplyBtnLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
