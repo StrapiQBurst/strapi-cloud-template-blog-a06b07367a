@@ -13,6 +13,7 @@ const requestConfig = {
 };
 
 async function createProductsBatch(productsBatch) {
+  console.log(productsBatch.length)
   try {
     await axios.post(`${BASE_URL}/bulk-upsert`, {
       data: productsBatch
@@ -39,6 +40,8 @@ async function processRows(rows) {
       color: splitInput(row.Color),
       size: splitInput(row.Size),
       material: splitInput(row.Materials),
+      gemstones: splitInput(row.Gemstones),
+      designersAndCollections: row.DesignersCollection,
       images,
       defaultImage: images[0],
       brand: row.Brand, 
@@ -57,9 +60,11 @@ async function processRows(rows) {
       productsBatch.length = 0;  // Clear the array
     }
   }
+  console.log(productsBatch.length)
 
   // Send remaining products if there are any left after the loop
   if (productsBatch.length > 0) {
+    console.log("hhhhhhhhhhhhh")
     await createProductsBatch(productsBatch);
   }
 }
@@ -87,7 +92,7 @@ async function readCSV(filePath) {
 
 async function run() {
   try {
-    await readCSV(`./${process.env.CATALOG_FILE ?? 'catalog.csv'}`);
+    await readCSV(`./${process.env.CATALOG_FILE ?? './catalog.csv'}`);
     await processRows(rows);
     console.log('All rows have been processed successfully.');
   } catch (error) {

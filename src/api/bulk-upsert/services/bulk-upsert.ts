@@ -31,15 +31,30 @@ export default () => ({
 
             // Helper function to fetch or create subcategories with category relationship
             async function fetchOrCreateSubcategories(subcategories, categoryMap) {
-                const existingSubcategories = await strapi.db.query('api::subcategory.subcategory').findMany({
-                    where: {
-                        $or: subcategories.map(subcategory => ({
-                            name: subcategory.name,
-                            category: categoryMap[subcategory.category]
-                        }))
+                try{
+                console.log("sub...", subcategories, categoryMap)
+                // const existingSubcategories = await strapi.db.query('api::subcategory.subcategory').findMany({
+                //     where: {
+                //         $or: subcategories.map(subcategory => ({
+                //             name: subcategory.name,
+                //             category: categoryMap[subcategory.category]
+                //         }))
+                //     },
+                //     populate: ['category']
+                // });
+                const existingSubcategories = await strapi.documents('api::subcategory.subcategory').findMany({
+                    filters: {
+                      $or: subcategories.map(subcategory => ({
+                        name: subcategory.name,
+                        // category: categoryMap[subcategory.category]
+                      }))
                     },
-                    populate: ['category']
-                });
+                    populate: {
+                      category: true
+                    }
+                  });
+
+                console.log("existing sub", existingSubcategories)
 
                 const existingMap = existingSubcategories.reduce((map, subcategory) => {
                     map[`${subcategory.name}_${subcategory.category[0].name}`] = subcategory.id;
@@ -49,6 +64,8 @@ export default () => ({
                 const newSubcategories = subcategories.filter(subcategory =>
                     !existingMap[`${subcategory.name}_${subcategory.category}`]
                 );
+
+                console.log("newSubcategories.length", newSubcategories.length)
 
                 if (newSubcategories.length > 0) {
                     for (const subcategory of newSubcategories) {
@@ -67,6 +84,11 @@ export default () => ({
                 }
                 return existingMap;
             }
+            catch(e){
+                console.log("error...", e)
+            }
+            }
+            console.log("Service.............................")
 
             const { brandsSet, mainCategoriesSet, categoriesSet, subCategoriesSet } = products.reduce(
                 (acc, product) => {
@@ -88,22 +110,28 @@ export default () => ({
             const mainCategories = [...mainCategoriesSet];
             const categories = [...categoriesSet];
             const subcategories = Object.values(subCategoriesSet);
-
+            console.log("before fetch or create....")
             // Fetch or create all relational data in parallel
             const [brandMap, mainCategoryMap, categoryMap] = await Promise.all([
                 fetchOrCreate('brand', brands),
                 fetchOrCreate('gender', mainCategories),
                 fetchOrCreate('category', categories),
             ]);
+            console.log("aftr fetch or create....")
+
 
             // Fetch or create subcategories after fetching categories
             const subcategoryMap = await fetchOrCreateSubcategories(subcategories, categoryMap);
+            console.log("after sub cat...")
+
 
             const existingProducts = await strapi.db.query('api::product.product').findMany({
                 where: {
                     pid: { $in: products.map(product => product.pid) }  // Find existing products by PID
                 }
             });
+
+            console.log("finded existing products...")
 
             const existingProductMap = existingProducts.reduce((map, product) => {
                 map[product.pid] = product;
@@ -113,6 +141,8 @@ export default () => ({
             // Separate products into ones to update and create
             const updates = [];
             const creations = [];
+
+            console.log("before products map...")
 
             products.forEach(product => {
                 const productData = {
@@ -124,7 +154,11 @@ export default () => ({
                 };
 
                 if (existingProductMap[product.pid]) {
-                    updates.push(productData);
+                    console.log("existingProductMap[product.pid]", existingProductMap[product.pid])
+                    updates.push({
+                        ...productData,
+                        documentId: existingProductMap[product.pid].documentId
+                    });
                 } else {
                     creations.push({
                         ...productData,
@@ -133,13 +167,21 @@ export default () => ({
                 }
             });
 
+            console.log("updates")
+
             // Update existing products sequentially
             for (const product of updates) {
+                console.log("=============product", product)
                 try {
-                    await strapi.db.query('api::product.product').update({
-                        where: { pid: product.pid },
-                        data: product
-                    });
+                    // await strapi.db.query('api::product.product').update({
+                    //     where: { pid: product.pid },
+                    //     data: product
+                    // });
+                    await strapi.documents('api::product.product').update({
+                        documentId: product.documentId,
+                        data: product,
+                        status: 'published'
+                      });
                 } catch (error) {
                     console.error(`Error updating product with PID: ${product.pid}`, error);
                 }

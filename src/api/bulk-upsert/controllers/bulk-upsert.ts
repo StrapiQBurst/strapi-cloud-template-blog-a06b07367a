@@ -1,7 +1,7 @@
 export default {
   bulkUpsert: async (ctx, next) => {
     const products = ctx.request.body.data;  // Get the array of products from the request body
-
+console.log("bulk.................")
     if (!products || !Array.isArray(products)) {
       return ctx.badRequest('Invalid data. Expected an array of products.');
     }
