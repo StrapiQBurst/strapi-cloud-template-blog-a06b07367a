@@ -1979,7 +1979,7 @@ export interface ApiStyleAdvisorStyleAdvisor
       'api::style-advisor.style-advisor'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     suggestions: Schema.Attribute.Relation<
       'manyToMany',
