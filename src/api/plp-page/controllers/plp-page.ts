@@ -103,6 +103,14 @@ export default factories.createCoreController('api::plp-page.plp-page', ({ strap
     // Fetch all materials from products
 const prodcts = await strapi.documents('api::product.product').findMany({
   fields: ['material', 'designersAndCollections', 'gemstones'],
+  filters: {
+    category: {
+      documentId: {
+        $eq: categoryId as string
+      }
+    }
+  },
+  locale: locale as string
 });
 
 // Aggregate, deduplicate, and filter out null values for materials
