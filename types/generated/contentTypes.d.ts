@@ -1442,6 +1442,12 @@ export interface ApiPdpPagePdpPage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    goToWishlistLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     imageSection: Schema.Attribute.Media<'images', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

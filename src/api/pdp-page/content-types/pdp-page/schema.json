@@ -214,6 +214,14 @@
         }
       },
       "type": "string"
+    },
+    "goToWishlistLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
