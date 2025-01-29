@@ -78,7 +78,7 @@
         }
       }
     },
-    "title": {
+    "name": {
       "type": "string",
       "pluginOptions": {
         "i18n": {

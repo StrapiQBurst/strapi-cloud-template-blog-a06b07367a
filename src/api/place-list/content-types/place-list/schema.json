@@ -22,7 +22,7 @@
       "target": "api::brand.brand",
       "inversedBy": "placeLists"
     },
-    "values": {
+    "value": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
