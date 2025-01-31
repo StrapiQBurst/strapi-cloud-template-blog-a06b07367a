@@ -24,6 +24,7 @@ export interface BannerBaner extends Struct.ComponentSchema {
     discountDetails: Schema.Attribute.String;
     imageUrl: Schema.Attribute.String;
     justify: Schema.Attribute.Enumeration<['start', 'end', 'center']>;
+    link: Schema.Attribute.String;
     multiPartHeading: Schema.Attribute.Component<
       'multi-part-heading.multi-part-heading',
       true

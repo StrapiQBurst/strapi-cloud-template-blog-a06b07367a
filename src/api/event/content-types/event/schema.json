@@ -133,6 +133,14 @@
           "localized": true
         }
       }
+    },
+    "eventDetailsTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
