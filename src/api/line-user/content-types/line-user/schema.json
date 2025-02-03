@@ -43,6 +43,12 @@
       "relation": "manyToMany",
       "target": "api::style-advisor.style-advisor",
       "mappedBy": "lineUsers"
+    },
+    "invitations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invitation.invitation",
+      "mappedBy": "lineUser"
     }
   }
 }

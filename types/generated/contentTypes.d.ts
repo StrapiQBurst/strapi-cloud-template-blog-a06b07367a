@@ -962,6 +962,10 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    invitations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::invitation.invitation'
+    >;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
     name: Schema.Attribute.String &
@@ -1254,6 +1258,43 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiInvitationInvitation extends Struct.CollectionTypeSchema {
+  collectionName: 'invitations';
+  info: {
+    description: '';
+    displayName: 'Invitation';
+    pluralName: 'invitations';
+    singularName: 'invitation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    event: Schema.Attribute.Relation<'manyToOne', 'api::event.event'>;
+    invitationStatus: Schema.Attribute.Enumeration<
+      ['PENDING', 'ACCEPTED', 'REJECTED']
+    > &
+      Schema.Attribute.DefaultTo<'PENDING'>;
+    lineUser: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::line-user.line-user'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::invitation.invitation'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLineUserLineUser extends Struct.CollectionTypeSchema {
   collectionName: 'line_users';
   info: {
@@ -1271,6 +1312,10 @@ export interface ApiLineUserLineUser extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     email: Schema.Attribute.String;
     events: Schema.Attribute.Relation<'manyToMany', 'api::event.event'>;
+    invitations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::invitation.invitation'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -2735,6 +2780,7 @@ declare module '@strapi/strapi' {
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::home.home': ApiHomeHome;
+      'api::invitation.invitation': ApiInvitationInvitation;
       'api::line-user.line-user': ApiLineUserLineUser;
       'api::my-account.my-account': ApiMyAccountMyAccount;
       'api::pdp-page.pdp-page': ApiPdpPagePdpPage;

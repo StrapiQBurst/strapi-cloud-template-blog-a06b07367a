@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invitations",
+  "info": {
+    "singularName": "invitation",
+    "pluralName": "invitations",
+    "displayName": "Invitation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "invitations"
+    },
+    "lineUser": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::line-user.line-user",
+      "inversedBy": "invitations"
+    },
+    "invitationStatus": {
+      "type": "enumeration",
+      "enum": [
+        "PENDING",
+        "ACCEPTED",
+        "REJECTED"
+      ],
+      "default": "PENDING"
+    }
+  }
+}
