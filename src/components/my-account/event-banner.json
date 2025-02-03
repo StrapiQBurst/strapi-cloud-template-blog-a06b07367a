@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_my_account_event_banners",
+  "info": {
+    "displayName": "EventBanner"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "joinUsText": {
+      "type": "string"
+    },
+    "launchesAndShowCasesText": {
+      "type": "string"
+    },
+    "stayUpdatedText": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

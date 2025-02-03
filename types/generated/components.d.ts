@@ -250,6 +250,23 @@ export interface MultiPartHeadingMultiPartHeading
   };
 }
 
+export interface MyAccountEventBanner extends Struct.ComponentSchema {
+  collectionName: 'components_my_account_event_banners';
+  info: {
+    displayName: 'EventBanner';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    joinUsText: Schema.Attribute.String;
+    launchesAndShowCasesText: Schema.Attribute.String;
+    stayUpdatedText: Schema.Attribute.String;
+  };
+}
+
 export interface NavigationMenuItemsNavItems extends Struct.ComponentSchema {
   collectionName: 'components_nav_items_nav_items';
   info: {
@@ -432,6 +449,7 @@ declare module '@strapi/strapi' {
       'left-content.left-content': LeftContentLeftContent;
       'link.links': LinkLinks;
       'multi-part-heading.multi-part-heading': MultiPartHeadingMultiPartHeading;
+      'my-account.event-banner': MyAccountEventBanner;
       'navigation-menu-items.nav-items': NavigationMenuItemsNavItems;
       'overlay-menu.overlay-menu': OverlayMenuOverlayMenu;
       'pdp.accordian': PdpAccordian;

@@ -1368,6 +1368,12 @@ export interface ApiMyAccountMyAccount extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    eventBanner: Schema.Attribute.Component<'my-account.event-banner', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     eventButtons: Schema.Attribute.Component<'button.button', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
