@@ -21,7 +21,7 @@ module.exports = {
       },
     },
     {
-      method: 'POST',
+      method: 'PATCH',
       path: '/invitations/:id/status',
       handler: 'invitation.updateInvitationStatus',
       config: {
