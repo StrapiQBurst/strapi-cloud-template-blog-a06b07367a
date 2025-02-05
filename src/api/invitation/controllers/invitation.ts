@@ -139,12 +139,39 @@ export default factories.createCoreController('api::invitation.invitation', ({ s
               (invite: any) => invite.invitationStatus === 'ACCEPTED'
             ).length
           : 0;
+      const constantDataArray = await strapi.documents('api::constant.constant').findMany({
+        filters: { brand: { brandId: 'tiffany' } },
+        fields: [
+          'acceptButtonText',
+          'rejectButtonText',
+          'acceptMessage',
+          'rejectMessage',
+          'goBackButtonText',
+        ],
+      });
 
+      const { acceptButtonText, rejectButtonText, acceptMessage, rejectMessage, goBackButtonText } = constantDataArray[0];
+      const invitationStatusMessages = {
+        ACCEPTED: acceptMessage,
+        REJECTED: rejectMessage
+      }
       const detail = {
         invitationId: invitation.documentId,
         ...translatedEventData,
         acceptedCount,
         currentUserStatus: invitation.invitationStatus,
+        invitationStatusMessage: invitationStatusMessages[invitation.invitationStatus],
+        goBackButtonText,
+        buttons: [
+          {
+            buttonText: rejectButtonText,
+            type: 'button-secondary',
+          },
+          {
+            buttonText: acceptButtonText,
+            type: 'button-primary',
+          },
+        ],
       };
 
       ctx.body = detail;

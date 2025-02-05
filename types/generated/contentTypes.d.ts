@@ -775,6 +775,18 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    acceptButtonText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    acceptMessage: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     brand: Schema.Attribute.Relation<'oneToOne', 'api::brand.brand'>;
     caIcon: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -798,6 +810,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
         };
       }>;
     eventListTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    goBackButtonText: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -863,6 +881,18 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    rejectButtonText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    rejectMessage: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     selectCATitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
