@@ -850,6 +850,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    participantsLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     personalizedProductLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
