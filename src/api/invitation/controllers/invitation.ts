@@ -140,7 +140,10 @@ export default factories.createCoreController('api::invitation.invitation', ({ s
             ).length
           : 0;
       const constantDataArray = await strapi.documents('api::constant.constant').findMany({
-        filters: { brand: { brandId: 'tiffany' } },
+        locale: localeParam,
+        filters: { 
+          brand: { brandId: 'tiffany' },
+        },
         fields: [
           'acceptButtonText',
           'rejectButtonText',
@@ -149,7 +152,6 @@ export default factories.createCoreController('api::invitation.invitation', ({ s
           'goBackButtonText',
         ],
       });
-
       const { acceptButtonText, rejectButtonText, acceptMessage, rejectMessage, goBackButtonText } = constantDataArray[0];
       const invitationStatusMessages = {
         ACCEPTED: acceptMessage,

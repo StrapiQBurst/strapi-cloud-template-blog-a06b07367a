@@ -126,14 +126,6 @@
       "target": "api::brand.brand",
       "inversedBy": "events"
     },
-    "eventDetailsTItle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "eventDetailsTitle": {
       "pluginOptions": {
         "i18n": {

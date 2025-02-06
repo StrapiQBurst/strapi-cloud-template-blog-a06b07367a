@@ -815,6 +815,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    emptyWishlistMessage: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     eventListTitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -923,6 +929,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    textContinue: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     textInsightsBy: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -936,6 +948,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
         };
       }>;
     textWishlistEmptyInstruction2: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    textWishlistEmptyInstruction3: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1017,12 +1035,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         };
       }>;
     eventDetailsTitle: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    eventDetailsTItle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
