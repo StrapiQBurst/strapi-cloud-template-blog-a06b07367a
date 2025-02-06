@@ -923,6 +923,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    textInsightsBy: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     textWishlistEmptyInstruction1: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
