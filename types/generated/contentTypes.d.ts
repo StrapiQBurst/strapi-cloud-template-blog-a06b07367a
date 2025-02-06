@@ -2131,26 +2131,55 @@ export interface ApiStyleAdvisorStyleAdvisor
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    boutiqueAddress: Schema.Attribute.String;
-    boutiqueName: Schema.Attribute.String;
+    boutiqueAddress: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    boutiqueName: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
     lineUsers: Schema.Attribute.Relation<
       'manyToMany',
       'api::line-user.line-user'
     >;
-    lineWorksId: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    lineWorksId: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::style-advisor.style-advisor'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     suggestions: Schema.Attribute.Relation<
       'manyToMany',
@@ -2159,7 +2188,12 @@ export interface ApiStyleAdvisorStyleAdvisor
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    userId: Schema.Attribute.String;
+    userId: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 
