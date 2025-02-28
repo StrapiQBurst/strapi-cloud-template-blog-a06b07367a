@@ -850,6 +850,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    myAccountWishlistTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     NewProductLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -912,6 +918,12 @@ export interface ApiConstantConstant extends Struct.CollectionTypeSchema {
         };
       }>;
     rejectMessage: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seeAllLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
